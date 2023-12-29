@@ -13,22 +13,21 @@
     "react-hook-form"
   ],
   "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.modern.js",
   "source": "lib/index.ts",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.modern.js",
-  "unpkg": "./dist/index.umd.js",
   "types": "./dist/index.d.ts",
   "exports": {
     "types": "./dist/index.d.ts",
-    "require": "./dist/index.cjs",
-    "default": "./dist/index.modern.js"
+    "import": "./dist/index.modern.js",
+    "require": "./dist/index.js"
   },
   "files": [
     "dist"
   ],
   "scripts": {
     "analyze": "microbundle --visualize --jsx",
-    "build": "microbundle --jsx React.createElement",
+    "build": "microbundle --no-compress --format modern,cjs --jsx React.createElement",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "peerDependencies": {
