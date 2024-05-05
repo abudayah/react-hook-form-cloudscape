@@ -1,29 +1,23 @@
 {
   "compilerOptions": {
-    "outDir": "dist",
-    "module": "esnext",
-    "lib": ["dom", "esnext"],
-    "moduleResolution": "node",
-    "jsx": "react",
     "sourceMap": true,
+    "module": "es2015",
+    "target": "es2018",
+    "moduleResolution": "node",
+    "outDir": "./dist",
+    "jsx": "react",
+    "skipLibCheck": true,
+    "declaration": true,
+    "declarationMap": true,
+    "noEmit": true,
     "esModuleInterop": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "esnext",
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "noFallthroughCasesInSwitch": true,
-    "allowJs": true
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", "dist", "src/utils"]
+  "exclude": ["node_modules"]
 }

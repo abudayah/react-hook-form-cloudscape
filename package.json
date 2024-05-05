@@ -1,12 +1,13 @@
 {
   "name": "react-hook-form-cloudscape",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A React Hook Form wrapper designed for effortless integration of validations into Cloudscape forms and inputs",
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.ts",
   "exports": {
+    "./package.json": "./package.json",
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.modern.js",
@@ -38,9 +39,6 @@
     "react-hook-form": "7.36.1",
     "typescript": "^4.2.0"
   },
-  "files": [
-    "dist/"
-  ],
   "npm-pretty-much": {
     "runRelease": "always",
     "runTest": "never"
