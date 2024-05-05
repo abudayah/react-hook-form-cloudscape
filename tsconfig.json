@@ -1,22 +1,29 @@
 {
   "compilerOptions": {
     "outDir": "dist",
-    "declaration": true,
-    "target": "esnext",
+    "module": "esnext",
     "lib": ["dom", "esnext"],
-    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "jsx": "react",
+    "sourceMap": true,
     "esModuleInterop": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "allowSyntheticDefaultImports": true,
+    "target": "esnext",
+    "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "react",
-    "jsxFactory": "React.createElement",
-    "jsxFragmentFactory": "null"
+    "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowJs": true
   },
-  "include": ["lib"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["src"],
+  "exclude": ["node_modules", "dist", "src/utils"]
 }
