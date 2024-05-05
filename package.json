@@ -5,7 +5,13 @@
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
+  "umd:main": "dist/index.umd.js",
+  "unpkg": "dist/index.umd.js",
   "source": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "exports": {
     "./package.json": "./package.json",
     ".": {
@@ -17,7 +23,7 @@
   "scripts": {
     "clean": "rm -rf dist node_modules build",
     "format": "prettier --write '**/*.{js,jsx,ts,tsx,json}'",
-    "build": "npm run format && microbundle --no-compress --format modern,cjs --jsx React.createElement"
+    "build": "npm run format && microbundle --no-compress --format modern,cjs,umd --jsx React.createElement"
   },
   "peerDependencies": {
     "@cloudscape-design/components": "^3.0",
