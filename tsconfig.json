@@ -1,9 +1,11 @@
 {
+  "include": ["src"],
   "compilerOptions": {
     "sourceMap": true,
-    "module": "es2015",
-    "target": "es2018",
+    "module": "esnext",
+    "target": "esnext",
     "moduleResolution": "node",
+    "rootDir": "src",
     "outDir": "dist",
     "jsx": "react",
     "skipLibCheck": true,
@@ -17,7 +19,5 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true
-  },
-  "include": ["src"],
-  "exclude": ["node_modules"]
+  }
 }

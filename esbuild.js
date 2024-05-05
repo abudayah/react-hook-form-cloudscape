@@ -3,7 +3,7 @@ const { nodeExternalsPlugin } = require('esbuild-node-externals');
 esbuild
   .build({
     entryPoints: ['./src/index.ts'],
-    outfile: 'dist/index.ts',
+    outfile: 'dist/index.js',
     bundle: true,
     minify: true,
     treeShaking: true,
