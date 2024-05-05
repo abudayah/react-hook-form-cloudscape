@@ -23,6 +23,7 @@
   "scripts": {
     "clean": "rm -rf dist node_modules build",
     "format": "prettier --write '**/*.{js,jsx,ts,tsx,json}'",
+    "prepublishOnly": "npm run build",
     "build": "npm run format && microbundle --no-compress --format modern,cjs,umd --jsx React.createElement"
   },
   "peerDependencies": {
