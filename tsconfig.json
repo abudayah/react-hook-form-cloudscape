@@ -24,6 +24,6 @@
     "noFallthroughCasesInSwitch": true,
     "allowJs": true
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist", "src/utils"]
+  "include": ["lib"],
+  "exclude": ["node_modules", "dist", "lib/utils"]
 }
