@@ -1,20 +1,11 @@
 {
   "name": "react-hook-form-cloudscape",
-  "version": "1.0.0",
-  "license": "MIT",
+  "version": "0.0.1",
   "description": "A React Hook Form wrapper designed for effortless integration of validations into Cloudscape forms and inputs",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/abudayah/react-hook-form-cloudscape.git"
-  },
-  "keywords": [
-    "react",
-    "cloudscape",
-    "react-hook-form"
-  ],
+  "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
-  "source": "lib/index.ts",
+  "source": "src/index.ts",
   "engines": {
     "node": ">=14"
   },
@@ -25,35 +16,36 @@
       "require": "./dist/index.js"
     }
   },
-  "files": [
-    "dist"
-  ],
   "scripts": {
-    "analyze": "microbundle --visualize --jsx",
-    "build": "microbundle --no-compress --format modern,cjs --jsx React.createElement",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "clean": "rm -rf dist node_modules build",
+    "format": "prettier --write '**/*.{js,jsx,ts,tsx,json}'",
+    "build": "npm run format && microbundle --no-compress --format modern,cjs --jsx React.createElement"
   },
   "peerDependencies": {
     "@cloudscape-design/components": "^3.0",
     "react": "^16.8 || ^17 || ^18",
     "react-dom": "^16.8 || ^17 || ^18",
-    "react-hook-form": "^7.36"
+    "react-hook-form": "7.36.0"
   },
   "devDependencies": {
-    "@hookform/resolvers": "^3.3.2",
-    "@types/node": "^20.8.10",
-    "@types/react": "^18.2.38",
-    "@typescript-eslint/eslint-plugin": "^6.12.0",
-    "eslint": "^8.54.0",
-    "eslint-plugin-import": "^2.29.0",
-    "eslint-plugin-n": "^16.3.1",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.4",
-    "glob": "^10.3.10",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-typescript": "^7.18.6",
+    "@cloudscape-design/components": "^3.0.615",
+    "@types/react": "^17.0.34",
+    "@types/react-dom": "^17.0.11",
+    "babel-loader": "^8.1.0",
     "microbundle": "^0.15.1",
-    "typescript": "^5.3.2",
-    "yup": "^1.3.2"
+    "prettier": "^3.2.5",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-hook-form": "7.36.1",
+    "typescript": "^4.2.0"
+  },
+  "files": [
+    "dist/"
+  ],
+  "npm-pretty-much": {
+    "runRelease": "always",
+    "runTest": "never"
   }
 }
