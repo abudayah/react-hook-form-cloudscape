@@ -4,7 +4,7 @@
     "module": "es2015",
     "target": "es2018",
     "moduleResolution": "node",
-    "outDir": "./dist",
+    "outDir": "dist",
     "jsx": "react",
     "skipLibCheck": true,
     "declaration": true,
