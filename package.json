@@ -12,15 +12,18 @@
     "cloudscape",
     "react-hook-form"
   ],
-  "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "lib/index.ts",
-  "types": "./dist/index.d.ts",
+  "engines": {
+    "node": ">=14"
+  },
   "exports": {
-    "types": "./dist/index.d.ts",
-    "import": "./dist/index.modern.js",
-    "require": "./dist/index.js"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.modern.js",
+      "require": "./dist/index.js"
+    }
   },
   "files": [
     "dist"
