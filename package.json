@@ -3,7 +3,6 @@
   "version": "0.0.9",
   "description": "A React Hook Form wrapper designed for effortless integration of validations into Cloudscape forms and inputs",
   "license": "MIT",
-  "type": "module",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "files": [
@@ -32,7 +31,7 @@
     "prettier": "^3.2.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-hook-form": "7.36.1",
+    "react-hook-form": "7.36.0",
     "rollup-plugin-dts": "^6.1.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "typescript": "^5.4.5"
