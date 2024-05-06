@@ -3,27 +3,17 @@
   "version": "0.0.9",
   "description": "A React Hook Form wrapper designed for effortless integration of validations into Cloudscape forms and inputs",
   "license": "MIT",
-  "main": "dist/index.js",
-  "module": "dist/index.modern.js",
-  "umd:main": "dist/index.umd.js",
-  "unpkg": "dist/index.umd.js",
-  "source": "src/index.ts",
-  "types": "dist/index.d.ts",
-  "exports": {
-    "./package.json": "./package.json",
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.modern.js",
-      "require": "./dist/index.js"
-    }
-  },
+  "type": "module",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "files": [
     "dist"
   ],
   "scripts": {
     "clean": "rm -rf dist node_modules build",
     "format": "prettier --write '**/*.{js,jsx,ts,tsx,json}'",
-    "build": "rm -rf dist && node esbuild.js && tsc"
+    "rollup": "rollup -c --bundleConfigAsCjs",
+    "build": "rm -rf dist && npm run rollup"
   },
   "peerDependencies": {
     "@cloudscape-design/components": "^3.0",
@@ -33,14 +23,18 @@
   },
   "devDependencies": {
     "@cloudscape-design/components": "^3.0.625",
+    "@emotion/react": "^11.11.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.6",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
-    "esbuild": "^0.20.2",
-    "esbuild-node-externals": "^1.13.0",
     "prettier": "^3.2.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "7.36.1",
+    "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
     "typescript": "^5.4.5"
   },
   "npm-pretty-much": {
