@@ -10,6 +10,7 @@ import * as FormWizardCode from './components/forms/form-wizard?raw';
 
 import * as AttributeEditor from './components/attribute-editor?raw';
 import * as Autosuggest from './components/autosuggest?raw';
+import * as Cards from './components/cards?raw';
 import * as InputCode from './components/input?raw';
 import * as TextareaCode from './components/textarea?raw';
 
@@ -27,6 +28,8 @@ const SourceCodeView: React.FC = () => {
         return AttributeEditor.default;
       case '/CAutosuggest':
         return Autosuggest.default;
+      case '/CCards':
+        return Cards.default;
       case '/CInput':
         return InputCode.default;
       case '/CTextarea':

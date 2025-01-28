@@ -22,6 +22,7 @@ import Input from './components/input';
 import Textarea from './components/textarea';
 import AttributeEditor from './components/attribute-editor';
 import Autosuggest from './components/autosuggest';
+import Cards from './components/cards';
 
 function App() {
   const [activeHref, setActiveHref] = useState('');
@@ -111,6 +112,11 @@ function App() {
                   },
                   {
                     type: "link",
+                    text: "Cards",
+                    href: "#/CCards"
+                  },
+                  {
+                    type: "link",
                     text: "Input",
                     href: "#/CInput"
                   },
@@ -151,6 +157,7 @@ function App() {
             <Route path="/form-wizard" element={<FormWizard onSubmit={handleFormSubmit} />} />
             <Route path="/CAttributeEditor" element={<AttributeEditor onSubmit={handleFormSubmit} />} />
             <Route path="/CAutosuggest" element={<Autosuggest onSubmit={handleFormSubmit} />} />
+            <Route path="/CCards" element={<Cards onSubmit={handleFormSubmit} />} />
             <Route path="/CInput" element={<Input onSubmit={handleFormSubmit} />} />
             <Route path="/CTextarea" element={<Textarea onSubmit={handleFormSubmit} />} />
             <Route path="/" element={<Navigate to="/form-basic" />} />
