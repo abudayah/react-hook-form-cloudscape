@@ -5,6 +5,7 @@ import path from 'path';
 import dts from 'vite-plugin-dts';
 
 export default defineConfig({
+  base: '/react-hook-form-cloudscape',
   plugins: [
     react(),
     dts({
@@ -35,5 +36,14 @@ export default defineConfig({
       },
     },
     sourcemap: true,
+  },
+  optimizeDeps: {
+    include: ['ace-builds', 'ace-builds/esm-resolver'],
+  },
+  csp: {
+    directives: {
+      'worker-src': ['self', 'blob:'],
+      'img-src': ['self', 'data:'],
+    },
   },
 });

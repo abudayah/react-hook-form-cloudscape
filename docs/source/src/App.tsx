@@ -18,11 +18,13 @@ import FormBasic from './components/forms/form-basic';
 import SourceCodeView from './SourceCodeView';
 import FormWizard from './components/forms/form-wizard';
 import { useLocalStorage } from './hooks/useLocalStorage';
-import Input from './components/input';
-import Textarea from './components/textarea';
-import AttributeEditor from './components/attribute-editor';
-import Autosuggest from './components/autosuggest';
-import Cards from './components/cards';
+import AttributeEditor from './components/AttributeEditor';
+import Autosuggest from './components/Autosuggest';
+import Cards from './components/Cards';
+import Checkbox from './components/Checkbox';
+import Input from './components/Input';
+import Textarea from './components/Textarea';
+import CodeEditor from './components/CodeEditor';
 
 function App() {
   const [activeHref, setActiveHref] = useState('');
@@ -103,27 +105,37 @@ function App() {
                   {
                     type: "link",
                     text: "Attribute Editor",
-                    href: "#/CAttributeEditor"
+                    href: "#/AttributeEditor"
                   },
                   {
                     type: "link",
                     text: "Autosuggest",
-                    href: "#/CAutosuggest"
+                    href: "#/Autosuggest"
                   },
                   {
                     type: "link",
                     text: "Cards",
-                    href: "#/CCards"
+                    href: "#/Cards"
+                  },
+                  {
+                    type: "link",
+                    text: "Code Editor",
+                    href: "#/CodeEditor"
+                  },
+                  {
+                    type: "link",
+                    text: "Checkbox",
+                    href: "#/Checkbox"
                   },
                   {
                     type: "link",
                     text: "Input",
-                    href: "#/CInput"
+                    href: "#/Input"
                   },
                   {
                     type: "link",
                     text: "Text area",
-                    href: "#/CTextarea"
+                    href: "#/Textarea"
                   },
                 ]
               },
@@ -155,11 +167,13 @@ function App() {
           <Routes>
             <Route path="/form-basic" element={<FormBasic onSubmit={handleFormSubmit} />} />
             <Route path="/form-wizard" element={<FormWizard onSubmit={handleFormSubmit} />} />
-            <Route path="/CAttributeEditor" element={<AttributeEditor onSubmit={handleFormSubmit} />} />
-            <Route path="/CAutosuggest" element={<Autosuggest onSubmit={handleFormSubmit} />} />
-            <Route path="/CCards" element={<Cards onSubmit={handleFormSubmit} />} />
-            <Route path="/CInput" element={<Input onSubmit={handleFormSubmit} />} />
-            <Route path="/CTextarea" element={<Textarea onSubmit={handleFormSubmit} />} />
+            <Route path="/AttributeEditor" element={<AttributeEditor onSubmit={handleFormSubmit} />} />
+            <Route path="/Autosuggest" element={<Autosuggest onSubmit={handleFormSubmit} />} />
+            <Route path="/Cards" element={<Cards onSubmit={handleFormSubmit} />} />
+            <Route path="/Checkbox" element={<Checkbox onSubmit={handleFormSubmit} />} />
+            <Route path="/CodeEditor" element={<CodeEditor onSubmit={handleFormSubmit} />} />
+            <Route path="/Input" element={<Input onSubmit={handleFormSubmit} />} />
+            <Route path="/Textarea" element={<Textarea onSubmit={handleFormSubmit} />} />
             <Route path="/" element={<Navigate to="/form-basic" />} />
           </Routes>
         }

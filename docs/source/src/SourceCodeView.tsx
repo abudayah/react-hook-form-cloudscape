@@ -8,11 +8,13 @@ import { useLocation } from 'react-router-dom';
 import * as FormBasicCode from './components/forms/form-basic?raw';
 import * as FormWizardCode from './components/forms/form-wizard?raw';
 
-import * as AttributeEditor from './components/attribute-editor?raw';
-import * as Autosuggest from './components/autosuggest?raw';
-import * as Cards from './components/cards?raw';
-import * as InputCode from './components/input?raw';
-import * as TextareaCode from './components/textarea?raw';
+import * as AttributeEditor from './components/AttributeEditor?raw';
+import * as Autosuggest from './components/Autosuggest?raw';
+import * as Cards from './components/Cards?raw';
+import * as Checkbox from './components/Checkbox?raw';
+import * as CodeEditor from './components/CodeEditor?raw';
+import * as Input from './components/Input?raw';
+import * as Textarea from './components/Textarea?raw';
 
 const SourceCodeView: React.FC = () => {
   const location = useLocation();
@@ -24,16 +26,20 @@ const SourceCodeView: React.FC = () => {
         return FormBasicCode.default;
       case '/form-wizard':
         return FormWizardCode.default;
-      case '/CAttributeEditor':
+      case '/AttributeEditor':
         return AttributeEditor.default;
-      case '/CAutosuggest':
+      case '/Autosuggest':
         return Autosuggest.default;
-      case '/CCards':
+      case '/Cards':
         return Cards.default;
-      case '/CInput':
-        return InputCode.default;
-      case '/CTextarea':
-        return TextareaCode.default;
+      case '/Checkbox':
+        return Checkbox.default;
+      case '/CodeEditor':
+        return CodeEditor.default;
+      case '/Input':
+        return Input.default;
+      case '/Textarea':
+        return Textarea.default;
       default:
         return FormBasicCode.default;
     }

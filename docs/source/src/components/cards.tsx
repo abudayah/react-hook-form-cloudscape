@@ -3,7 +3,7 @@ import { useForm, get } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-import { Button, Form, FormField, SpaceBetween, Container, ContentLayout, Header, Link, Box, TextFilter, Pagination, CollectionPreferences } from '@cloudscape-design/components';
+import { Button, Form, FormField, SpaceBetween, Container, ContentLayout, Header, Link } from '@cloudscape-design/components';
 import { CCards } from 'react-hook-form-cloudscape';
 
 const schema = yup.object().shape({
