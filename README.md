@@ -7,22 +7,15 @@ A React library that simplifies the integration of [`react-hook-form`](https://g
 [![OpenSSF Scorecard](https://github.com/abudayah/react-hook-form-cloudscape/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/abudayah/react-hook-form-cloudscape/actions/workflows/dependabot/dependabot-updates)
 [![GitHub Repo stars](https://img.shields.io/github/stars/abudayah/react-hook-form-cloudscape)](https://github.com/abudayah/react-hook-form-cloudscape)
 
-### Installation
+
+
+## Installation
 
 ```
 npm install react-hook-form @cloudscape-design/components @cloudscape-design/global-styles react-hook-form-cloudscape
 ```
 
-#### Important
-
-Required dependencies:
-
-- React >= 16.8 || >= 17 || >= 18
-- react-dom >= 16.8 || >= 17 || >= 18
-- react-hook-form >= 7
-- @cloudscape-design/components
-
-### How to use it
+## How to use it
 
 ```
 import { Form, FormField } from '@cloudscape-design/components';
@@ -40,15 +33,14 @@ function App {
 
 ```
 
-[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/bold-river-tjmd2l?workspaceId=ws_EKwBkPzNLsUrLTfF7Xr7MH)
-
-## Demo
-
-![](https://raw.githubusercontent.com/abudayah/react-hook-form-cloudscape/refs/heads/dev/demo.gif)
+Demos and usage: https://abudayah.github.io/react-hook-form-cloudscape
 
 ## Getting help
 
 You can [create bug reports or feature requests](https://github.com/abudayah/react-hook-form-cloudscape/issues/new/choose), or [start a discussion](https://github.com/abudayah/react-hook-form-cloudscape/discussions) to ask a question. To minimize duplicates, we recommend that you search for existing bug reports, feature requests, or discussions before initiating a new thread.
+
+## Fuel My Code with Coffee ☕️
+Like this project?  Buy me a coffee to support maintenance and new features, [sponsor me](https://github.com/sponsors/abudayah)
 
 ## Articles and guides
 - [Cloudscape Form Validation Made Easy: A Step-by-Step Guide with React-hook-form-cloudscape](https://medium.com/@abudayah/cloudscape-form-validation-made-easy-a-step-by-step-guide-with-react-hook-form-cloudscape-f2238225f125)
