@@ -12,19 +12,34 @@ import {
 } from '@cloudscape-design/components';
 import jsonHighlight from '@cloudscape-design/code-view/highlight/json';
 import { CodeView } from '@cloudscape-design/code-view';
-
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
-import FormBasic from './components/forms/form-basic';
 import SourceCodeView from './SourceCodeView';
-import FormWizard from './components/forms/form-wizard';
 import { useLocalStorage } from './hooks/useLocalStorage';
+
+import FormBasic from './components/forms/form-basic';
+import FormWizard from './components/forms/form-wizard';
+
 import AttributeEditor from './components/AttributeEditor';
 import Autosuggest from './components/Autosuggest';
 import Cards from './components/Cards';
 import Checkbox from './components/Checkbox';
-import Input from './components/Input';
-import Textarea from './components/Textarea';
 import CodeEditor from './components/CodeEditor';
+import DatePicker from './components/DatePicker';
+import DateRangePicker from './components/DateRangePicker';
+import FileUpload from './components/FileUpload';
+import Input from './components/Input';
+import Multiselect from './components/Multiselect';
+// import PropertyFilter from './components/PropertyFilter';
+import RadioGroup from './components/RadioGroup';
+// import S3ResourceSelector from './components/S3ResourceSelector';
+import Select from './components/Select';
+import Slider from './components/Slider';
+import TagEditor from './components/TagEditor';
+import Textarea from './components/Textarea';
+// import TextFilter from './components/TextFilter';
+// import Tiles from './components/Tiles';
+// import TimeInput from './components/TimeInput';
+// import Toggle from './components/Toggle';
 
 function App() {
   const [activeHref, setActiveHref] = useState('');
@@ -119,13 +134,28 @@ function App() {
                   },
                   {
                     type: "link",
+                    text: "Checkbox",
+                    href: "#/Checkbox"
+                  },
+                  {
+                    type: "link",
                     text: "Code Editor",
                     href: "#/CodeEditor"
                   },
                   {
                     type: "link",
-                    text: "Checkbox",
-                    href: "#/Checkbox"
+                    text: "Date Picker",
+                    href: "#/DatePicker"
+                  },
+                  {
+                    type: "link",
+                    text: "Date Range Picker",
+                    href: "#/DateRangePicker"
+                  },
+                  {
+                    type: "link",
+                    text: "File Upload",
+                    href: "#/FileUpload"
                   },
                   {
                     type: "link",
@@ -134,8 +164,63 @@ function App() {
                   },
                   {
                     type: "link",
-                    text: "Text area",
+                    text: "Multiselect",
+                    href: "#/Multiselect"
+                  },
+                  // {
+                  //   type: "link",
+                  //   text: "Property Filter",
+                  //   href: "#/PropertyFilter"
+                  // },
+                  {
+                    type: "link",
+                    text: "Radio Group",
+                    href: "#/RadioGroup"
+                  },
+                  // {
+                  //   type: "link",
+                  //   text: "S3 Resource Selector",
+                  //   href: "#/S3ResourceSelector"
+                  // },
+                  {
+                    type: "link",
+                    text: "Select",
+                    href: "#/Select"
+                  },
+                  {
+                    type: "link",
+                    text: "Slider",
+                    href: "#/Slider"
+                  },
+                  {
+                    type: "link",
+                    text: "Tag Editor",
+                    href: "#/TagEditor"
+                  },
+                  {
+                    type: "link",
+                    text: "Text Area",
                     href: "#/Textarea"
+                  },
+                  {
+                    type: "link",
+                    text: "Text Filter",
+                    href: "#/TextFilter"
+                  },
+                  {
+                    type: "link",
+                    text: "Tiles",
+                    href: "#/Tiles"
+                  },
+                  {
+                    type: "link",
+                    text: "Time Input",
+                    href: "#/TimeInput"
+                  },
+                  {
+                    type: "link",
+                    text: "Toggle",
+                    href: "#/Toggle"
                   },
                 ]
               },
@@ -172,8 +257,22 @@ function App() {
             <Route path="/Cards" element={<Cards onSubmit={handleFormSubmit} />} />
             <Route path="/Checkbox" element={<Checkbox onSubmit={handleFormSubmit} />} />
             <Route path="/CodeEditor" element={<CodeEditor onSubmit={handleFormSubmit} />} />
+            <Route path="/DatePicker" element={<DatePicker onSubmit={handleFormSubmit} />} />
+            <Route path="/DateRangePicker" element={<DateRangePicker onSubmit={handleFormSubmit} />} />
+            <Route path="/FileUpload" element={<FileUpload onSubmit={handleFormSubmit} />} />
             <Route path="/Input" element={<Input onSubmit={handleFormSubmit} />} />
+            <Route path="/Multiselect" element={<Multiselect onSubmit={handleFormSubmit} />} />
+            {/* <Route path="/PropertyFilter" element={<PropertyFilter onSubmit={handleFormSubmit} />} /> */}
+            <Route path="/RadioGroup" element={<RadioGroup onSubmit={handleFormSubmit} />} />
+            {/* <Route path="/S3ResourceSelector" element={<S3ResourceSelector onSubmit={handleFormSubmit} />} /> */}
+            <Route path="/Select" element={<Select onSubmit={handleFormSubmit} />} />
+            <Route path="/Slider" element={<Slider onSubmit={handleFormSubmit} />} />
+            <Route path="/TagEditor" element={<TagEditor onSubmit={handleFormSubmit} />} />
             <Route path="/Textarea" element={<Textarea onSubmit={handleFormSubmit} />} />
+            {/* <Route path="/TextFilter" element={<TextFilter onSubmit={handleFormSubmit} />} />
+            <Route path="/Tiles" element={<Tiles onSubmit={handleFormSubmit} />} />
+            <Route path="/TimeInput" element={<TimeInput onSubmit={handleFormSubmit} />} />
+            <Route path="/Toggle" element={<Toggle onSubmit={handleFormSubmit} />} /> */}
             <Route path="/" element={<Navigate to="/form-basic" />} />
           </Routes>
         }

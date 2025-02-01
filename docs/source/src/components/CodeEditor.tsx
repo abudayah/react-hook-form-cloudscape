@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useForm, get } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { CodeEditorI18nStrings } from '../utils';
+import { CodeEditorI18nStrings } from '../i18n';
 import * as yup from 'yup';
 
 import { Button, Form, FormField, SpaceBetween, Container, ContentLayout, Header, NonCancelableCustomEvent, CodeEditorProps } from '@cloudscape-design/components';
