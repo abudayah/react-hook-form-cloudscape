@@ -33,7 +33,7 @@ function App {
 
 ```
 
-Demos and usage: https://abudayah.github.io/react-hook-form-cloudscape
+✨ Demos and usage: https://abudayah.github.io/react-hook-form-cloudscape
 
 ## Getting help
 
