@@ -36,10 +36,10 @@ import Select from './components/Select';
 import Slider from './components/Slider';
 import TagEditor from './components/TagEditor';
 import Textarea from './components/Textarea';
-// import TextFilter from './components/TextFilter';
-// import Tiles from './components/Tiles';
-// import TimeInput from './components/TimeInput';
-// import Toggle from './components/Toggle';
+import TextFilter from './components/TextFilter';
+import Tiles from './components/Tiles';
+import TimeInput from './components/TimeInput';
+import Toggle from './components/Toggle';
 
 function App() {
   const [activeHref, setActiveHref] = useState('');
@@ -269,10 +269,10 @@ function App() {
             <Route path="/Slider" element={<Slider onSubmit={handleFormSubmit} />} />
             <Route path="/TagEditor" element={<TagEditor onSubmit={handleFormSubmit} />} />
             <Route path="/Textarea" element={<Textarea onSubmit={handleFormSubmit} />} />
-            {/* <Route path="/TextFilter" element={<TextFilter onSubmit={handleFormSubmit} />} />
+            <Route path="/TextFilter" element={<TextFilter onSubmit={handleFormSubmit} />} />
             <Route path="/Tiles" element={<Tiles onSubmit={handleFormSubmit} />} />
             <Route path="/TimeInput" element={<TimeInput onSubmit={handleFormSubmit} />} />
-            <Route path="/Toggle" element={<Toggle onSubmit={handleFormSubmit} />} /> */}
+            <Route path="/Toggle" element={<Toggle onSubmit={handleFormSubmit} />} />
             <Route path="/" element={<Navigate to="/form-basic" />} />
           </Routes>
         }

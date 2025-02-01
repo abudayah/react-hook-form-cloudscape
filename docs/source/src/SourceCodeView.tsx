@@ -25,10 +25,10 @@ import * as Select from './components/Select?raw';
 import * as Slider from './components/Slider?raw';
 import * as TagEditor from './components/TagEditor?raw';
 import * as Textarea from './components/Textarea?raw';
-// import * as TextFilter from './components/TextFilter?raw';
-// import * as Tiles from './components/Tiles?raw';
-// import * as TimeInput from './components/TimeInput?raw';
-// import * as Toggle from './components/Toggle?raw';
+import * as TextFilter from './components/TextFilter?raw';
+import * as Tiles from './components/Tiles?raw';
+import * as TimeInput from './components/TimeInput?raw';
+import * as Toggle from './components/Toggle?raw';
 
 
 const SourceCodeView: React.FC = () => {
@@ -74,14 +74,14 @@ const SourceCodeView: React.FC = () => {
         return TagEditor.default;
       case '/Textarea':
         return Textarea.default;
-      // case '/TextFilter':
-      //   return TextFilter.default;
-      // case '/Tiles':
-      //   return Tiles.default;
-      // case '/TimeInput':
-      //   return TimeInput.default;
-      // case '/Toggle':
-      //   return Toggle.default;
+      case '/TextFilter':
+        return TextFilter.default;
+      case '/Tiles':
+        return Tiles.default;
+      case '/TimeInput':
+        return TimeInput.default;
+      case '/Toggle':
+        return Toggle.default;
       default:
         return FormBasicCode.default;
     }
