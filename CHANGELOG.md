@@ -1,3 +1,10 @@
+## [1.4.5](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.4.4...v1.4.5) (2025-02-01)
+
+
+### Bug Fixes
+
+* **docs:** update readme and remove demo file ([70a8607](https://github.com/abudayah/react-hook-form-cloudscape/commit/70a8607722ad191c983887d771d6e9f660617f20))
+
 ## [1.4.4](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.4.3...v1.4.4) (2025-02-01)
 
 
