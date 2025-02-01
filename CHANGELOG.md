@@ -1,3 +1,10 @@
+## [1.4.4](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.4.3...v1.4.4) (2025-02-01)
+
+
+### Bug Fixes
+
+* **fix:** missing file pathes ([05d75c4](https://github.com/abudayah/react-hook-form-cloudscape/commit/05d75c44e6f3dac028ef3e38db00cf62cb5285b7))
+
 ## [1.4.3](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.4.2...v1.4.3) (2025-01-27)
 
 
