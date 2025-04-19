@@ -39,10 +39,9 @@
     "typescript"
   ],
   "peerDependencies": {
-    "@cloudscape-design/components": ">=3.0.0",
-    "react": "^16.8 || ^17 || ^18",
-    "react-dom": "^16.8 || ^17 || ^18",
-    "react-hook-form": ">=7.0.0"
+    "react": ">=16.8.0",
+    "react-hook-form": ">=7.0.0",
+    "@cloudscape-design/components": ">=3.0.0"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
