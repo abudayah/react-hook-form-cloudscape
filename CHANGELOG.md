@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.4.5...v1.5.0) (2025-04-20)
+
+
+### Features
+
+* **update:** Support React 19 ([13376a2](https://github.com/abudayah/react-hook-form-cloudscape/commit/13376a2ac16746ed11d09a3f656425a5f44ab376))
+
 ## [1.4.5](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.4.4...v1.4.5) (2025-02-01)
 
 
