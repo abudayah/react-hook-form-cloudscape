@@ -39,9 +39,6 @@ function App {
 
 You can [create bug reports or feature requests](https://github.com/abudayah/react-hook-form-cloudscape/issues/new/choose), or [start a discussion](https://github.com/abudayah/react-hook-form-cloudscape/discussions) to ask a question. To minimize duplicates, we recommend that you search for existing bug reports, feature requests, or discussions before initiating a new thread.
 
-## Fuel My Code with Coffee ☕️
-Like this project?  Buy me a coffee to support maintenance and new features, [sponsor me](https://github.com/sponsors/abudayah)
-
 ## Articles and guides
 - [Cloudscape Form Validation Made Easy: A Step-by-Step Guide with React-hook-form-cloudscape](https://medium.com/@abudayah/cloudscape-form-validation-made-easy-a-step-by-step-guide-with-react-hook-form-cloudscape-f2238225f125)
 
