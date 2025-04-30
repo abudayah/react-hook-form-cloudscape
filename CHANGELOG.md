@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.5.0...v1.5.1) (2025-04-30)
+
+
+### Bug Fixes
+
+* **dependencies:** bump dependencies minor version ([0278378](https://github.com/abudayah/react-hook-form-cloudscape/commit/0278378315736e21275033f2191889dc15623a30))
+
 # [1.5.0](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.4.5...v1.5.0) (2025-04-20)
 
 
