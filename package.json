@@ -2,6 +2,14 @@
   "name": "react-hook-form-cloudscape",
   "version": "1.5.1",
   "description": "A React Hook Form wrapper designed for effortless integration of validations into Cloudscape forms and inputs",
+  "keywords": [
+    "react",
+    "react-hook-form",
+    "cloudscape",
+    "form-validation",
+    "react-component",
+    "typescript"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/abudayah/react-hook-form-cloudscape.git"
@@ -24,20 +32,20 @@
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "lint": "eslint . --fix",
-    "format": "prettier --write '**/*.{ts,tsx,json,cjs,js}'",
     "clean": "rm -rf dist/ index.d.ts index.js index.js.map components/ react-hook-form-cloudscape.es.js react-hook-form-cloudscape.es.js.map react-hook-form-cloudscape.umd.js react-hook-form-cloudscape.umd.js.map",
-    "build": "npm run clean && npm run lint && npm run format && npm run test:coverage && tsc && vite build",
+    "build": "npm run clean && npm run test:coverage && tsc && vite build",
     "dry-run": "npx semantic-release --dry-run > dry-run-output.txt",
     "prepare": "husky"
   },
-  "keywords": [
-    "react",
-    "react-hook-form",
-    "cloudscape",
-    "form-validation",
-    "react-component",
-    "typescript"
-  ],
+  "lint-staged": {
+    "*.{ts,tsx,cjs}": [
+      "eslint . --fix",
+      "prettier . --write"
+    ],
+    "*.json": [
+      "prettier . --write"
+    ]
+  },
   "peerDependencies": {
     "@cloudscape-design/components": ">=3.0.0",
     "react": ">=16.8.0",
@@ -62,6 +70,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "husky": "^9.1.7",
     "jsdom": "^25.0.1",
+    "lint-staged": "^15.5.2",
     "prettier": "^3.5.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

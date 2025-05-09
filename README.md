@@ -1,6 +1,6 @@
 ## React-hook-form wrapper for Cloudscape Design System
 
-A React library that simplifies the integration of [`react-hook-form`](https://github.com/react-hook-form/react-hook-form) with [`Cloudscape Design System`](https://github.com/cloudscape-design/components).  It provides a set of pre-built, controlled input components that handle validation, allowing you to focus on building complex form logic with minimal effort.
+A React library that simplifies the integration of [`react-hook-form`](https://github.com/react-hook-form/react-hook-form) with [`Cloudscape Design System`](https://github.com/cloudscape-design/components). It provides a set of pre-built, controlled input components that handle validation, allowing you to focus on building complex form logic with minimal effort.
 
 [![npmjs](https://img.shields.io/npm/v/react-hook-form-cloudscape)](https://www.npmjs.com/package/react-hook-form-cloudscape)
 ![Bundle size](https://pkg-size.dev/badge/bundle/9430)
@@ -39,6 +39,7 @@ function App {
 You can [create bug reports or feature requests](https://github.com/abudayah/react-hook-form-cloudscape/issues/new/choose), or [start a discussion](https://github.com/abudayah/react-hook-form-cloudscape/discussions) to ask a question. To minimize duplicates, we recommend that you search for existing bug reports, feature requests, or discussions before initiating a new thread.
 
 ## Articles and guides
+
 - [Cloudscape Form Validation Made Easy: A Step-by-Step Guide with React-hook-form-cloudscape](https://medium.com/@abudayah/cloudscape-form-validation-made-easy-a-step-by-step-guide-with-react-hook-form-cloudscape-f2238225f125)
 
 ## License

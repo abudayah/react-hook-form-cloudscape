@@ -24,3 +24,9 @@ react-hook-form-cloudscape.umd.js.map
 # Others
 dry-run-output.txt
 docs/
+
+# Configuration files
+.github/
+.husky/
+.vscode/
+CHANGELOG.md
