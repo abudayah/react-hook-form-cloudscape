@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { AttributeEditor, AttributeEditorProps, NonCancelableCustomEvent } from '@cloudscape-design/components';
 import {
   Control,
@@ -14,7 +14,6 @@ import {
 } from 'react-hook-form';
 
 export interface Definition<T> extends Omit<AttributeEditorProps.FieldDefinition<T>, 'errorText'> {
-  // Label is mandatory to find the error path
   label: string;
   errorName?: (item: T, index: number) => string;
 }
@@ -36,11 +35,11 @@ export interface CAttributeEditorProps<T extends FieldValues>
 const CAttributeEditor = <TFieldValues extends FieldValues>({
   name,
   control,
-  onRemoveButtonClick,
-  onAddButtonClick,
   definition,
   defaultValue,
   handleState = true,
+  onAddButtonClick,
+  onRemoveButtonClick,
   ...props
 }: CAttributeEditorProps<TFieldValues>) => {
   const { errors } = useFormState({ control });

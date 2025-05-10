@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { Controller, Control, Path, FieldValues, FieldPathValue, FieldPath, RegisterOptions } from 'react-hook-form';
 import { Autosuggest, AutosuggestProps, NonCancelableCustomEvent } from '@cloudscape-design/components';
 
@@ -8,8 +8,6 @@ export interface CAutosuggestProps<T extends FieldValues> extends Omit<Autosugge
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
   rules?: Omit<RegisterOptions<T, FieldPath<T>>, 'valueAsNumber' | 'valueAsDate' | 'setValueAs' | 'disabled'>;
   shouldUnregister?: boolean;
-  onBlur?: AutosuggestProps['onBlur'];
-  onChange?: AutosuggestProps['onChange'];
 }
 
 export const CAutosuggest = <T extends FieldValues>({
@@ -23,15 +21,19 @@ export const CAutosuggest = <T extends FieldValues>({
   ...props
 }: CAutosuggestProps<T>) => {
   const handleOnBlur = useCallback(
-    (event: NonCancelableCustomEvent<null>) => {
-      onBlur?.(event);
+    (formOnBlur: (value: string) => void, event: NonCancelableCustomEvent<{ value: string } | null>) => {
+      if (event.detail?.value) {
+        formOnBlur(event.detail.value);
+      }
+      onBlur?.(event as NonCancelableCustomEvent<null>);
     },
     [onBlur]
   );
 
   const handleOnChange = useCallback(
-    (event: NonCancelableCustomEvent<AutosuggestProps.ChangeDetail>) => {
-      onChange?.(event);
+    (formOnChange: (value: string) => void, event: NonCancelableCustomEvent<AutosuggestProps.ChangeDetail>) => {
+      formOnChange(event.detail.value);
+      onChange?.(event as unknown as NonCancelableCustomEvent<AutosuggestProps.ChangeDetail>);
     },
     [onChange]
   );
@@ -43,19 +45,13 @@ export const CAutosuggest = <T extends FieldValues>({
       defaultValue={defaultValue}
       rules={rules}
       shouldUnregister={shouldUnregister}
-      render={({ field: { ref, onBlur: formOnBlur, onChange: formOnChange, value } }) => (
+      render={({ field: { ref, onBlur, onChange, value } }) => (
         <Autosuggest
           ref={ref}
           name={name}
           value={(value as string) || ''}
-          onBlur={(e) => {
-            formOnBlur();
-            handleOnBlur(e);
-          }}
-          onChange={(e) => {
-            formOnChange(e.detail.value);
-            handleOnChange(e);
-          }}
+          onBlur={handleOnBlur.bind(null, onBlur)}
+          onChange={handleOnChange.bind(null, onChange)}
           {...props}
         />
       )}
