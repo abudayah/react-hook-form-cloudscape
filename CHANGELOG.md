@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.5.1...v1.6.0) (2025-05-10)
+
+
+### Features
+
+* **features:** updating cards, autosuggest and attribute-editor ([e37e892](https://github.com/abudayah/react-hook-form-cloudscape/commit/e37e892fe52327d51c2716a465d6b4f3ea21aa64))
+
 ## [1.5.1](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.5.0...v1.5.1) (2025-04-30)
 
 
