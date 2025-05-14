@@ -39,11 +39,11 @@
   },
   "lint-staged": {
     "*.{ts,tsx,cjs}": [
-      "eslint . --fix",
-      "prettier . --write"
+      "eslint --fix",
+      "prettier --write"
     ],
     "*.json": [
-      "prettier . --write"
+      "prettier --write"
     ]
   },
   "peerDependencies": {
