@@ -1,3 +1,10 @@
+## [1.7.2](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.1...v1.7.2) (2025-05-20)
+
+
+### Bug Fixes
+
+* **docs:** bump rhfc version ([bef2178](https://github.com/abudayah/react-hook-form-cloudscape/commit/bef2178c0699906471ffbe55a2b5d50fd6190e38))
+
 ## [1.7.1](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.0...v1.7.1) (2025-05-20)
 
 
