@@ -5,6 +5,7 @@ import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import packageJsonPlugin from 'eslint-plugin-package-json';
 import eslintPluginJsonc from 'eslint-plugin-jsonc';
+import eslintConfigPrettier from "eslint-config-prettier/flat";
 import { defineConfig } from 'eslint/config';
 
 export default defineConfig([
@@ -94,4 +95,5 @@ export default defineConfig([
       ...packageJsonPlugin.configs.recommended.rules,
     },
   },
+  eslintConfigPrettier,
 ]);

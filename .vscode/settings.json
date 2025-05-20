@@ -12,7 +12,7 @@
   "eslint.run": "onSave",
 
   // Disable built-in formatters to avoid conflicts
-  "eslint.format.enable": true,
+  "eslint.format.enable": false,
   "javascript.format.enable": false,
   "typescript.format.enable": false,
 
