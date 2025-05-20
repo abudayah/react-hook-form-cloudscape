@@ -11,10 +11,14 @@ export interface ControlledPropertyFilterProps<T extends FieldValues>
   shouldUnregister?: boolean;
 }
 
-export const CPropertyFilter = <TFieldValues extends FieldValues>(
-  CPropertyFilterProperties: ControlledPropertyFilterProps<TFieldValues>
-) => {
-  const { name, control, defaultValue, rules, shouldUnregister = false, ...props } = CPropertyFilterProperties;
+export const CPropertyFilter = <TFieldValues extends FieldValues>({
+  name,
+  control,
+  defaultValue,
+  rules,
+  shouldUnregister = false,
+  ...props
+}: ControlledPropertyFilterProps<TFieldValues>) => {
   const handleOnChange = useCallback(
     (
       formOnChange: (query: PropertyFilterProps.Query) => void,
