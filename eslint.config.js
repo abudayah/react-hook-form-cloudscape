@@ -5,7 +5,8 @@ import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import packageJsonPlugin from 'eslint-plugin-package-json';
 import eslintPluginJsonc from 'eslint-plugin-jsonc';
-import eslintConfigPrettier from "eslint-config-prettier/flat";
+import eslintConfigPrettier from 'eslint-config-prettier/flat';
+import vitestPlugin from 'eslint-plugin-vitest';
 import { defineConfig } from 'eslint/config';
 
 export default defineConfig([
@@ -34,7 +35,6 @@ export default defineConfig([
       parser: tseslint.parser,
       globals: {
         ...globals.browser,
-        ...globals.vitest,
       },
       parserOptions: {
         project: './tsconfig.json',
@@ -81,6 +81,35 @@ export default defineConfig([
           shorthandLast: false,
         },
       ],
+    },
+  },
+  {
+    files: ['src/**/*.{test.ts,test.tsx}', 'src/vitest.setup.ts'],
+    languageOptions: {
+      parser: tseslint.parser,
+      globals: {
+        ...globals.vitest,
+        ...globals.browser,
+      },
+      parserOptions: {
+        project: './tsconfig.eslint.json',
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
+    plugins: {
+      '@typescript-eslint': tseslint.plugin,
+      vitest: vitestPlugin,
+      react: reactPlugin,
+      'react-hooks': reactHooksPlugin,
+    },
+    settings: {
+      react: {
+        version: 'detect',
+      },
     },
   },
   {
