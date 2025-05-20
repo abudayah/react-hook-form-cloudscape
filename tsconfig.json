@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "types": ["vitest/globals", "@testing-library/jest-dom"],
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "target": "ES2015",
     "module": "ES2015",
@@ -17,13 +18,14 @@
     "declarationDir": "./components",
     "sourceMap": true
   },
-  "include": ["src"],
-  "exclude": [
-    "node_modules",
-    "src/setupTests.ts",
+  "include": [
+    "src",
+    "src/vitest.setup.ts",
     "src/**/*.test.ts",
     "src/**/*.test.tsx",
-    "src/setupTests.ts",
+  ],
+  "exclude": [
+    "node_modules",
     "docs/**/*"
   ]
 }

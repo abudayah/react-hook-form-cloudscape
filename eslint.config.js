@@ -1,0 +1,97 @@
+import js from '@eslint/js';
+import globals from 'globals';
+import * as tseslint from 'typescript-eslint';
+import reactPlugin from 'eslint-plugin-react';
+import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import packageJsonPlugin from 'eslint-plugin-package-json';
+import eslintPluginJsonc from 'eslint-plugin-jsonc';
+import { defineConfig } from 'eslint/config';
+
+export default defineConfig([
+  {
+    ignores: [
+      '.husky/**',
+      '.vscode/**',
+      '.idea/**',
+      '.github/**',
+      '.DS_Store',
+      '**/dist/**',
+      '**/build/**',
+      '**/coverage/**',
+      '**/node_modules/**',
+      '**/*.es.js',
+      '**/*.es.js.map',
+      '**/*.umd.js',
+      '**/*.umd.map',
+      '**/docs/**',
+      'CHANGELOG.md',
+    ],
+  },
+  {
+    files: ['src/**/*.{ts,tsx}'],
+    languageOptions: {
+      parser: tseslint.parser,
+      globals: {
+        ...globals.browser,
+        ...globals.vitest,
+      },
+      parserOptions: {
+        project: './tsconfig.json',
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
+    plugins: {
+      '@typescript-eslint': tseslint.plugin,
+      react: reactPlugin,
+      'react-hooks': reactHooksPlugin,
+    },
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
+    rules: {
+      ...tseslint.configs.recommended.rules,
+      ...reactPlugin.configs.recommended.rules,
+      ...reactPlugin.configs['jsx-runtime'].rules,
+      ...reactHooksPlugin.configs.recommended.rules,
+
+      'sort-imports': [
+        'error',
+        {
+          ignoreCase: true,
+          ignoreDeclarationSort: true,
+          ignoreMemberSort: false,
+          memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
+        },
+      ],
+      'react/jsx-sort-props': [
+        'error',
+        {
+          ignoreCase: true,
+          noSortAlphabetically: false,
+          reservedFirst: true,
+          shorthandFirst: true,
+          callbacksLast: true,
+          shorthandLast: false,
+        },
+      ],
+    },
+  },
+  {
+    files: ['package.json'],
+    languageOptions: {
+      parser: eslintPluginJsonc,
+    },
+    plugins: {
+      'package-json': packageJsonPlugin,
+    },
+    rules: {
+      ...packageJsonPlugin.configs.recommended.rules,
+    },
+  },
+]);
