@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.0...v1.7.1) (2025-05-20)
+
+
+### Bug Fixes
+
+* **linting:** fix linting issues ([c11b328](https://github.com/abudayah/react-hook-form-cloudscape/commit/c11b3285a07a7d2cdef622835e3ca8097ba2d3cc))
+
 # [1.7.0](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.6.0...v1.7.0) (2025-05-20)
 
 
