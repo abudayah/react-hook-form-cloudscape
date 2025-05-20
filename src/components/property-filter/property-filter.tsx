@@ -1,6 +1,6 @@
-import React, { useCallback } from 'react';
-import { Control, Controller, FieldValues, FieldPathValue, FieldPath, RegisterOptions } from 'react-hook-form';
-import { PropertyFilterProps, NonCancelableCustomEvent, PropertyFilter } from '@cloudscape-design/components';
+import { useCallback } from 'react';
+import { Control, Controller, FieldPath, FieldPathValue, FieldValues, RegisterOptions } from 'react-hook-form';
+import { NonCancelableCustomEvent, PropertyFilter, PropertyFilterProps } from '@cloudscape-design/components';
 
 export interface ControlledPropertyFilterProps<T extends FieldValues>
   extends Omit<PropertyFilterProps, 'query' | 'onChange'> {
@@ -31,14 +31,14 @@ export const CPropertyFilter = <TFieldValues extends FieldValues>({
 
   return (
     <Controller
-      name={name}
       control={control}
       defaultValue={defaultValue}
+      name={name}
+      render={({ field: { onChange, value } }) => {
+        return <PropertyFilter query={value} onChange={handleOnChange.bind(null, onChange)} {...props} />;
+      }}
       rules={rules}
       shouldUnregister={shouldUnregister}
-      render={({ field: { onChange, value } }) => {
-        return <PropertyFilter onChange={handleOnChange.bind(null, onChange)} query={value} {...props} />;
-      }}
     />
   );
 };

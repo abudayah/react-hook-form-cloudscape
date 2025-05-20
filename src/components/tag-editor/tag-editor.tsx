@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { Controller, Control, Path, FieldValues, FieldPath, FieldPathValue, RegisterOptions } from 'react-hook-form';
+import { Control, Controller, FieldPath, FieldPathValue, FieldValues, Path, RegisterOptions } from 'react-hook-form';
 import { NonCancelableCustomEvent, TagEditor, TagEditorProps } from '@cloudscape-design/components';
 
 export interface CTagEditorProps<T extends FieldValues> extends Omit<TagEditorProps, 'tags'> {
@@ -29,11 +29,9 @@ const CTagEditor = <TFieldValues extends FieldValues>({
 
   return (
     <Controller
-      name={name}
       control={control}
       defaultValue={defaultValue}
-      rules={rules}
-      shouldUnregister={shouldUnregister}
+      name={name}
       render={({ field: { ref, onChange, value } }) => (
         <TagEditor
           ref={ref}
@@ -42,6 +40,8 @@ const CTagEditor = <TFieldValues extends FieldValues>({
           {...props}
         />
       )}
+      rules={rules}
+      shouldUnregister={shouldUnregister}
     />
   );
 };

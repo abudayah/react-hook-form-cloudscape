@@ -1,5 +1,5 @@
-import React, { useCallback } from 'react';
-import { Controller, Control, FieldValues, FieldPathValue, FieldPath, RegisterOptions } from 'react-hook-form';
+import { useCallback } from 'react';
+import { Control, Controller, FieldPath, FieldPathValue, FieldValues, RegisterOptions } from 'react-hook-form';
 import { Input, InputProps, NonCancelableCustomEvent } from '@cloudscape-design/components';
 
 export interface CInputProps<T extends FieldValues> extends Omit<InputProps, 'value'> {
@@ -19,7 +19,7 @@ const CInput = <TFieldValues extends FieldValues>({
   onBlur,
   onChange,
   ...props
-}: CInputProps<TFieldValues>): React.ReactElement => {
+}: CInputProps<TFieldValues>) => {
   const handleOnBlur = useCallback(
     (event: NonCancelableCustomEvent<null>) => {
       onBlur?.(event);
@@ -36,11 +36,9 @@ const CInput = <TFieldValues extends FieldValues>({
 
   return (
     <Controller
-      name={name}
       control={control}
       defaultValue={defaultValue}
-      rules={rules}
-      shouldUnregister={shouldUnregister}
+      name={name}
       render={({ field: { ref, onBlur: formOnBlur, onChange: formOnChange, value } }) => (
         <Input
           ref={ref}
@@ -57,6 +55,8 @@ const CInput = <TFieldValues extends FieldValues>({
           {...props}
         />
       )}
+      rules={rules}
+      shouldUnregister={shouldUnregister}
     />
   );
 };

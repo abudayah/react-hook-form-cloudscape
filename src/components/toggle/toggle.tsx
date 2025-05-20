@@ -29,14 +29,14 @@ const CToggle = <TFieldValues extends FieldValues>({
 
   return (
     <Controller
-      name={name}
       control={control}
       defaultValue={defaultValue}
+      name={name}
+      render={({ field: { ref, onChange, value = false } }) => (
+        <Toggle ref={ref} checked={value} name={name} onChange={handleOnChange.bind(null, onChange)} {...props} />
+      )}
       rules={rules}
       shouldUnregister={shouldUnregister}
-      render={({ field: { ref, onChange, value = false } }) => (
-        <Toggle ref={ref} name={name} checked={value} onChange={handleOnChange.bind(null, onChange)} {...props} />
-      )}
     />
   );
 };

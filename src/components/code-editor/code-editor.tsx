@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { Controller, Control, FieldValues, Path, FieldPath, FieldPathValue, RegisterOptions } from 'react-hook-form';
+import { Control, Controller, FieldPath, FieldPathValue, FieldValues, Path, RegisterOptions } from 'react-hook-form';
 import { CodeEditor, CodeEditorProps, NonCancelableCustomEvent } from '@cloudscape-design/components';
 
 export interface CCodeEditorProps<T extends FieldValues> extends Omit<CodeEditorProps, 'value'> {
@@ -29,14 +29,14 @@ const CCodeEditor = <TFieldValues extends FieldValues>({
 
   return (
     <Controller
-      name={name}
       control={control}
       defaultValue={defaultValue}
-      rules={rules}
-      shouldUnregister={shouldUnregister}
+      name={name}
       render={({ field: { onChange, value } }) => (
         <CodeEditor value={value || ''} onChange={handleOnChange.bind(null, onChange)} {...props} />
       )}
+      rules={rules}
+      shouldUnregister={shouldUnregister}
     />
   );
 };

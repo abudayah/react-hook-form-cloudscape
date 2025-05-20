@@ -1,5 +1,5 @@
-import React, { useCallback } from 'react';
-import { Controller, Control, FieldValues, FieldPathValue, FieldPath, RegisterOptions } from 'react-hook-form';
+import { useCallback } from 'react';
+import { Control, Controller, FieldPath, FieldPathValue, FieldValues, RegisterOptions } from 'react-hook-form';
 import { NonCancelableCustomEvent, Select, SelectProps } from '@cloudscape-design/components';
 import SelectUtils from './utils';
 
@@ -39,11 +39,9 @@ const CSelect = <TFieldValues extends FieldValues>({
 
   return (
     <Controller
-      name={name}
       control={control}
       defaultValue={defaultValue}
-      rules={rules}
-      shouldUnregister={shouldUnregister}
+      name={name}
       render={({ field: { ref, onChange, onBlur, value } }) => (
         <Select
           ref={ref}
@@ -53,6 +51,8 @@ const CSelect = <TFieldValues extends FieldValues>({
           {...props}
         />
       )}
+      rules={rules}
+      shouldUnregister={shouldUnregister}
     />
   );
 };

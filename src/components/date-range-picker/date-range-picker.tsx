@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
-import { DateRangePickerProps, DateRangePicker, NonCancelableCustomEvent } from '@cloudscape-design/components';
-import { Controller, Control, Path, FieldValues, FieldPath, FieldPathValue, RegisterOptions } from 'react-hook-form';
+import { DateRangePicker, DateRangePickerProps, NonCancelableCustomEvent } from '@cloudscape-design/components';
+import { Control, Controller, FieldPath, FieldPathValue, FieldValues, Path, RegisterOptions } from 'react-hook-form';
 
 export interface CDateRangePickerProps<T extends FieldValues> extends Omit<DateRangePickerProps, 'value'> {
   name: Path<T>;
@@ -36,11 +36,9 @@ const CDateRangePicker = <TFieldValues extends FieldValues>({
 
   return (
     <Controller
-      name={name}
       control={control}
       defaultValue={defaultValue}
-      rules={rules}
-      shouldUnregister={shouldUnregister}
+      name={name}
       render={({ field: { ref, onBlur: formOnBlur, onChange: formOnChange, value } }) => (
         <DateRangePicker
           ref={ref}
@@ -56,6 +54,8 @@ const CDateRangePicker = <TFieldValues extends FieldValues>({
           {...props}
         />
       )}
+      rules={rules}
+      shouldUnregister={shouldUnregister}
     />
   );
 };

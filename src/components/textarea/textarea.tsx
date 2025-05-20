@@ -1,6 +1,6 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { NonCancelableCustomEvent, Textarea, TextareaProps } from '@cloudscape-design/components';
-import { Controller, Control, Path, FieldValues, FieldPathValue, FieldPath, RegisterOptions } from 'react-hook-form';
+import { Control, Controller, FieldPath, FieldPathValue, FieldValues, Path, RegisterOptions } from 'react-hook-form';
 
 export interface CTextareaProps<T extends FieldValues> extends Omit<TextareaProps, 'value'> {
   name: Path<T>;
@@ -38,11 +38,9 @@ const CTextarea = <TFieldValues extends FieldValues>({
 
   return (
     <Controller
-      name={name}
       control={control}
       defaultValue={defaultValue}
-      rules={rules}
-      shouldUnregister={shouldUnregister}
+      name={name}
       render={({ field: { onChange, onBlur, value, ref } }) => (
         <Textarea
           ref={ref}
@@ -53,6 +51,8 @@ const CTextarea = <TFieldValues extends FieldValues>({
           {...props}
         />
       )}
+      rules={rules}
+      shouldUnregister={shouldUnregister}
     />
   );
 };

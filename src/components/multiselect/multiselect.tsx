@@ -1,7 +1,7 @@
-import React, { useCallback } from 'react';
-import { Control, Controller, FieldValues, FieldPathValue, FieldPath, RegisterOptions } from 'react-hook-form';
-import { MultiselectProps, NonCancelableCustomEvent, Multiselect } from '@cloudscape-design/components';
-import { transformMultiselectOptionsToArray, mapSelectedOptionsWithOptions } from './utils';
+import { useCallback } from 'react';
+import { Control, Controller, FieldPath, FieldPathValue, FieldValues, RegisterOptions } from 'react-hook-form';
+import { Multiselect, MultiselectProps, NonCancelableCustomEvent } from '@cloudscape-design/components';
+import { mapSelectedOptionsWithOptions, transformMultiselectOptionsToArray } from './utils';
 
 export interface ControlledMultiselectProps<T extends FieldValues> extends Omit<MultiselectProps, 'selectedOptions'> {
   name: FieldPath<T>;
@@ -41,23 +41,23 @@ const CMultiselect = <TFieldValues extends FieldValues>({
 
   return (
     <Controller
-      name={name}
       control={control}
       defaultValue={defaultValue}
-      rules={rules}
-      shouldUnregister={shouldUnregister}
+      name={name}
       render={({ field: { ref, onChange, onBlur, value } }) => {
         return (
           <Multiselect
             ref={ref}
             options={options}
+            selectedOptions={mapSelectedOptionsWithOptions(options, value)}
             onBlur={() => handleOnBlur.bind(null, onBlur)}
             onChange={handleOnChange.bind(null, onChange)}
-            selectedOptions={mapSelectedOptionsWithOptions(options, value)}
             {...props}
           />
         );
       }}
+      rules={rules}
+      shouldUnregister={shouldUnregister}
     />
   );
 };

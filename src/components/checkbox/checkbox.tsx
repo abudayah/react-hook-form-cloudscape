@@ -29,14 +29,14 @@ const CCheckbox = <TFieldValues extends FieldValues>({
 
   return (
     <Controller
-      name={name}
       control={control}
       defaultValue={defaultValue}
+      name={name}
+      render={({ field: { ref, onChange, value = false } }) => (
+        <Checkbox ref={ref} checked={value} onChange={handleOnChange.bind(null, onChange)} {...props} />
+      )}
       rules={rules}
       shouldUnregister={shouldUnregister}
-      render={({ field: { ref, onChange, value = false } }) => (
-        <Checkbox ref={ref} onChange={handleOnChange.bind(null, onChange)} checked={value} {...props} />
-      )}
     />
   );
 };

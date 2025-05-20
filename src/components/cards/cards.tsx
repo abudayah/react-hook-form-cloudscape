@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
-import { CardsProps, NonCancelableCustomEvent, Cards } from '@cloudscape-design/components';
-import { Controller, Control, FieldValues, Path, FieldPathValue, FieldPath, RegisterOptions } from 'react-hook-form';
+import { Cards, CardsProps, NonCancelableCustomEvent } from '@cloudscape-design/components';
+import { Control, Controller, FieldPath, FieldPathValue, FieldValues, Path, RegisterOptions } from 'react-hook-form';
 
 export interface ControlledCardsProps<T extends FieldValues>
   extends Omit<
@@ -36,14 +36,14 @@ export const CCards = <TFieldValues extends FieldValues>({
 
   return (
     <Controller
-      name={name}
       control={control}
       defaultValue={defaultValue}
+      name={name}
+      render={({ field: { onChange, value } }) => (
+        <Cards selectedItems={value} onSelectionChange={handleOnChange.bind(null, onChange)} {...props} />
+      )}
       rules={rules}
       shouldUnregister={shouldUnregister}
-      render={({ field: { onChange, value } }) => (
-        <Cards onSelectionChange={handleOnChange.bind(null, onChange)} selectedItems={value} {...props} />
-      )}
     />
   );
 };

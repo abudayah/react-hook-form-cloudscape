@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { Controller, Control, FieldValues, Path, FieldPath, FieldPathValue, RegisterOptions } from 'react-hook-form';
+import { Control, Controller, FieldPath, FieldPathValue, FieldValues, Path, RegisterOptions } from 'react-hook-form';
 import { NonCancelableCustomEvent, TimeInput, TimeInputProps } from '@cloudscape-design/components';
 
 export interface CTimeInputProps<T extends FieldValues> extends Omit<TimeInputProps, 'value'> {
@@ -37,21 +37,21 @@ const CTimeInput = <TFieldValues extends FieldValues>({
   );
   return (
     <Controller
-      name={name}
       control={control}
       defaultValue={defaultValue}
-      rules={rules}
-      shouldUnregister={shouldUnregister}
+      name={name}
       render={({ field: { ref, onChange, onBlur, value } }) => (
         <TimeInput
-          name={name}
           ref={ref}
+          name={name}
           value={value as string}
           onBlur={handleOnBlur.bind(null, onBlur)}
           onChange={handleOnChange.bind(null, onChange)}
           {...props}
         />
       )}
+      rules={rules}
+      shouldUnregister={shouldUnregister}
     />
   );
 };

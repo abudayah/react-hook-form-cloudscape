@@ -1,5 +1,5 @@
-import React, { useCallback } from 'react';
-import { Controller, Control, FieldValues, Path, FieldPath, FieldPathValue, RegisterOptions } from 'react-hook-form';
+import { useCallback } from 'react';
+import { Control, Controller, FieldPath, FieldPathValue, FieldValues, Path, RegisterOptions } from 'react-hook-form';
 import { NonCancelableCustomEvent, Tiles, TilesProps } from '@cloudscape-design/components';
 
 export interface CTilesProps<T extends FieldValues> extends Omit<TilesProps, 'value'> {
@@ -29,14 +29,14 @@ const CTiles = <TFieldValues extends FieldValues>({
 
   return (
     <Controller
-      name={name}
       control={control}
       defaultValue={defaultValue}
+      name={name}
+      render={({ field: { onChange, value } }) => (
+        <Tiles items={props.items} value={value} onChange={handleOnChange.bind(null, onChange)} {...props} />
+      )}
       rules={rules}
       shouldUnregister={shouldUnregister}
-      render={({ field: { onChange, value } }) => (
-        <Tiles onChange={handleOnChange.bind(null, onChange)} value={value} items={props.items} {...props} />
-      )}
     />
   );
 };

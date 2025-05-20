@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { Controller, Control, FieldValues, Path, FieldPath, FieldPathValue, RegisterOptions } from 'react-hook-form';
+import { Control, Controller, FieldPath, FieldPathValue, FieldValues, Path, RegisterOptions } from 'react-hook-form';
 import { NonCancelableCustomEvent, TextFilter, TextFilterProps } from '@cloudscape-design/components';
 
 export interface CTextFilterProps<T extends FieldValues> extends Omit<TextFilterProps, 'filteringText'> {
@@ -29,11 +29,9 @@ const CTextFilter = <TFieldValues extends FieldValues>({
 
   return (
     <Controller
-      name={name}
       control={control}
       defaultValue={defaultValue}
-      rules={rules}
-      shouldUnregister={shouldUnregister}
+      name={name}
       render={({ field: { ref, onChange, value } }) => (
         <TextFilter
           ref={ref}
@@ -42,6 +40,8 @@ const CTextFilter = <TFieldValues extends FieldValues>({
           {...props}
         />
       )}
+      rules={rules}
+      shouldUnregister={shouldUnregister}
     />
   );
 };

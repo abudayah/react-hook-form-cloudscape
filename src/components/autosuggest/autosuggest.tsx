@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { Controller, Control, Path, FieldValues, FieldPathValue, FieldPath, RegisterOptions } from 'react-hook-form';
+import { Control, Controller, FieldPath, FieldPathValue, FieldValues, Path, RegisterOptions } from 'react-hook-form';
 import { Autosuggest, AutosuggestProps, NonCancelableCustomEvent } from '@cloudscape-design/components';
 
 export interface CAutosuggestProps<T extends FieldValues> extends Omit<AutosuggestProps, 'value'> {
@@ -40,11 +40,9 @@ export const CAutosuggest = <T extends FieldValues>({
 
   return (
     <Controller
-      name={name}
       control={control}
       defaultValue={defaultValue}
-      rules={rules}
-      shouldUnregister={shouldUnregister}
+      name={name}
       render={({ field: { ref, onBlur, onChange, value } }) => (
         <Autosuggest
           ref={ref}
@@ -55,6 +53,8 @@ export const CAutosuggest = <T extends FieldValues>({
           {...props}
         />
       )}
+      rules={rules}
+      shouldUnregister={shouldUnregister}
     />
   );
 };

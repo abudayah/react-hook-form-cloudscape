@@ -1,16 +1,16 @@
 import { useMemo } from 'react';
 import { AttributeEditor, AttributeEditorProps, NonCancelableCustomEvent } from '@cloudscape-design/components';
 import {
+  ArrayPath,
   Control,
   FieldArray,
   FieldArrayPath,
-  useFieldArray,
-  useFormState,
-  get,
   FieldValues,
-  UseFieldArrayRemove,
+  get,
+  useFieldArray,
   UseFieldArrayAppend,
-  ArrayPath,
+  UseFieldArrayRemove,
+  useFormState,
 } from 'react-hook-form';
 
 export interface Definition<T> extends Omit<AttributeEditorProps.FieldDefinition<T>, 'errorText'> {
@@ -63,17 +63,17 @@ const CAttributeEditor = <TFieldValues extends FieldValues>({
     <AttributeEditor
       definition={definitionWithError}
       items={(fields as TFieldValues[]) || []}
-      onRemoveButtonClick={(e) => {
-        if (handleState) {
-          remove(e.detail.itemIndex);
-        }
-        onRemoveButtonClick?.(e, remove);
-      }}
       onAddButtonClick={(e) => {
         if (handleState) {
           append(defaultValue);
         }
         onAddButtonClick?.(e, append);
+      }}
+      onRemoveButtonClick={(e) => {
+        if (handleState) {
+          remove(e.detail.itemIndex);
+        }
+        onRemoveButtonClick?.(e, remove);
       }}
       {...props}
     />
