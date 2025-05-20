@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.6.0...v1.7.0) (2025-05-20)
+
+
+### Features
+
+* **features:** Extend react-hook-form features support for controlled components ([72b52e9](https://github.com/abudayah/react-hook-form-cloudscape/commit/72b52e911d4919587dcb8aae1ea61568e8ecd1fe))
+
 # [1.6.0](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.5.1...v1.6.0) (2025-05-10)
 
 
