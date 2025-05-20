@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import { Button, Form, FormField, SpaceBetween, Container, ContentLayout, Header } from '@cloudscape-design/components';
-import { CCheckbox } from 'react-hook-form-cloudscape/components/checkbox';
+import { CCheckbox } from 'react-hook-form-cloudscape';
 
 const schema = yup.object({
   fieldName: yup.boolean().isTrue().required(),
