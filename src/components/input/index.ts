@@ -1,1 +1,1 @@
-export { default as CInput } from './input';
+export { default as CInput } from "./input";

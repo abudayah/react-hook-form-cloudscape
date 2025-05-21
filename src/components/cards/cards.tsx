@@ -1,17 +1,30 @@
-import { useCallback } from 'react';
-import { Cards, CardsProps, NonCancelableCustomEvent } from '@cloudscape-design/components';
-import { Control, Controller, FieldPath, FieldPathValue, FieldValues, Path, RegisterOptions } from 'react-hook-form';
+import { Cards, CardsProps, NonCancelableCustomEvent } from "@cloudscape-design/components";
+import { useCallback } from "react";
+import {
+  Control,
+  Controller,
+  FieldPath,
+  FieldPathValue,
+  FieldValues,
+  Path,
+  RegisterOptions,
+} from "react-hook-form";
 
 export interface ControlledCardsProps<T extends FieldValues>
   extends Omit<
-    Required<Pick<CardsProps, 'trackBy'>> & Required<Pick<CardsProps, 'selectionType'>> & CardsProps,
-    'value'
+    Required<Pick<CardsProps, "trackBy">> &
+      Required<Pick<CardsProps, "selectionType">> &
+      CardsProps,
+    "value"
   > {
   name: Path<T>;
   control?: Control<T>;
   shouldUnregister?: boolean;
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, 'valueAsNumber' | 'valueAsDate' | 'setValueAs' | 'disabled'>;
+  rules?: Omit<
+    RegisterOptions<T, FieldPath<T>>,
+    "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"
+  >;
 }
 
 export const CCards = <TFieldValues extends FieldValues>({
@@ -26,12 +39,12 @@ export const CCards = <TFieldValues extends FieldValues>({
   const handleOnChange = useCallback(
     (
       formOnChange: (selectedItems: TFieldValues[]) => void,
-      e: NonCancelableCustomEvent<CardsProps.SelectionChangeDetail<TFieldValues>>
+      e: NonCancelableCustomEvent<CardsProps.SelectionChangeDetail<TFieldValues>>,
     ) => {
       formOnChange(e.detail.selectedItems);
       onSelectionChange?.(e);
     },
-    [onSelectionChange]
+    [onSelectionChange],
   );
 
   return (
@@ -40,7 +53,11 @@ export const CCards = <TFieldValues extends FieldValues>({
       defaultValue={defaultValue}
       name={name}
       render={({ field: { onChange, value } }) => (
-        <Cards selectedItems={value} onSelectionChange={handleOnChange.bind(null, onChange)} {...props} />
+        <Cards
+          selectedItems={value}
+          onSelectionChange={handleOnChange.bind(null, onChange)}
+          {...props}
+        />
       )}
       rules={rules}
       shouldUnregister={shouldUnregister}

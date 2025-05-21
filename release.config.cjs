@@ -3,28 +3,28 @@
  */
 module.exports = {
   branches: [
-    'main',
+    "main",
     {
-      name: 'dev',
-      prerelease: 'dev',
+      name: "dev",
+      prerelease: "dev",
     },
   ],
   plugins: [
-    '@semantic-release/commit-analyzer',
-    '@semantic-release/release-notes-generator',
-    '@semantic-release/changelog',
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
     [
-      '@semantic-release/npm',
+      "@semantic-release/npm",
       {
         npmPublish: true,
       },
     ],
     [
-      '@semantic-release/git',
+      "@semantic-release/git",
       {
-        message: 'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
+        message: "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}",
       },
     ],
-    '@semantic-release/github',
+    "@semantic-release/github",
   ],
 };

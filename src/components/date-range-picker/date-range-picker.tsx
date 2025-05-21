@@ -1,12 +1,28 @@
-import { useCallback } from 'react';
-import { DateRangePicker, DateRangePickerProps, NonCancelableCustomEvent } from '@cloudscape-design/components';
-import { Control, Controller, FieldPath, FieldPathValue, FieldValues, Path, RegisterOptions } from 'react-hook-form';
+import {
+  DateRangePicker,
+  DateRangePickerProps,
+  NonCancelableCustomEvent,
+} from "@cloudscape-design/components";
+import { useCallback } from "react";
+import {
+  Control,
+  Controller,
+  FieldPath,
+  FieldPathValue,
+  FieldValues,
+  Path,
+  RegisterOptions,
+} from "react-hook-form";
 
-export interface CDateRangePickerProps<T extends FieldValues> extends Omit<DateRangePickerProps, 'value'> {
+export interface CDateRangePickerProps<T extends FieldValues>
+  extends Omit<DateRangePickerProps, "value"> {
   name: Path<T>;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, 'valueAsNumber' | 'valueAsDate' | 'setValueAs' | 'disabled'>;
+  rules?: Omit<
+    RegisterOptions<T, FieldPath<T>>,
+    "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"
+  >;
   shouldUnregister?: boolean;
 }
 
@@ -24,14 +40,14 @@ const CDateRangePicker = <TFieldValues extends FieldValues>({
     (event: NonCancelableCustomEvent<null>) => {
       onBlur?.(event);
     },
-    [onBlur]
+    [onBlur],
   );
 
   const handleOnChange = useCallback(
     (event: NonCancelableCustomEvent<DateRangePickerProps.ChangeDetail>) => {
       onChange?.(event);
     },
-    [onChange]
+    [onChange],
   );
 
   return (

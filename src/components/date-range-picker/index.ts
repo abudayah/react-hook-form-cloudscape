@@ -1,1 +1,1 @@
-export { default as CDateRangePicker } from './date-range-picker';
+export { default as CDateRangePicker } from "./date-range-picker";

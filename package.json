@@ -33,7 +33,9 @@
     "build": "npm run clean && npm run test:coverage && vite build",
     "clean": "rm -rf dist/ index.d.ts index.js index.js.map components/ react-hook-form-cloudscape.es.js react-hook-form-cloudscape.es.js.map react-hook-form-cloudscape.umd.js react-hook-form-cloudscape.umd.js.map",
     "dry-run": "npx semantic-release --dry-run > dry-run-output.txt",
-    "lint": "eslint . --fix",
+    "format": "prettier --write .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "prepare": "husky",
     "test": "vitest",
     "test:coverage": "vitest run --coverage"
@@ -62,6 +64,7 @@
     "@vitest/coverage-v8": "^3.1.2",
     "eslint": "^9.27.0",
     "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsonc": "^2.20.1",
     "eslint-plugin-package-json": "^0.31.0",
     "eslint-plugin-react": "^7.37.5",

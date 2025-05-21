@@ -1,13 +1,24 @@
-import { useCallback } from 'react';
-import { Control, Controller, FieldPath, FieldPathValue, FieldValues, RegisterOptions } from 'react-hook-form';
-import { NonCancelableCustomEvent, Select, SelectProps } from '@cloudscape-design/components';
-import SelectUtils from './utils';
+import { NonCancelableCustomEvent, Select, SelectProps } from "@cloudscape-design/components";
+import { useCallback } from "react";
+import {
+  Control,
+  Controller,
+  FieldPath,
+  FieldPathValue,
+  FieldValues,
+  RegisterOptions,
+} from "react-hook-form";
 
-export interface CSelectProps<T extends FieldValues> extends Omit<SelectProps, 'selectedOption'> {
+import SelectUtils from "./utils";
+
+export interface CSelectProps<T extends FieldValues> extends Omit<SelectProps, "selectedOption"> {
   name: FieldPath<T>;
   control: Control<T>;
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, 'valueAsNumber' | 'valueAsDate' | 'setValueAs' | 'disabled'>;
+  rules?: Omit<
+    RegisterOptions<T, FieldPath<T>>,
+    "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"
+  >;
   shouldUnregister?: boolean;
 }
 
@@ -26,15 +37,18 @@ const CSelect = <TFieldValues extends FieldValues>({
       formOnBlur();
       onBlur?.(e);
     },
-    [onBlur]
+    [onBlur],
   );
 
   const handleOnChange = useCallback(
-    (formOnChange: (value?: string) => void, e: NonCancelableCustomEvent<SelectProps.ChangeDetail>) => {
+    (
+      formOnChange: (value?: string) => void,
+      e: NonCancelableCustomEvent<SelectProps.ChangeDetail>,
+    ) => {
       formOnChange(e.detail.selectedOption.value);
       onChange?.(e);
     },
-    [onChange]
+    [onChange],
   );
 
   return (

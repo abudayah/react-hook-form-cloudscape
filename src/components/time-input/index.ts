@@ -1,1 +1,1 @@
-export { default as CTimeInput } from './time-input';
+export { default as CTimeInput } from "./time-input";

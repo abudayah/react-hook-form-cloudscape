@@ -1,12 +1,23 @@
-import { useCallback } from 'react';
-import { Control, Controller, FieldPath, FieldPathValue, FieldValues, Path, RegisterOptions } from 'react-hook-form';
-import { NonCancelableCustomEvent, TimeInput, TimeInputProps } from '@cloudscape-design/components';
+import { NonCancelableCustomEvent, TimeInput, TimeInputProps } from "@cloudscape-design/components";
+import { useCallback } from "react";
+import {
+  Control,
+  Controller,
+  FieldPath,
+  FieldPathValue,
+  FieldValues,
+  Path,
+  RegisterOptions,
+} from "react-hook-form";
 
-export interface CTimeInputProps<T extends FieldValues> extends Omit<TimeInputProps, 'value'> {
+export interface CTimeInputProps<T extends FieldValues> extends Omit<TimeInputProps, "value"> {
   name: Path<T>;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, 'valueAsNumber' | 'valueAsDate' | 'setValueAs' | 'disabled'>;
+  rules?: Omit<
+    RegisterOptions<T, FieldPath<T>>,
+    "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"
+  >;
   shouldUnregister?: boolean;
 }
 
@@ -25,15 +36,18 @@ const CTimeInput = <TFieldValues extends FieldValues>({
       formOnBlur();
       onBlur?.(e);
     },
-    [onBlur]
+    [onBlur],
   );
 
   const handleOnChange = useCallback(
-    (formOnChange: (value: string) => void, e: NonCancelableCustomEvent<TimeInputProps.ChangeDetail>) => {
+    (
+      formOnChange: (value: string) => void,
+      e: NonCancelableCustomEvent<TimeInputProps.ChangeDetail>,
+    ) => {
       formOnChange(e.detail.value);
       onChange?.(e);
     },
-    [onChange]
+    [onChange],
   );
   return (
     <Controller

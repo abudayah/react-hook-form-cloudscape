@@ -1,1 +1,1 @@
-export { default as CTiles } from './tiles';
+export { default as CTiles } from "./tiles";

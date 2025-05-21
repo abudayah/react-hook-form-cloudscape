@@ -1,1 +1,1 @@
-export { default as CAutosuggest } from './autosuggest';
+export { default as CAutosuggest } from "./autosuggest";

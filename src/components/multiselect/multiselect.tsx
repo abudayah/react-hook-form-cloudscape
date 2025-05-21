@@ -1,14 +1,30 @@
-import { useCallback } from 'react';
-import { Control, Controller, FieldPath, FieldPathValue, FieldValues, RegisterOptions } from 'react-hook-form';
-import { Multiselect, MultiselectProps, NonCancelableCustomEvent } from '@cloudscape-design/components';
-import { mapSelectedOptionsWithOptions, transformMultiselectOptionsToArray } from './utils';
+import {
+  Multiselect,
+  MultiselectProps,
+  NonCancelableCustomEvent,
+} from "@cloudscape-design/components";
+import { useCallback } from "react";
+import {
+  Control,
+  Controller,
+  FieldPath,
+  FieldPathValue,
+  FieldValues,
+  RegisterOptions,
+} from "react-hook-form";
 
-export interface ControlledMultiselectProps<T extends FieldValues> extends Omit<MultiselectProps, 'selectedOptions'> {
+import { mapSelectedOptionsWithOptions, transformMultiselectOptionsToArray } from "./utils";
+
+export interface ControlledMultiselectProps<T extends FieldValues>
+  extends Omit<MultiselectProps, "selectedOptions"> {
   name: FieldPath<T>;
   control?: Control<T>;
   options?: MultiselectProps.Options;
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, 'valueAsNumber' | 'valueAsDate' | 'setValueAs' | 'disabled'>;
+  rules?: Omit<
+    RegisterOptions<T, FieldPath<T>>,
+    "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"
+  >;
   shouldUnregister?: boolean;
 }
 
@@ -24,19 +40,25 @@ const CMultiselect = <TFieldValues extends FieldValues>({
   ...props
 }: ControlledMultiselectProps<TFieldValues>) => {
   const handleOnBlur = useCallback(
-    (formOnBlur: () => void, e: NonCancelableCustomEvent<MultiselectProps.MultiselectChangeDetail>) => {
+    (
+      formOnBlur: () => void,
+      e: NonCancelableCustomEvent<MultiselectProps.MultiselectChangeDetail>,
+    ) => {
       formOnBlur();
       onBlur?.(e);
     },
-    [onBlur]
+    [onBlur],
   );
 
   const handleOnChange = useCallback(
-    (formOnChange: (value: unknown) => void, e: NonCancelableCustomEvent<MultiselectProps.MultiselectChangeDetail>) => {
+    (
+      formOnChange: (value: unknown) => void,
+      e: NonCancelableCustomEvent<MultiselectProps.MultiselectChangeDetail>,
+    ) => {
       formOnChange(transformMultiselectOptionsToArray(e.detail.selectedOptions));
       onChange?.(e);
     },
-    [onChange]
+    [onChange],
   );
 
   return (

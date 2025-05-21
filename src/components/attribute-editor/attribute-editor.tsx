@@ -1,5 +1,9 @@
-import { useMemo } from 'react';
-import { AttributeEditor, AttributeEditorProps, NonCancelableCustomEvent } from '@cloudscape-design/components';
+import {
+  AttributeEditor,
+  AttributeEditorProps,
+  NonCancelableCustomEvent,
+} from "@cloudscape-design/components";
+import { useMemo } from "react";
 import {
   ArrayPath,
   Control,
@@ -11,15 +15,15 @@ import {
   UseFieldArrayAppend,
   UseFieldArrayRemove,
   useFormState,
-} from 'react-hook-form';
+} from "react-hook-form";
 
-export interface Definition<T> extends Omit<AttributeEditorProps.FieldDefinition<T>, 'errorText'> {
+export interface Definition<T> extends Omit<AttributeEditorProps.FieldDefinition<T>, "errorText"> {
   label: string;
   errorName?: (item: T, index: number) => string;
 }
 
 export interface CAttributeEditorProps<T extends FieldValues>
-  extends Omit<AttributeEditorProps<T>, 'items' | 'onRemoveButtonClick' | 'onAddButtonClick'> {
+  extends Omit<AttributeEditorProps<T>, "items" | "onRemoveButtonClick" | "onAddButtonClick"> {
   name: FieldArrayPath<T>;
   control: Control<T>;
   definition: Definition<T>[];
@@ -27,9 +31,12 @@ export interface CAttributeEditorProps<T extends FieldValues>
   handleState?: boolean;
   onRemoveButtonClick?: (
     event: NonCancelableCustomEvent<AttributeEditorProps.RemoveButtonClickDetail>,
-    remove: UseFieldArrayRemove
+    remove: UseFieldArrayRemove,
   ) => void;
-  onAddButtonClick?: (event: NonCancelableCustomEvent<object>, append: UseFieldArrayAppend<T, ArrayPath<T>>) => void;
+  onAddButtonClick?: (
+    event: NonCancelableCustomEvent<object>,
+    append: UseFieldArrayAppend<T, ArrayPath<T>>,
+  ) => void;
 }
 
 const CAttributeEditor = <TFieldValues extends FieldValues>({
@@ -53,10 +60,12 @@ const CAttributeEditor = <TFieldValues extends FieldValues>({
       definition.map((def) => ({
         errorText: (_item: TFieldValues, index: number) =>
           def.label &&
-          (get(errors, `${name}.${index}.${def.label.toString().toLowerCase()}.message`) as string | undefined),
+          (get(errors, `${name}.${index}.${def.label.toString().toLowerCase()}.message`) as
+            | string
+            | undefined),
         ...def,
       })),
-    [definition, errors, name]
+    [definition, errors, name],
   );
 
   return (

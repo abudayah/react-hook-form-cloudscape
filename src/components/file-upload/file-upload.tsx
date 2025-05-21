@@ -1,12 +1,27 @@
-import { FileUpload, FileUploadProps, NonCancelableCustomEvent } from '@cloudscape-design/components';
-import { useCallback } from 'react';
-import { Control, Controller, FieldPath, FieldPathValue, FieldValues, RegisterOptions } from 'react-hook-form';
+import {
+  FileUpload,
+  FileUploadProps,
+  NonCancelableCustomEvent,
+} from "@cloudscape-design/components";
+import { useCallback } from "react";
+import {
+  Control,
+  Controller,
+  FieldPath,
+  FieldPathValue,
+  FieldValues,
+  RegisterOptions,
+} from "react-hook-form";
 
-export interface ControlledFileUploadProps<T extends FieldValues> extends Omit<FileUploadProps, 'value'> {
+export interface ControlledFileUploadProps<T extends FieldValues>
+  extends Omit<FileUploadProps, "value"> {
   name: FieldPath<T>;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, 'valueAsNumber' | 'valueAsDate' | 'setValueAs' | 'disabled'>;
+  rules?: Omit<
+    RegisterOptions<T, FieldPath<T>>,
+    "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"
+  >;
   shouldUnregister?: boolean;
 }
 
@@ -24,11 +39,14 @@ export const CFileUpload = <TFieldValues extends FieldValues>({
   };
 
   const handleOnChange = useCallback(
-    (formOnChange: (files: File[]) => void, e: NonCancelableCustomEvent<FileUploadProps.ChangeDetail>) => {
+    (
+      formOnChange: (files: File[]) => void,
+      e: NonCancelableCustomEvent<FileUploadProps.ChangeDetail>,
+    ) => {
       formOnChange(generateFilesArray(e.detail.value));
       onChange?.(e);
     },
-    [onChange]
+    [onChange],
   );
 
   return (

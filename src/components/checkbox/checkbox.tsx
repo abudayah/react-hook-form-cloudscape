@@ -1,12 +1,20 @@
-import { useCallback } from 'react';
-import { Control, Controller, FieldPath, FieldPathValue, FieldValues, Path, RegisterOptions } from 'react-hook-form';
-import { Checkbox, CheckboxProps, NonCancelableCustomEvent } from '@cloudscape-design/components';
+import { Checkbox, CheckboxProps, NonCancelableCustomEvent } from "@cloudscape-design/components";
+import { useCallback } from "react";
+import {
+  Control,
+  Controller,
+  FieldPath,
+  FieldPathValue,
+  FieldValues,
+  Path,
+  RegisterOptions,
+} from "react-hook-form";
 
-export interface CCheckboxProps<T extends FieldValues> extends Omit<CheckboxProps, 'checked'> {
+export interface CCheckboxProps<T extends FieldValues> extends Omit<CheckboxProps, "checked"> {
   name: Path<T>;
   control: Control<T>;
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, 'disabled'>;
+  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "disabled">;
   shouldUnregister?: boolean;
 }
 
@@ -20,11 +28,14 @@ const CCheckbox = <TFieldValues extends FieldValues>({
   ...props
 }: CCheckboxProps<TFieldValues>) => {
   const handleOnChange = useCallback(
-    (formOnChange: (checked: boolean) => void, e: NonCancelableCustomEvent<CheckboxProps.ChangeDetail>) => {
+    (
+      formOnChange: (checked: boolean) => void,
+      e: NonCancelableCustomEvent<CheckboxProps.ChangeDetail>,
+    ) => {
       formOnChange(e.detail.checked);
       onChange?.(e);
     },
-    [onChange]
+    [onChange],
   );
 
   return (
@@ -33,7 +44,12 @@ const CCheckbox = <TFieldValues extends FieldValues>({
       defaultValue={defaultValue}
       name={name}
       render={({ field: { ref, onChange, value = false } }) => (
-        <Checkbox ref={ref} checked={value} onChange={handleOnChange.bind(null, onChange)} {...props} />
+        <Checkbox
+          ref={ref}
+          checked={value}
+          onChange={handleOnChange.bind(null, onChange)}
+          {...props}
+        />
       )}
       rules={rules}
       shouldUnregister={shouldUnregister}

@@ -1,12 +1,27 @@
-import { useCallback } from 'react';
-import { Control, Controller, FieldPath, FieldPathValue, FieldValues, Path, RegisterOptions } from 'react-hook-form';
-import { NonCancelableCustomEvent, RadioGroup, RadioGroupProps } from '@cloudscape-design/components';
+import {
+  NonCancelableCustomEvent,
+  RadioGroup,
+  RadioGroupProps,
+} from "@cloudscape-design/components";
+import { useCallback } from "react";
+import {
+  Control,
+  Controller,
+  FieldPath,
+  FieldPathValue,
+  FieldValues,
+  Path,
+  RegisterOptions,
+} from "react-hook-form";
 
-export interface CRadioGroupProps<T extends FieldValues> extends Omit<RadioGroupProps, 'value'> {
+export interface CRadioGroupProps<T extends FieldValues> extends Omit<RadioGroupProps, "value"> {
   name: Path<T>;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, 'valueAsNumber' | 'valueAsDate' | 'setValueAs' | 'disabled'>;
+  rules?: Omit<
+    RegisterOptions<T, FieldPath<T>>,
+    "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"
+  >;
   shouldUnregister?: boolean;
 }
 
@@ -20,11 +35,14 @@ const CRadioGroup = <TFieldValues extends FieldValues>({
   ...props
 }: CRadioGroupProps<TFieldValues>) => {
   const handleOnChange = useCallback(
-    (formOnChange: (value: string) => void, e: NonCancelableCustomEvent<RadioGroupProps.ChangeDetail>) => {
+    (
+      formOnChange: (value: string) => void,
+      e: NonCancelableCustomEvent<RadioGroupProps.ChangeDetail>,
+    ) => {
       formOnChange(e.detail.value);
       onChange?.(e);
     },
-    [onChange]
+    [onChange],
   );
 
   return (
@@ -33,7 +51,12 @@ const CRadioGroup = <TFieldValues extends FieldValues>({
       defaultValue={defaultValue}
       name={name}
       render={({ field: { onChange, value } }) => (
-        <RadioGroup items={props.items} value={value} onChange={handleOnChange.bind(null, onChange)} {...props} />
+        <RadioGroup
+          items={props.items}
+          value={value}
+          onChange={handleOnChange.bind(null, onChange)}
+          {...props}
+        />
       )}
       rules={rules}
       shouldUnregister={shouldUnregister}

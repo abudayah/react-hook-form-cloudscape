@@ -1,11 +1,22 @@
-import { useCallback } from 'react';
-import { Control, Controller, FieldPath, FieldPathValue, FieldValues, RegisterOptions } from 'react-hook-form';
-import { NonCancelableCustomEvent, Slider, SliderProps } from '@cloudscape-design/components';
+import { NonCancelableCustomEvent, Slider, SliderProps } from "@cloudscape-design/components";
+import { useCallback } from "react";
+import {
+  Control,
+  Controller,
+  FieldPath,
+  FieldPathValue,
+  FieldValues,
+  RegisterOptions,
+} from "react-hook-form";
 
-export interface CSliderProps<T extends FieldValues> extends Omit<SliderProps, 'value' | 'onChange'> {
+export interface CSliderProps<T extends FieldValues>
+  extends Omit<SliderProps, "value" | "onChange"> {
   name: FieldPath<T>;
   control: Control<T>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, 'valueAsNumber' | 'valueAsDate' | 'setValueAs' | 'disabled'>;
+  rules?: Omit<
+    RegisterOptions<T, FieldPath<T>>,
+    "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"
+  >;
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
   shouldUnregister?: boolean;
   onChange?: (event: NonCancelableCustomEvent<SliderProps.ChangeDetail>) => void;
@@ -24,7 +35,7 @@ const CSlider = <TFieldValues extends FieldValues>({
     (event: NonCancelableCustomEvent<SliderProps.ChangeDetail>) => {
       onChange?.(event);
     },
-    [onChange]
+    [onChange],
   );
 
   return (

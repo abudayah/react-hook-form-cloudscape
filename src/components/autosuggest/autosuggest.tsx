@@ -1,12 +1,27 @@
-import { useCallback } from 'react';
-import { Control, Controller, FieldPath, FieldPathValue, FieldValues, Path, RegisterOptions } from 'react-hook-form';
-import { Autosuggest, AutosuggestProps, NonCancelableCustomEvent } from '@cloudscape-design/components';
+import {
+  Autosuggest,
+  AutosuggestProps,
+  NonCancelableCustomEvent,
+} from "@cloudscape-design/components";
+import { useCallback } from "react";
+import {
+  Control,
+  Controller,
+  FieldPath,
+  FieldPathValue,
+  FieldValues,
+  Path,
+  RegisterOptions,
+} from "react-hook-form";
 
-export interface CAutosuggestProps<T extends FieldValues> extends Omit<AutosuggestProps, 'value'> {
+export interface CAutosuggestProps<T extends FieldValues> extends Omit<AutosuggestProps, "value"> {
   name: Path<T>;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, 'valueAsNumber' | 'valueAsDate' | 'setValueAs' | 'disabled'>;
+  rules?: Omit<
+    RegisterOptions<T, FieldPath<T>>,
+    "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"
+  >;
   shouldUnregister?: boolean;
 }
 
@@ -21,21 +36,27 @@ export const CAutosuggest = <T extends FieldValues>({
   ...props
 }: CAutosuggestProps<T>) => {
   const handleOnBlur = useCallback(
-    (formOnBlur: (value: string) => void, event: NonCancelableCustomEvent<{ value: string } | null>) => {
+    (
+      formOnBlur: (value: string) => void,
+      event: NonCancelableCustomEvent<{ value: string } | null>,
+    ) => {
       if (event.detail?.value) {
         formOnBlur(event.detail.value);
       }
       onBlur?.(event as NonCancelableCustomEvent<null>);
     },
-    [onBlur]
+    [onBlur],
   );
 
   const handleOnChange = useCallback(
-    (formOnChange: (value: string) => void, event: NonCancelableCustomEvent<AutosuggestProps.ChangeDetail>) => {
+    (
+      formOnChange: (value: string) => void,
+      event: NonCancelableCustomEvent<AutosuggestProps.ChangeDetail>,
+    ) => {
       formOnChange(event.detail.value);
       onChange?.(event as unknown as NonCancelableCustomEvent<AutosuggestProps.ChangeDetail>);
     },
-    [onChange]
+    [onChange],
   );
 
   return (
@@ -47,7 +68,7 @@ export const CAutosuggest = <T extends FieldValues>({
         <Autosuggest
           ref={ref}
           name={name}
-          value={(value as string) || ''}
+          value={(value as string) || ""}
           onBlur={handleOnBlur.bind(null, onBlur)}
           onChange={handleOnChange.bind(null, onChange)}
           {...props}

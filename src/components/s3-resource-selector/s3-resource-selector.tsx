@@ -1,13 +1,27 @@
-import { NonCancelableCustomEvent, S3ResourceSelector, S3ResourceSelectorProps } from '@cloudscape-design/components';
-import { useCallback } from 'react';
-import { Control, Controller, FieldPath, FieldPathValue, FieldValues, RegisterOptions } from 'react-hook-form';
+import {
+  NonCancelableCustomEvent,
+  S3ResourceSelector,
+  S3ResourceSelectorProps,
+} from "@cloudscape-design/components";
+import { useCallback } from "react";
+import {
+  Control,
+  Controller,
+  FieldPath,
+  FieldPathValue,
+  FieldValues,
+  RegisterOptions,
+} from "react-hook-form";
 
 export interface ControlledS3ResourceSelectorProps<T extends FieldValues>
-  extends Omit<S3ResourceSelectorProps, 'resource'> {
+  extends Omit<S3ResourceSelectorProps, "resource"> {
   name: FieldPath<T>;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, 'valueAsNumber' | 'valueAsDate' | 'setValueAs' | 'disabled'>;
+  rules?: Omit<
+    RegisterOptions<T, FieldPath<T>>,
+    "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"
+  >;
   shouldUnregister?: boolean;
 }
 
@@ -23,12 +37,12 @@ export const CS3ResourceSelector = <TFieldValues extends FieldValues>({
   const handleOnChange = useCallback(
     (
       formOnChange: (resource: S3ResourceSelectorProps.Resource) => void,
-      e: NonCancelableCustomEvent<S3ResourceSelectorProps.ChangeDetail>
+      e: NonCancelableCustomEvent<S3ResourceSelectorProps.ChangeDetail>,
     ) => {
       formOnChange(e.detail.resource);
       onChange?.(e);
     },
-    [onChange]
+    [onChange],
   );
 
   return (
@@ -39,7 +53,7 @@ export const CS3ResourceSelector = <TFieldValues extends FieldValues>({
       render={({ field: { ref, onChange, value } }) => (
         <S3ResourceSelector
           ref={ref}
-          resource={value ?? { uri: '' }}
+          resource={value ?? { uri: "" }}
           onChange={handleOnChange.bind(null, onChange)}
           {...props}
         />

@@ -1,1 +1,1 @@
-export { default as CToggle } from './toggle';
+export { default as CToggle } from "./toggle";
