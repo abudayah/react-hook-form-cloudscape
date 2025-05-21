@@ -1,3 +1,10 @@
+## [1.7.3](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.2...v1.7.3) (2025-05-21)
+
+
+### Bug Fixes
+
+* **build:** update eslint configs ([5a08921](https://github.com/abudayah/react-hook-form-cloudscape/commit/5a08921efd38fa460c507c06ea5b811815b02bb5))
+
 ## [1.7.2](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.1...v1.7.2) (2025-05-20)
 
 
