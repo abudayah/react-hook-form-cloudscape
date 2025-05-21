@@ -1,8 +1,4 @@
-import {
-  Autosuggest,
-  AutosuggestProps,
-  NonCancelableCustomEvent,
-} from "@cloudscape-design/components";
+import { Autosuggest, AutosuggestProps, NonCancelableCustomEvent } from "@cloudscape-design/components";
 import { useCallback } from "react";
 import {
   Control,
@@ -18,10 +14,7 @@ export interface CAutosuggestProps<T extends FieldValues> extends Omit<Autosugge
   name: Path<T>;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<
-    RegisterOptions<T, FieldPath<T>>,
-    "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"
-  >;
+  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
 }
 
@@ -36,10 +29,7 @@ export const CAutosuggest = <T extends FieldValues>({
   ...props
 }: CAutosuggestProps<T>) => {
   const handleOnBlur = useCallback(
-    (
-      formOnBlur: (value: string) => void,
-      event: NonCancelableCustomEvent<{ value: string } | null>,
-    ) => {
+    (formOnBlur: (value: string) => void, event: NonCancelableCustomEvent<{ value: string } | null>) => {
       if (event.detail?.value) {
         formOnBlur(event.detail.value);
       }

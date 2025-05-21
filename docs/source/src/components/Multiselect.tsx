@@ -1,15 +1,22 @@
-import React from 'react';
-import { useForm, get } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import React from "react";
+import { useForm, get } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
-import { Button, Form, FormField, SpaceBetween, Container, ContentLayout, Header } from '@cloudscape-design/components';
-import { CMultiselect } from 'react-hook-form-cloudscape';
+import {
+  Button,
+  Form,
+  FormField,
+  SpaceBetween,
+  Container,
+  ContentLayout,
+  Header,
+} from "@cloudscape-design/components";
+import { CMultiselect } from "react-hook-form-cloudscape";
 
 const schema = yup.object({
   fieldName: yup.array().of(yup.string()).min(1),
 });
-
 
 const defaultValues = {
   fieldName: [],
@@ -20,8 +27,13 @@ interface Props {
 }
 
 const Multiselect: React.FC<Props> = ({ onSubmit }) => {
-  const { control, handleSubmit, reset, formState: { errors } } = useForm({
-    mode: 'onBlur',
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    mode: "onBlur",
     resolver: yupResolver(schema),
     defaultValues,
   });
@@ -59,13 +71,13 @@ const Multiselect: React.FC<Props> = ({ onSubmit }) => {
                     {
                       label: "Option 1",
                       value: "option1",
-                      description: "This is a description"
+                      description: "This is a description",
                     },
                     {
                       label: "Option 2",
                       value: "option2",
                       iconName: "unlocked",
-                      labelTag: "This is a label tag"
+                      labelTag: "This is a label tag",
                     },
                     {
                       label: "Option 3 (disabled)",
@@ -76,13 +88,9 @@ const Multiselect: React.FC<Props> = ({ onSubmit }) => {
                     {
                       label: "Option 4",
                       value: "option4",
-                      filteringTags: [
-                        "filtering",
-                        "tags",
-                        "these are filtering tags"
-                      ]
+                      filteringTags: ["filtering", "tags", "these are filtering tags"],
                     },
-                    { label: "Option 5", value: "option5" }
+                    { label: "Option 5", value: "option5" },
                   ]}
                   placeholder="Choose options"
                 />
@@ -92,7 +100,6 @@ const Multiselect: React.FC<Props> = ({ onSubmit }) => {
         </Form>
       </form>
     </ContentLayout>
-
   );
 };
 

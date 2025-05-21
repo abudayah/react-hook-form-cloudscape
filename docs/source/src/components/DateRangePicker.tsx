@@ -1,23 +1,36 @@
-import React from 'react';
-import { useForm, get } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import React from "react";
+import { useForm, get } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
-import { Button, Form, FormField, SpaceBetween, Container, ContentLayout, Header } from '@cloudscape-design/components';
-import { CDateRangePicker } from 'react-hook-form-cloudscape';
-import { DateRangePickerI18nStrings } from '../i18n';
+import {
+  Button,
+  Form,
+  FormField,
+  SpaceBetween,
+  Container,
+  ContentLayout,
+  Header,
+} from "@cloudscape-design/components";
+import { CDateRangePicker } from "react-hook-form-cloudscape";
+import { DateRangePickerI18nStrings } from "../i18n";
 
 const schema = yup.object({
   fieldName: yup.object().required(),
-})
+});
 
 interface Props {
   onSubmit: (data: any) => void;
 }
 
 const DateRangePicker: React.FC<Props> = ({ onSubmit }) => {
-  const { control, handleSubmit, reset, formState: { errors } } = useForm({
-    mode: 'onBlur',
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    mode: "onBlur",
     resolver: yupResolver(schema),
   });
 
@@ -52,32 +65,32 @@ const DateRangePicker: React.FC<Props> = ({ onSubmit }) => {
                   control={control}
                   relativeOptions={[
                     {
-                      key: 'previous-5-minutes',
+                      key: "previous-5-minutes",
                       amount: 5,
-                      unit: 'minute',
-                      type: 'relative',
+                      unit: "minute",
+                      type: "relative",
                     },
                     {
-                      key: 'previous-30-minutes',
+                      key: "previous-30-minutes",
                       amount: 30,
-                      unit: 'minute',
-                      type: 'relative',
+                      unit: "minute",
+                      type: "relative",
                     },
                     {
-                      key: 'previous-1-hour',
+                      key: "previous-1-hour",
                       amount: 1,
-                      unit: 'hour',
-                      type: 'relative',
+                      unit: "hour",
+                      type: "relative",
                     },
                     {
-                      key: 'previous-6-hours',
+                      key: "previous-6-hours",
                       amount: 6,
-                      unit: 'hour',
-                      type: 'relative',
+                      unit: "hour",
+                      type: "relative",
                     },
                   ]}
                   i18nStrings={DateRangePickerI18nStrings}
-                  isValidRange={range => {
+                  isValidRange={(range) => {
                     if (range) {
                       if (range.type === "absolute") {
                         const [startDateWithoutTime] = range.startDate.split("T");
@@ -86,14 +99,14 @@ const DateRangePicker: React.FC<Props> = ({ onSubmit }) => {
                           return {
                             valid: false,
                             errorMessage:
-                              "The selected date range is incomplete. Select a start and end date for the date range."
+                              "The selected date range is incomplete. Select a start and end date for the date range.",
                           };
                         }
                         if (new Date(range.startDate).getTime() - new Date(range.endDate).getTime() > 0) {
                           return {
                             valid: false,
                             errorMessage:
-                              "The selected date range is invalid. The start date must be before the end date."
+                              "The selected date range is invalid. The start date must be before the end date.",
                           };
                         }
                       }
@@ -110,7 +123,6 @@ const DateRangePicker: React.FC<Props> = ({ onSubmit }) => {
         </Form>
       </form>
     </ContentLayout>
-
   );
 };
 

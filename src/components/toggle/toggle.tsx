@@ -14,10 +14,7 @@ export interface CToggleProps<T extends FieldValues> extends Omit<ToggleProps, "
   name: Path<T>;
   control: Control<T>;
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<
-    RegisterOptions<T, FieldPath<T>>,
-    "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"
-  >;
+  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
 }
 
@@ -31,10 +28,7 @@ const CToggle = <TFieldValues extends FieldValues>({
   ...props
 }: CToggleProps<TFieldValues>) => {
   const handleOnChange = useCallback(
-    (
-      formOnChange: (value: boolean) => void,
-      e: NonCancelableCustomEvent<ToggleProps.ChangeDetail>,
-    ) => {
+    (formOnChange: (value: boolean) => void, e: NonCancelableCustomEvent<ToggleProps.ChangeDetail>) => {
       formOnChange(e.detail.checked);
       onChange?.(e);
     },

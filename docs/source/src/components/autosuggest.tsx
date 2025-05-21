@@ -1,26 +1,41 @@
-import React from 'react';
-import { useForm, get } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import React from "react";
+import { useForm, get } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
-import { Button, Form, FormField, SpaceBetween, Container, ContentLayout, Header } from '@cloudscape-design/components';
-import { CAutosuggest } from 'react-hook-form-cloudscape';
+import {
+  Button,
+  Form,
+  FormField,
+  SpaceBetween,
+  Container,
+  ContentLayout,
+  Header,
+} from "@cloudscape-design/components";
+import { CAutosuggest } from "react-hook-form-cloudscape";
 
-const schema = yup.object({
-  fieldName: yup.string().required(),
-}).required();
+const schema = yup
+  .object({
+    fieldName: yup.string().required(),
+  })
+  .required();
 
 interface Props {
   onSubmit: (data: any) => void;
 }
 
 const Autosuggest: React.FC<Props> = ({ onSubmit }) => {
-  const { control, handleSubmit, reset, formState: { errors } } = useForm({
-    mode: 'onBlur',
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    mode: "onBlur",
     resolver: yupResolver(schema),
     defaultValues: {
-      fieldName: '',
-    }
+      fieldName: "",
+    },
   });
 
   const onHandleSubmit = (data: any) => {
@@ -56,7 +71,7 @@ const Autosuggest: React.FC<Props> = ({ onSubmit }) => {
                     { value: "Suggestion 1" },
                     { value: "Suggestion 2" },
                     { value: "Suggestion 3" },
-                    { value: "Suggestion 4" }
+                    { value: "Suggestion 4" },
                   ]}
                   placeholder="Enter value"
                   empty="No matches found"
@@ -67,7 +82,6 @@ const Autosuggest: React.FC<Props> = ({ onSubmit }) => {
         </Form>
       </form>
     </ContentLayout>
-
   );
 };
 

@@ -1,28 +1,46 @@
-import React from 'react';
-import { useForm, get } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import React from "react";
+import { useForm, get } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
-import { Button, Form, FormField, SpaceBetween, Container, ContentLayout, Header } from '@cloudscape-design/components';
-import { CFileUpload } from 'react-hook-form-cloudscape';
+import {
+  Button,
+  Form,
+  FormField,
+  SpaceBetween,
+  Container,
+  ContentLayout,
+  Header,
+} from "@cloudscape-design/components";
+import { CFileUpload } from "react-hook-form-cloudscape";
 
-const schema = yup.object({
-  fieldName: yup.array().of(
-    yup.object().shape({
-      name: yup.string().required(), // Validate file name (or other relevant properties)
-      size: yup.number().required(), // Example: validate file size
-      //... other file properties you want to validate
-    })
-  ).required('At least one file is required'),
-}).required();
+const schema = yup
+  .object({
+    fieldName: yup
+      .array()
+      .of(
+        yup.object().shape({
+          name: yup.string().required(), // Validate file name (or other relevant properties)
+          size: yup.number().required(), // Example: validate file size
+          //... other file properties you want to validate
+        }),
+      )
+      .required("At least one file is required"),
+  })
+  .required();
 
 interface Props {
   onSubmit: (data: any) => void;
 }
 
 const FileUpload: React.FC<Props> = ({ onSubmit }) => {
-  const { control, handleSubmit, reset, formState: { errors } } = useForm({
-    mode: 'onBlur',
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    mode: "onBlur",
     resolver: yupResolver(schema),
   });
 
@@ -56,10 +74,9 @@ const FileUpload: React.FC<Props> = ({ onSubmit }) => {
                   name="fieldName"
                   control={control}
                   i18nStrings={{
-                    uploadButtonText: e => (e ? "Choose files" : "Choose file"),
-                    dropzoneText: e =>
-                      e ? "Drop files to upload" : "Drop file to upload",
-                    removeFileAriaLabel: e => `Remove file ${e + 1}`,
+                    uploadButtonText: (e) => (e ? "Choose files" : "Choose file"),
+                    dropzoneText: (e) => (e ? "Drop files to upload" : "Drop file to upload"),
+                    removeFileAriaLabel: (e) => `Remove file ${e + 1}`,
                     limitShowFewer: "Show fewer files",
                     limitShowMore: "Show more files",
                     errorIconAriaLabel: "Error",

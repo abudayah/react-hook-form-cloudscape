@@ -1,31 +1,50 @@
-import React from 'react';
-import { useForm, get, FieldValues, Control } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import React from "react";
+import { useForm, get, FieldValues, Control } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
-import { Button, Form, FormField, SpaceBetween, Container, ContentLayout, Header } from '@cloudscape-design/components';
-import { CAttributeEditor, CInput } from 'react-hook-form-cloudscape';
+import {
+  Button,
+  Form,
+  FormField,
+  SpaceBetween,
+  Container,
+  ContentLayout,
+  Header,
+} from "@cloudscape-design/components";
+import { CAttributeEditor, CInput } from "react-hook-form-cloudscape";
 
-const schema = yup.object({
-  fieldName: yup.array().of(
-    yup.object().shape({
-      key: yup.string().required('Key is required'),
-      value: yup.string().required('Value is required')
-    })
-  ).min(1, 'At least one item is required.').required(),
-}).required();
+const schema = yup
+  .object({
+    fieldName: yup
+      .array()
+      .of(
+        yup.object().shape({
+          key: yup.string().required("Key is required"),
+          value: yup.string().required("Value is required"),
+        }),
+      )
+      .min(1, "At least one item is required.")
+      .required(),
+  })
+  .required();
 
 interface Props {
   onSubmit: (data: any) => void;
 }
 
 const AttributeEditor: React.FC<Props> = ({ onSubmit }) => {
-  const { control, handleSubmit, reset, formState: { errors } } = useForm({
-    mode: 'onBlur',
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    mode: "onBlur",
     resolver: yupResolver(schema),
     defaultValues: {
-      fieldName: [{ key: '', value: '' }],
-    }
+      fieldName: [{ key: "", value: "" }],
+    },
   });
 
   const onHandleSubmit = (data: any) => {
@@ -65,8 +84,9 @@ const AttributeEditor: React.FC<Props> = ({ onSubmit }) => {
                           key={field.id}
                           control={control}
                           name={`fieldName.${fieldIndex}.key`}
-                          placeholder="Enter key" />
-                      )
+                          placeholder="Enter key"
+                        />
+                      ),
                     },
                     {
                       label: "Value",
@@ -75,13 +95,14 @@ const AttributeEditor: React.FC<Props> = ({ onSubmit }) => {
                           key={field.id}
                           control={control}
                           name={`fieldName.${fieldIndex}.value`}
-                          placeholder="Enter value" />
-                      )
-                    }
+                          placeholder="Enter value"
+                        />
+                      ),
+                    },
                   ]}
-                  defaultValue={[{ key: '', value: '' }]} // Default values are required for the component to work.
+                  defaultValue={[{ key: "", value: "" }]} // Default values are required for the component to work.
                   addButtonText="Add new item"
-                  removeButtonText='Remove'
+                  removeButtonText="Remove"
                   empty="No items associated with the resource."
                 />
               </FormField>
@@ -90,7 +111,6 @@ const AttributeEditor: React.FC<Props> = ({ onSubmit }) => {
         </Form>
       </form>
     </ContentLayout>
-
   );
 };
 

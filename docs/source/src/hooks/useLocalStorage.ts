@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback } from "react";
 
 // Hook for local storage management
 export const useLocalStorage = (key: string, initialValue: any) => {

@@ -19,11 +19,5 @@
     "sourceMap": true
   },
   "include": ["src"],
-  "exclude": [
-    "src/vitest.setup.ts",
-    "src/**/*.test.ts",
-    "src/**/*.test.tsx",
-    "node_modules",
-    "docs/**/*"
-  ]
+  "exclude": ["src/vitest.setup.ts", "src/**/*.test.ts", "src/**/*.test.tsx", "node_modules", "docs/**/*"]
 }

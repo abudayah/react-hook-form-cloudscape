@@ -28,10 +28,7 @@ const CCheckbox = <TFieldValues extends FieldValues>({
   ...props
 }: CCheckboxProps<TFieldValues>) => {
   const handleOnChange = useCallback(
-    (
-      formOnChange: (checked: boolean) => void,
-      e: NonCancelableCustomEvent<CheckboxProps.ChangeDetail>,
-    ) => {
+    (formOnChange: (checked: boolean) => void, e: NonCancelableCustomEvent<CheckboxProps.ChangeDetail>) => {
       formOnChange(e.detail.checked);
       onChange?.(e);
     },
@@ -44,12 +41,7 @@ const CCheckbox = <TFieldValues extends FieldValues>({
       defaultValue={defaultValue}
       name={name}
       render={({ field: { ref, onChange, value = false } }) => (
-        <Checkbox
-          ref={ref}
-          checked={value}
-          onChange={handleOnChange.bind(null, onChange)}
-          {...props}
-        />
+        <Checkbox ref={ref} checked={value} onChange={handleOnChange.bind(null, onChange)} {...props} />
       )}
       rules={rules}
       shouldUnregister={shouldUnregister}

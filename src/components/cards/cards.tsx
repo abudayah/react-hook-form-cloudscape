@@ -12,19 +12,14 @@ import {
 
 export interface ControlledCardsProps<T extends FieldValues>
   extends Omit<
-    Required<Pick<CardsProps, "trackBy">> &
-      Required<Pick<CardsProps, "selectionType">> &
-      CardsProps,
+    Required<Pick<CardsProps, "trackBy">> & Required<Pick<CardsProps, "selectionType">> & CardsProps,
     "value"
   > {
   name: Path<T>;
   control?: Control<T>;
   shouldUnregister?: boolean;
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<
-    RegisterOptions<T, FieldPath<T>>,
-    "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"
-  >;
+  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
 }
 
 export const CCards = <TFieldValues extends FieldValues>({
@@ -53,11 +48,7 @@ export const CCards = <TFieldValues extends FieldValues>({
       defaultValue={defaultValue}
       name={name}
       render={({ field: { onChange, value } }) => (
-        <Cards
-          selectedItems={value}
-          onSelectionChange={handleOnChange.bind(null, onChange)}
-          {...props}
-        />
+        <Cards selectedItems={value} onSelectionChange={handleOnChange.bind(null, onChange)} {...props} />
       )}
       rules={rules}
       shouldUnregister={shouldUnregister}

@@ -15,10 +15,7 @@ export interface CSelectProps<T extends FieldValues> extends Omit<SelectProps, "
   name: FieldPath<T>;
   control: Control<T>;
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<
-    RegisterOptions<T, FieldPath<T>>,
-    "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"
-  >;
+  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
 }
 
@@ -41,10 +38,7 @@ const CSelect = <TFieldValues extends FieldValues>({
   );
 
   const handleOnChange = useCallback(
-    (
-      formOnChange: (value?: string) => void,
-      e: NonCancelableCustomEvent<SelectProps.ChangeDetail>,
-    ) => {
+    (formOnChange: (value?: string) => void, e: NonCancelableCustomEvent<SelectProps.ChangeDetail>) => {
       formOnChange(e.detail.selectedOption.value);
       onChange?.(e);
     },

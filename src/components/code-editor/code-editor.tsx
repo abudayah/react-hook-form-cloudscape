@@ -1,8 +1,4 @@
-import {
-  CodeEditor,
-  CodeEditorProps,
-  NonCancelableCustomEvent,
-} from "@cloudscape-design/components";
+import { CodeEditor, CodeEditorProps, NonCancelableCustomEvent } from "@cloudscape-design/components";
 import { useCallback } from "react";
 import {
   Control,
@@ -18,10 +14,7 @@ export interface CCodeEditorProps<T extends FieldValues> extends Omit<CodeEditor
   name: Path<T>;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<
-    RegisterOptions<T, FieldPath<T>>,
-    "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"
-  >;
+  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
 }
 
@@ -35,10 +28,7 @@ const CCodeEditor = <TFieldValues extends FieldValues>({
   ...props
 }: CCodeEditorProps<TFieldValues>) => {
   const handleOnChange = useCallback(
-    (
-      formOnChange: (value: string) => void,
-      e: NonCancelableCustomEvent<CodeEditorProps.ChangeDetail>,
-    ) => {
+    (formOnChange: (value: string) => void, e: NonCancelableCustomEvent<CodeEditorProps.ChangeDetail>) => {
       formOnChange(e.detail.value);
       onChange?.(e);
     },

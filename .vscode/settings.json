@@ -5,9 +5,7 @@
   "editor.quickSuggestions": {
     "strings": true
   },
-  "editor.rulers": [100],
-  "editor.tabSize": 2,
-  "editor.insertSpaces": true,
+  "editor.rulers": [110],
 
   // ESLint settings
   "eslint.options": {

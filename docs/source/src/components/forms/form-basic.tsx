@@ -1,19 +1,29 @@
-import React from 'react';
-import { useForm, get } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import React from "react";
+import { useForm, get } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
-import { Button, Form, FormField, SpaceBetween, Container, ContentLayout, Header } from '@cloudscape-design/components';
-import { CInput, CTextarea } from 'react-hook-form-cloudscape';
+import {
+  Button,
+  Form,
+  FormField,
+  SpaceBetween,
+  Container,
+  ContentLayout,
+  Header,
+} from "@cloudscape-design/components";
+import { CInput, CTextarea } from "react-hook-form-cloudscape";
 
-const schema = yup.object({
-  name: yup.string().required(),
-  description: yup.string(),
-}).required();
+const schema = yup
+  .object({
+    name: yup.string().required(),
+    description: yup.string(),
+  })
+  .required();
 
 const defaultValues = {
-  name: '',
-  description: '',
+  name: "",
+  description: "",
 };
 
 interface Props {
@@ -21,8 +31,13 @@ interface Props {
 }
 
 const FormBasic: React.FC<Props> = ({ onSubmit }) => {
-  const { control, handleSubmit, reset, formState: { errors } } = useForm({
-    mode: 'onBlur',
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    mode: "onBlur",
     resolver: yupResolver(schema),
     defaultValues,
   });
@@ -52,7 +67,7 @@ const FormBasic: React.FC<Props> = ({ onSubmit }) => {
         >
           <Container>
             <SpaceBetween size="s">
-              <FormField label="Name" errorText={get(errors, 'name.message')}>
+              <FormField label="Name" errorText={get(errors, "name.message")}>
                 <CInput control={control} name="name" placeholder="Name" />
               </FormField>
               <FormField
@@ -61,7 +76,7 @@ const FormBasic: React.FC<Props> = ({ onSubmit }) => {
                     Description <i>- optional</i>
                   </>
                 }
-                errorText={get(errors, 'description.message')}
+                errorText={get(errors, "description.message")}
               >
                 <CTextarea control={control} name="description" placeholder="Description" />
               </FormField>
@@ -70,7 +85,6 @@ const FormBasic: React.FC<Props> = ({ onSubmit }) => {
         </Form>
       </form>
     </ContentLayout>
-
   );
 };
 

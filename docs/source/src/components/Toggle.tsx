@@ -1,22 +1,37 @@
-import React from 'react';
-import { useForm, get } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import React from "react";
+import { useForm, get } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
-import { Button, Form, FormField, SpaceBetween, Container, ContentLayout, Header } from '@cloudscape-design/components';
-import { CToggle } from 'react-hook-form-cloudscape';
+import {
+  Button,
+  Form,
+  FormField,
+  SpaceBetween,
+  Container,
+  ContentLayout,
+  Header,
+} from "@cloudscape-design/components";
+import { CToggle } from "react-hook-form-cloudscape";
 
-const schema = yup.object({
-  fieldName: yup.boolean().isTrue().required('A choice is required'),
-}).required();
+const schema = yup
+  .object({
+    fieldName: yup.boolean().isTrue().required("A choice is required"),
+  })
+  .required();
 
 interface Props {
   onSubmit: (data: any) => void;
 }
 
 const Toggle: React.FC<Props> = ({ onSubmit }) => {
-  const { control, handleSubmit, reset, formState: { errors } } = useForm({
-    mode: 'onBlur',
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    mode: "onBlur",
     resolver: yupResolver(schema),
   });
 
@@ -46,10 +61,7 @@ const Toggle: React.FC<Props> = ({ onSubmit }) => {
           <Container>
             <SpaceBetween size="s">
               <FormField label="Toggle" errorText={get(errors, `fieldName.message`)}>
-                <CToggle
-                  name="fieldName"
-                  control={control}
-                >
+                <CToggle name="fieldName" control={control}>
                   Toggle
                 </CToggle>
               </FormField>

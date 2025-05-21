@@ -1,22 +1,37 @@
-import React from 'react';
-import { useForm, get } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import React from "react";
+import { useForm, get } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
-import { Button, Form, FormField, SpaceBetween, Container, ContentLayout, Header } from '@cloudscape-design/components';
-import { CDatePicker } from 'react-hook-form-cloudscape';
+import {
+  Button,
+  Form,
+  FormField,
+  SpaceBetween,
+  Container,
+  ContentLayout,
+  Header,
+} from "@cloudscape-design/components";
+import { CDatePicker } from "react-hook-form-cloudscape";
 
-const schema = yup.object({
-  fieldName: yup.date().required('Date is required'),
-}).required();
+const schema = yup
+  .object({
+    fieldName: yup.date().required("Date is required"),
+  })
+  .required();
 
 interface Props {
   onSubmit: (data: any) => void;
 }
 
 const DatePicker: React.FC<Props> = ({ onSubmit }) => {
-  const { control, handleSubmit, reset, formState: { errors } } = useForm({
-    mode: 'onBlur',
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    mode: "onBlur",
     resolver: yupResolver(schema),
   });
 
@@ -49,11 +64,9 @@ const DatePicker: React.FC<Props> = ({ onSubmit }) => {
                 <CDatePicker
                   control={control}
                   name="fieldName"
-                  openCalendarAriaLabel={selectedDate =>
+                  openCalendarAriaLabel={(selectedDate) =>
                     "Choose certificate expiry date" +
-                    (selectedDate
-                      ? `, selected date is ${selectedDate}`
-                      : "")
+                    (selectedDate ? `, selected date is ${selectedDate}` : "")
                   }
                   placeholder="YYYY/MM/DD"
                 />
@@ -63,7 +76,6 @@ const DatePicker: React.FC<Props> = ({ onSubmit }) => {
         </Form>
       </form>
     </ContentLayout>
-
   );
 };
 

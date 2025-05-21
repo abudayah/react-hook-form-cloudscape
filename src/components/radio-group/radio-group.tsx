@@ -1,8 +1,4 @@
-import {
-  NonCancelableCustomEvent,
-  RadioGroup,
-  RadioGroupProps,
-} from "@cloudscape-design/components";
+import { NonCancelableCustomEvent, RadioGroup, RadioGroupProps } from "@cloudscape-design/components";
 import { useCallback } from "react";
 import {
   Control,
@@ -18,10 +14,7 @@ export interface CRadioGroupProps<T extends FieldValues> extends Omit<RadioGroup
   name: Path<T>;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<
-    RegisterOptions<T, FieldPath<T>>,
-    "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"
-  >;
+  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
 }
 
@@ -35,10 +28,7 @@ const CRadioGroup = <TFieldValues extends FieldValues>({
   ...props
 }: CRadioGroupProps<TFieldValues>) => {
   const handleOnChange = useCallback(
-    (
-      formOnChange: (value: string) => void,
-      e: NonCancelableCustomEvent<RadioGroupProps.ChangeDetail>,
-    ) => {
+    (formOnChange: (value: string) => void, e: NonCancelableCustomEvent<RadioGroupProps.ChangeDetail>) => {
       formOnChange(e.detail.value);
       onChange?.(e);
     },

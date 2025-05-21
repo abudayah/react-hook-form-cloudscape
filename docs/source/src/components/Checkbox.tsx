@@ -1,10 +1,18 @@
-import React from 'react';
-import { useForm, get } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import React from "react";
+import { useForm, get } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
-import { Button, Form, FormField, SpaceBetween, Container, ContentLayout, Header } from '@cloudscape-design/components';
-import { CCheckbox } from 'react-hook-form-cloudscape';
+import {
+  Button,
+  Form,
+  FormField,
+  SpaceBetween,
+  Container,
+  ContentLayout,
+  Header,
+} from "@cloudscape-design/components";
+import { CCheckbox } from "react-hook-form-cloudscape";
 
 const schema = yup.object({
   fieldName: yup.boolean().isTrue().required(),
@@ -15,8 +23,13 @@ interface Props {
 }
 
 const Checkbox: React.FC<Props> = ({ onSubmit }) => {
-  const { control, handleSubmit, reset, formState: { errors } } = useForm({
-    mode: 'onBlur',
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    mode: "onBlur",
     resolver: yupResolver(schema),
   });
 
@@ -46,10 +59,7 @@ const Checkbox: React.FC<Props> = ({ onSubmit }) => {
           <Container>
             <SpaceBetween size="s">
               <FormField label="Checkbox" errorText={get(errors, `fieldName.message`)}>
-                <CCheckbox
-                  name="fieldName"
-                  control={control}
-                >
+                <CCheckbox name="fieldName" control={control}>
                   Expire
                 </CCheckbox>
               </FormField>
@@ -58,7 +68,6 @@ const Checkbox: React.FC<Props> = ({ onSubmit }) => {
         </Form>
       </form>
     </ContentLayout>
-
   );
 };
 

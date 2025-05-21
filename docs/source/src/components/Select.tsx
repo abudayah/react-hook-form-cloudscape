@@ -1,17 +1,27 @@
-import React from 'react';
-import { useForm, get } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import React from "react";
+import { useForm, get } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
-import { Button, Form, FormField, SpaceBetween, Container, ContentLayout, Header } from '@cloudscape-design/components';
-import { CSelect } from 'react-hook-form-cloudscape';
+import {
+  Button,
+  Form,
+  FormField,
+  SpaceBetween,
+  Container,
+  ContentLayout,
+  Header,
+} from "@cloudscape-design/components";
+import { CSelect } from "react-hook-form-cloudscape";
 
-const schema = yup.object({
-  fieldName: yup.string().required('An option must be selected'),
-}).required();
+const schema = yup
+  .object({
+    fieldName: yup.string().required("An option must be selected"),
+  })
+  .required();
 
 const defaultValues = {
-  fieldName: '',
+  fieldName: "",
 };
 
 interface Props {
@@ -19,8 +29,13 @@ interface Props {
 }
 
 const Select: React.FC<Props> = ({ onSubmit }) => {
-  const { control, handleSubmit, reset, formState: { errors } } = useForm({
-    mode: 'onBlur',
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    mode: "onBlur",
     resolver: yupResolver(schema),
     defaultValues,
   });
@@ -59,7 +74,7 @@ const Select: React.FC<Props> = ({ onSubmit }) => {
                     { label: "Option 2", value: "option2" },
                     { label: "Option 3", value: "option3" },
                     { label: "Option 4", value: "option4" },
-                    { label: "Option 5", value: "option5" }
+                    { label: "Option 5", value: "option5" },
                   ]}
                 />
               </FormField>

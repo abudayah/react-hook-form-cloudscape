@@ -1,17 +1,27 @@
-import React from 'react';
-import { useForm, get } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import React from "react";
+import { useForm, get } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
-import { Button, Form, FormField, SpaceBetween, Container, ContentLayout, Header } from '@cloudscape-design/components';
-import { CRadioGroup } from 'react-hook-form-cloudscape';
+import {
+  Button,
+  Form,
+  FormField,
+  SpaceBetween,
+  Container,
+  ContentLayout,
+  Header,
+} from "@cloudscape-design/components";
+import { CRadioGroup } from "react-hook-form-cloudscape";
 
-const schema = yup.object({
-  fieldName: yup.string().required('A choice is required'),
-}).required();
+const schema = yup
+  .object({
+    fieldName: yup.string().required("A choice is required"),
+  })
+  .required();
 
 const defaultValues = {
-  fieldName: '',
+  fieldName: "",
 };
 
 interface Props {
@@ -19,8 +29,13 @@ interface Props {
 }
 
 const RadioGroup: React.FC<Props> = ({ onSubmit }) => {
-  const { control, handleSubmit, reset, formState: { errors } } = useForm({
-    mode: 'onBlur',
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    mode: "onBlur",
     resolver: yupResolver(schema),
     defaultValues,
   });
@@ -57,7 +72,7 @@ const RadioGroup: React.FC<Props> = ({ onSubmit }) => {
                   items={[
                     { value: "first", label: "First choice" },
                     { value: "second", label: "Second choice" },
-                    { value: "third", label: "Third choice" }
+                    { value: "third", label: "Third choice" },
                   ]}
                 />
               </FormField>

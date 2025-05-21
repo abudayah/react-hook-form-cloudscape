@@ -24,34 +24,25 @@ export const mapSelectedOptionsWithOptions = (
 ): Array<MultiselectProps.Option | MultiselectProps.OptionGroup> => {
   if (options?.length && selectedOptions?.length) {
     return options
-      .reduce(
-        (
-          accOptions: Array<MultiselectProps.Option | MultiselectProps.OptionGroup>,
-          currentOption,
-        ) => {
-          if (options?.length) {
-            if ("options" in currentOption) {
-              const matchedOptions = mapSelectedOptionsWithOptions(
-                currentOption.options,
-                selectedOptions,
-              );
+      .reduce((accOptions: Array<MultiselectProps.Option | MultiselectProps.OptionGroup>, currentOption) => {
+        if (options?.length) {
+          if ("options" in currentOption) {
+            const matchedOptions = mapSelectedOptionsWithOptions(currentOption.options, selectedOptions);
 
-              if (matchedOptions?.length) {
-                accOptions.push(...matchedOptions);
-              }
-            }
-
-            if ("value" in currentOption) {
-              if (selectedOptions.find((record) => record === currentOption.value)) {
-                accOptions.push(currentOption);
-              }
+            if (matchedOptions?.length) {
+              accOptions.push(...matchedOptions);
             }
           }
 
-          return accOptions;
-        },
-        [],
-      )
+          if ("value" in currentOption) {
+            if (selectedOptions.find((record) => record === currentOption.value)) {
+              accOptions.push(currentOption);
+            }
+          }
+        }
+
+        return accOptions;
+      }, [])
       .flat();
   }
 

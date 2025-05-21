@@ -1,8 +1,4 @@
-import {
-  Multiselect,
-  MultiselectProps,
-  NonCancelableCustomEvent,
-} from "@cloudscape-design/components";
+import { Multiselect, MultiselectProps, NonCancelableCustomEvent } from "@cloudscape-design/components";
 import { useCallback } from "react";
 import {
   Control,
@@ -21,10 +17,7 @@ export interface ControlledMultiselectProps<T extends FieldValues>
   control?: Control<T>;
   options?: MultiselectProps.Options;
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<
-    RegisterOptions<T, FieldPath<T>>,
-    "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"
-  >;
+  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
 }
 
@@ -40,10 +33,7 @@ const CMultiselect = <TFieldValues extends FieldValues>({
   ...props
 }: ControlledMultiselectProps<TFieldValues>) => {
   const handleOnBlur = useCallback(
-    (
-      formOnBlur: () => void,
-      e: NonCancelableCustomEvent<MultiselectProps.MultiselectChangeDetail>,
-    ) => {
+    (formOnBlur: () => void, e: NonCancelableCustomEvent<MultiselectProps.MultiselectChangeDetail>) => {
       formOnBlur();
       onBlur?.(e);
     },

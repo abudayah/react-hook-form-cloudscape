@@ -1,8 +1,4 @@
-import {
-  DatePicker,
-  DatePickerProps,
-  NonCancelableCustomEvent,
-} from "@cloudscape-design/components";
+import { DatePicker, DatePickerProps, NonCancelableCustomEvent } from "@cloudscape-design/components";
 import { useCallback } from "react";
 import {
   Control,
@@ -17,10 +13,7 @@ export interface CDatePickerProps<T extends FieldValues> extends Omit<DatePicker
   name: FieldPath<T>;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<
-    RegisterOptions<T, FieldPath<T>>,
-    "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"
-  >;
+  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
   onBlur?: DatePickerProps["onBlur"];
   onChange?: DatePickerProps["onChange"];

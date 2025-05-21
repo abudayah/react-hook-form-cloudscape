@@ -1,8 +1,4 @@
-import {
-  NonCancelableCustomEvent,
-  PropertyFilter,
-  PropertyFilterProps,
-} from "@cloudscape-design/components";
+import { NonCancelableCustomEvent, PropertyFilter, PropertyFilterProps } from "@cloudscape-design/components";
 import { useCallback } from "react";
 import {
   Control,
@@ -18,10 +14,7 @@ export interface ControlledPropertyFilterProps<T extends FieldValues>
   name: FieldPath<T>;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<
-    RegisterOptions<T, FieldPath<T>>,
-    "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"
-  >;
+  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
 }
 
@@ -49,9 +42,7 @@ export const CPropertyFilter = <TFieldValues extends FieldValues>({
       defaultValue={defaultValue}
       name={name}
       render={({ field: { onChange, value } }) => {
-        return (
-          <PropertyFilter query={value} onChange={handleOnChange.bind(null, onChange)} {...props} />
-        );
+        return <PropertyFilter query={value} onChange={handleOnChange.bind(null, onChange)} {...props} />;
       }}
       rules={rules}
       shouldUnregister={shouldUnregister}

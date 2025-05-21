@@ -1,7 +1,7 @@
-import React from 'react';
-import { useForm, get } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import React from "react";
+import { useForm, get } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 import {
   Button,
@@ -13,30 +13,30 @@ import {
   Wizard,
   Link,
   KeyValuePairs,
-} from '@cloudscape-design/components';
-import { CInput } from 'react-hook-form-cloudscape';
+} from "@cloudscape-design/components";
+import { CInput } from "react-hook-form-cloudscape";
 
 // Validation schema
 const schema = yup.object({
   step1: yup
     .object()
     .shape({
-      field1: yup.string().required().label('First field'),
-      field2: yup.string().label('Second field'),
+      field1: yup.string().required().label("First field"),
+      field2: yup.string().label("Second field"),
     })
     .required(),
   step2: yup
     .object()
     .shape({
-      field3: yup.string().required().label('First field'),
-      field4: yup.string().label('Second field'),
+      field3: yup.string().required().label("First field"),
+      field4: yup.string().label("Second field"),
     })
     .required(),
   step3: yup
     .object()
     .shape({
-      field5: yup.string().required().label('First field'),
-      field6: yup.string().label('Second field'),
+      field5: yup.string().required().label("First field"),
+      field6: yup.string().label("Second field"),
     })
     .optional(),
 });
@@ -44,16 +44,16 @@ const schema = yup.object({
 // Form default values
 const defaultValues = {
   step1: {
-    field1: '',
-    field2: '',
+    field1: "",
+    field2: "",
   },
   step2: {
-    field3: '',
-    field4: '',
+    field3: "",
+    field4: "",
   },
   step3: {
-    field5: '',
-    field6: '',
+    field5: "",
+    field6: "",
   },
 };
 
@@ -73,7 +73,7 @@ const FormWizard: React.FC<Props> = ({ onSubmit }) => {
     getFieldState,
     formState: { errors },
   } = useForm({
-    mode: 'onBlur',
+    mode: "onBlur",
     resolver: yupResolver(schema),
     defaultValues,
   });
@@ -109,14 +109,14 @@ const FormWizard: React.FC<Props> = ({ onSubmit }) => {
           submitButtonText="Launch instance"
           steps={[
             {
-              title: 'Choose instance type',
+              title: "Choose instance type",
               info: <Link variant="info">Info</Link>,
               description:
-                'Each instance type includes one or more instance sizes, allowing you to scale your resources to the requirements of your target workload.',
+                "Each instance type includes one or more instance sizes, allowing you to scale your resources to the requirements of your target workload.",
               content: (
                 <Container header={<Header variant="h2">Form container header</Header>}>
                   <SpaceBetween direction="vertical" size="l">
-                    <FormField label="First field" errorText={get(errors, 'step1.field1.message')}>
+                    <FormField label="First field" errorText={get(errors, "step1.field1.message")}>
                       <CInput control={control} name="step1.field1" />
                     </FormField>
                     <FormField
@@ -125,7 +125,7 @@ const FormWizard: React.FC<Props> = ({ onSubmit }) => {
                           Second field <i>- optional</i>
                         </>
                       }
-                      errorText={get(errors, 'step1.field2.message')}
+                      errorText={get(errors, "step1.field2.message")}
                     >
                       <CInput control={control} name="step1.field2" />
                     </FormField>
@@ -134,11 +134,11 @@ const FormWizard: React.FC<Props> = ({ onSubmit }) => {
               ),
             },
             {
-              title: 'Add storage',
+              title: "Add storage",
               content: (
                 <Container header={<Header variant="h2">Form container header</Header>}>
                   <SpaceBetween direction="vertical" size="l">
-                    <FormField label="First field" errorText={get(errors, 'step2.field3.message')}>
+                    <FormField label="First field" errorText={get(errors, "step2.field3.message")}>
                       <CInput control={control} name="step2.field3" />
                     </FormField>
                     <FormField
@@ -147,7 +147,7 @@ const FormWizard: React.FC<Props> = ({ onSubmit }) => {
                           Second field <i>- optional</i>
                         </>
                       }
-                      errorText={get(errors, 'step2.field4.message')}
+                      errorText={get(errors, "step2.field4.message")}
                     >
                       <CInput control={control} name="step2.field4" />
                     </FormField>
@@ -157,11 +157,11 @@ const FormWizard: React.FC<Props> = ({ onSubmit }) => {
               isOptional: true,
             },
             {
-              title: 'Configure security group',
+              title: "Configure security group",
               content: (
                 <Container header={<Header variant="h2">Form container header</Header>}>
                   <SpaceBetween direction="vertical" size="l">
-                    <FormField label="First field" errorText={get(errors, 'step3.field5.message')}>
+                    <FormField label="First field" errorText={get(errors, "step3.field5.message")}>
                       <CInput control={control} name="step3.field5" />
                     </FormField>
                     <FormField
@@ -170,7 +170,7 @@ const FormWizard: React.FC<Props> = ({ onSubmit }) => {
                           Second field <i>- optional</i>
                         </>
                       }
-                      errorText={get(errors, 'step3.field6.message')}
+                      errorText={get(errors, "step3.field6.message")}
                     >
                       <CInput control={control} name="step3.field6" />
                     </FormField>
@@ -180,7 +180,7 @@ const FormWizard: React.FC<Props> = ({ onSubmit }) => {
               isOptional: true,
             },
             {
-              title: 'Review and launch',
+              title: "Review and launch",
               content: (
                 <SpaceBetween size="xs">
                   <Header variant="h3" actions={<Button onClick={() => setActiveStepIndex(0)}>Edit</Button>}>
@@ -191,12 +191,12 @@ const FormWizard: React.FC<Props> = ({ onSubmit }) => {
                       columns={2}
                       items={[
                         {
-                          label: 'First field',
-                          value: getValues('step1.field1'),
+                          label: "First field",
+                          value: getValues("step1.field1"),
                         },
                         {
-                          label: 'Second Field',
-                          value: getValues('step1.field2'),
+                          label: "Second Field",
+                          value: getValues("step1.field2"),
                         },
                       ]}
                     />
@@ -208,11 +208,11 @@ const FormWizard: React.FC<Props> = ({ onSubmit }) => {
           i18nStrings={{
             stepNumberLabel: (stepNumber) => `Step ${stepNumber}`,
             collapsedStepsLabel: (stepNumber, stepsCount) => `Step ${stepNumber} of ${stepsCount}`,
-            navigationAriaLabel: 'Steps',
-            cancelButton: 'Reset',
-            previousButton: 'Previous',
-            nextButton: 'Next',
-            optional: 'optional',
+            navigationAriaLabel: "Steps",
+            cancelButton: "Reset",
+            previousButton: "Previous",
+            nextButton: "Next",
+            optional: "optional",
           }}
         />
       </Container>

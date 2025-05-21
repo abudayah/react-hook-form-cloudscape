@@ -1,17 +1,27 @@
-import React from 'react';
-import { useForm, get } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import React from "react";
+import { useForm, get } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
-import { Button, Form, FormField, SpaceBetween, Container, ContentLayout, Header } from '@cloudscape-design/components';
-import { CTextFilter } from 'react-hook-form-cloudscape';
+import {
+  Button,
+  Form,
+  FormField,
+  SpaceBetween,
+  Container,
+  ContentLayout,
+  Header,
+} from "@cloudscape-design/components";
+import { CTextFilter } from "react-hook-form-cloudscape";
 
-const schema = yup.object({
-  fieldName: yup.string().required(), // Text filter value is a string. No validation by default.
-}).required();
+const schema = yup
+  .object({
+    fieldName: yup.string().required(), // Text filter value is a string. No validation by default.
+  })
+  .required();
 
 const defaultValues = {
-  fieldName: '', // Default value is an empty string
+  fieldName: "", // Default value is an empty string
 };
 
 interface Props {
@@ -19,8 +29,13 @@ interface Props {
 }
 
 const TextFilter: React.FC<Props> = ({ onSubmit }) => {
-  const { control, handleSubmit, reset, formState: { errors } } = useForm({
-    mode: 'onBlur',
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    mode: "onBlur",
     resolver: yupResolver(schema),
     defaultValues,
   });

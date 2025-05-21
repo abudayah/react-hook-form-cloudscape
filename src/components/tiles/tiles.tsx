@@ -14,10 +14,7 @@ export interface CTilesProps<T extends FieldValues> extends Omit<TilesProps, "va
   name: Path<T>;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<
-    RegisterOptions<T, FieldPath<T>>,
-    "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"
-  >;
+  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
 }
 
@@ -31,10 +28,7 @@ const CTiles = <TFieldValues extends FieldValues>({
   ...props
 }: CTilesProps<TFieldValues>) => {
   const handleOnChange = useCallback(
-    (
-      formOnChange: (value: string) => void,
-      e: NonCancelableCustomEvent<TilesProps.ChangeDetail>,
-    ) => {
+    (formOnChange: (value: string) => void, e: NonCancelableCustomEvent<TilesProps.ChangeDetail>) => {
       formOnChange(e.detail.value);
       onChange?.(e);
     },
@@ -47,12 +41,7 @@ const CTiles = <TFieldValues extends FieldValues>({
       defaultValue={defaultValue}
       name={name}
       render={({ field: { onChange, value } }) => (
-        <Tiles
-          items={props.items}
-          value={value}
-          onChange={handleOnChange.bind(null, onChange)}
-          {...props}
-        />
+        <Tiles items={props.items} value={value} onChange={handleOnChange.bind(null, onChange)} {...props} />
       )}
       rules={rules}
       shouldUnregister={shouldUnregister}

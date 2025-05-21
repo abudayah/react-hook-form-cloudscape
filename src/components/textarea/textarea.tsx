@@ -14,10 +14,7 @@ export interface CTextareaProps<T extends FieldValues> extends Omit<TextareaProp
   name: Path<T>;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<
-    RegisterOptions<T, FieldPath<T>>,
-    "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled"
-  >;
+  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
 }
 
@@ -40,10 +37,7 @@ const CTextarea = <TFieldValues extends FieldValues>({
   );
 
   const handleOnChange = useCallback(
-    (
-      formOnChange: (value: string) => void,
-      e: NonCancelableCustomEvent<TextareaProps.ChangeDetail>,
-    ) => {
+    (formOnChange: (value: string) => void, e: NonCancelableCustomEvent<TextareaProps.ChangeDetail>) => {
       formOnChange(e.detail.value);
       onChange?.(e);
     },

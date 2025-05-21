@@ -1,22 +1,37 @@
-import React from 'react';
-import { useForm, get } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import React from "react";
+import { useForm, get } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
-import { Button, Form, FormField, SpaceBetween, Container, ContentLayout, Header } from '@cloudscape-design/components';
-import { CTiles } from 'react-hook-form-cloudscape';
+import {
+  Button,
+  Form,
+  FormField,
+  SpaceBetween,
+  Container,
+  ContentLayout,
+  Header,
+} from "@cloudscape-design/components";
+import { CTiles } from "react-hook-form-cloudscape";
 
-const schema = yup.object({
-  fieldName: yup.string().required('At least one item must be selected'),
-}).required();
+const schema = yup
+  .object({
+    fieldName: yup.string().required("At least one item must be selected"),
+  })
+  .required();
 
 interface Props {
   onSubmit: (data: any) => void;
 }
 
 const Tiles: React.FC<Props> = ({ onSubmit }) => {
-  const { control, handleSubmit, reset, formState: { errors } } = useForm({
-    mode: 'onBlur',
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    mode: "onBlur",
     resolver: yupResolver(schema),
   });
 
@@ -52,7 +67,7 @@ const Tiles: React.FC<Props> = ({ onSubmit }) => {
                   items={[
                     { label: "Item 1 label", value: "item1" },
                     { label: "Item 2 label", value: "item2" },
-                    { label: "Item 3 label", value: "item3" }
+                    { label: "Item 3 label", value: "item3" },
                   ]}
                 />
               </FormField>
