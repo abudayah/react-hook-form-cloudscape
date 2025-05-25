@@ -1,3 +1,11 @@
+## [1.7.6](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.5...v1.7.6) (2025-05-25)
+
+
+### Bug Fixes
+
+* **Import:** prevent direct component file imports ([c305174](https://github.com/abudayah/react-hook-form-cloudscape/commit/c305174d80c2a3634bab39831e0aa70fb937ef21))
+* **Refactor:** prevent direct component file imports and add CSP headers ([d77453f](https://github.com/abudayah/react-hook-form-cloudscape/commit/d77453fcc268e7e5f04f9567ec7ff2380971c44d))
+
 ## [1.7.5](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.4...v1.7.5) (2025-05-25)
 
 
