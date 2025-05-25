@@ -14,9 +14,11 @@
 
   // Hide build files
   "files.exclude": {
-    "components": true,
-    "react-hook-form-cloudscape*": true,
+    "index.js": true,
     "index.d.ts": true,
+    "index.js.map": true,
+    "chunks": true,
+    "components": true,
   },
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
