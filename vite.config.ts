@@ -1,8 +1,12 @@
 /// <reference types="vitest" />
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import path from "path";
+import { fileURLToPath } from "node:url";
+import { dirname, resolve } from "node:path";
 import dts from "vite-plugin-dts";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export default defineConfig({
   base: "/react-hook-form-cloudscape",
@@ -14,13 +18,13 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      "@": resolve(__dirname, "./src"),
     },
   },
   build: {
     outDir: ".",
     lib: {
-      entry: path.resolve(__dirname, "src/index.ts"),
+      entry: resolve(__dirname, "src/index.ts"),
       name: "ReactHookFormCloudscape",
       formats: ["es", "umd"],
       fileName: (format) => `react-hook-form-cloudscape.${format}.js`,
@@ -33,6 +37,14 @@ export default defineConfig({
           "react-dom": "ReactDOM",
           "react-hook-form": "ReactHookForm",
         },
+        preserveModules: true,
+        preserveModulesRoot: "src",
+        entryFileNames: (chunkInfo) => {
+          if (chunkInfo.name === "index") {
+            return "index.js";
+          }
+          return "components/[name]/index.js";
+        },
       },
     },
     sourcemap: true,
@@ -40,10 +52,9 @@ export default defineConfig({
   optimizeDeps: {
     include: ["ace-builds", "ace-builds/esm-resolver"],
   },
-  csp: {
-    directives: {
-      "worker-src": ["self", "blob:"],
-      "img-src": ["self", "data:"],
+  server: {
+    headers: {
+      "Content-Security-Policy": "worker-src 'self' blob:; img-src 'self' data:",
     },
   },
 });

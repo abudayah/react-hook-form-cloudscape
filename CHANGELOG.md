@@ -1,10 +1,3 @@
-## [1.7.5](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.4...v1.7.5) (2025-05-25)
-
-
-### Bug Fixes
-
-* **Refactor:** standardize component exports with barrel files ([19b8af2](https://github.com/abudayah/react-hook-form-cloudscape/commit/19b8af2f5989956a83d088a7a29e02b5553e7571))
-
 ## [1.7.4](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.3...v1.7.4) (2025-05-21)
 
 
