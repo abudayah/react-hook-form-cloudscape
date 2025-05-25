@@ -1,3 +1,27 @@
+# [1.8.0-dev.1](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.4...v1.8.0-dev.1) (2025-05-25)
+
+
+### Bug Fixes
+
+* **build:** update eslint configs ([dbbf50c](https://github.com/abudayah/react-hook-form-cloudscape/commit/dbbf50cc97adf496443ba821c91756070ccdbd48))
+* **build:** update prettier configs ([2be5feb](https://github.com/abudayah/react-hook-form-cloudscape/commit/2be5feb074f98e78092b5f924b09f1f02b30fcee))
+* **dependencies:** bump dependencies minor version ([89e6f32](https://github.com/abudayah/react-hook-form-cloudscape/commit/89e6f324206b12968a64db049a48c0844961140a))
+* **docs:** bump rhfc version ([83c2d48](https://github.com/abudayah/react-hook-form-cloudscape/commit/83c2d484a10831f7452cbea06904246b572ba702))
+* **docs:** update readme and remove demo file ([2e75d03](https://github.com/abudayah/react-hook-form-cloudscape/commit/2e75d03679edc411b03a3099b7a394c4b8d6898f))
+* **fix:** missing file pathes ([e8d3c3f](https://github.com/abudayah/react-hook-form-cloudscape/commit/e8d3c3f9e954e37a2f38c25dcbe42c9f870ad79d))
+* **Import:** prevent direct component file imports ([e652f84](https://github.com/abudayah/react-hook-form-cloudscape/commit/e652f8497bf56b832686ed1c91d15a7422fd70a2))
+* **linting:** fix linting issues ([97020b3](https://github.com/abudayah/react-hook-form-cloudscape/commit/97020b35b1cae94b2e97388ec6a34b3082bf14ac))
+* **Refactor:** prevent direct component file imports and add CSP headers ([588b0a0](https://github.com/abudayah/react-hook-form-cloudscape/commit/588b0a0aa99666c88e70ea588e359961de2a3399))
+* **Refactor:** standardize component exports with barrel files ([46719c4](https://github.com/abudayah/react-hook-form-cloudscape/commit/46719c4637b50a9367e003cfbce7b4455a6a8cf5))
+* **Refactor:** standardize component exports with barrel files ([19b8af2](https://github.com/abudayah/react-hook-form-cloudscape/commit/19b8af2f5989956a83d088a7a29e02b5553e7571))
+
+
+### Features
+
+* **features:** Extend react-hook-form features support for controlled components ([49be202](https://github.com/abudayah/react-hook-form-cloudscape/commit/49be202900a2721fdd421c518bcd4635d6cb1c59))
+* **features:** updating cards, autosuggest and attribute-editor ([042d888](https://github.com/abudayah/react-hook-form-cloudscape/commit/042d88807cdaffb5002e742787b55393f9c0e728))
+* **update:** Support React 19 ([7ced359](https://github.com/abudayah/react-hook-form-cloudscape/commit/7ced359bb1cd9c5bc95ab10f2c70e47f7f09be73))
+
 ## [1.7.4](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.3...v1.7.4) (2025-05-21)
 
 
