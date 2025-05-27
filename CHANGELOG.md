@@ -1,3 +1,10 @@
+## [1.7.7](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.6...v1.7.7) (2025-05-27)
+
+
+### Bug Fixes
+
+* **components:** standardize component index exports ([74901d4](https://github.com/abudayah/react-hook-form-cloudscape/commit/74901d4769bcc6c46771999cdebfc914ab7205d9))
+
 ## [1.7.6](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.5...v1.7.6) (2025-05-25)
 
 
