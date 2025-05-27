@@ -9,6 +9,8 @@ import {
   Flashbar,
   Icon,
   Link,
+  Box,
+  SpaceBetween,
 } from "@cloudscape-design/components";
 import jsonHighlight from "@cloudscape-design/code-view/highlight/json";
 import { CodeView } from "@cloudscape-design/code-view";
@@ -18,6 +20,7 @@ import { useLocalStorage } from "./hooks/useLocalStorage";
 
 import FormBasic from "./components/forms/form-basic";
 import FormWizard from "./components/forms/form-wizard";
+import FormDynamic from "./components/forms/form-dynamic";
 
 import AttributeEditor from "./components/AttributeEditor";
 import Autosuggest from "./components/Autosuggest";
@@ -102,15 +105,15 @@ function App() {
                     text: "📝 Basic",
                     href: "#/form-basic",
                   },
-                  // {
-                  //   type: "link",
-                  //   text: "🌀 Dynamic",
-                  //   href: "#/form-dynamic"
-                  // },
                   {
                     type: "link",
                     text: "🪄 Wizard",
                     href: "#/form-wizard",
+                  },
+                  {
+                    type: "link",
+                    text: "🌀 Dynamic",
+                    href: "#/form-dynamic",
                   },
                 ],
               },
@@ -252,7 +255,9 @@ function App() {
         tools={<HelpPanel header={<h2>Overview</h2>}>Help content</HelpPanel>}
         content={
           <Routes>
+            <Route path="/" element={<Navigate to="/form-basic" />} />
             <Route path="/form-basic" element={<FormBasic onSubmit={handleFormSubmit} />} />
+            <Route path="/form-dynamic" element={<FormDynamic onSubmit={handleFormSubmit} />} />
             <Route path="/form-wizard" element={<FormWizard onSubmit={handleFormSubmit} />} />
             <Route path="/AttributeEditor" element={<AttributeEditor onSubmit={handleFormSubmit} />} />
             <Route path="/Autosuggest" element={<Autosuggest onSubmit={handleFormSubmit} />} />
@@ -275,7 +280,6 @@ function App() {
             <Route path="/Tiles" element={<Tiles onSubmit={handleFormSubmit} />} />
             <Route path="/TimeInput" element={<TimeInput onSubmit={handleFormSubmit} />} />
             <Route path="/Toggle" element={<Toggle onSubmit={handleFormSubmit} />} />
-            <Route path="/" element={<Navigate to="/form-basic" />} />
           </Routes>
         }
         splitPanelPreferences={splitPanelPreferences}
@@ -284,15 +288,19 @@ function App() {
         onSplitPanelToggle={() => setSplitPanelOpen(!SplitPanelOpen)}
         splitPanel={
           <SplitPanel header="Source code" i18nStrings={{ preferencesConfirm: "Set" }}>
-            <SourceCodeView />
-            <br />
-            <Link
-              href="https://github.com/abudayah/react-hook-form-cloudscape/tree/main/docs/source/src/components"
-              external
-              target="_blank"
-            >
-              <Icon name="script" /> View demos source code on github
-            </Link>
+            <SpaceBetween size="l">
+              <Box textAlign="right">
+                <Link
+                  href="https://github.com/abudayah/react-hook-form-cloudscape/tree/main/docs/source/src/components"
+                  external
+                  target="_blank"
+                >
+                  <Icon name="script" /> View demos source code on github
+                </Link>
+              </Box>
+              <SourceCodeView />
+            </SpaceBetween>
+
             <br />
           </SplitPanel>
         }

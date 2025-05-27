@@ -7,6 +7,7 @@ import { useLocation } from "react-router-dom";
 // Code sources
 import * as FormBasicCode from "./components/forms/form-basic?raw";
 import * as FormWizardCode from "./components/forms/form-wizard?raw";
+import * as FormDynamicCode from "./components/forms/form-dynamic?raw";
 
 import * as AttributeEditor from "./components/AttributeEditor?raw";
 import * as Autosuggest from "./components/Autosuggest?raw";
@@ -39,6 +40,8 @@ const SourceCodeView: React.FC = () => {
         return FormBasicCode.default;
       case "/form-wizard":
         return FormWizardCode.default;
+      case "/form-dynamic":
+        return FormDynamicCode.default;
       case "/AttributeEditor":
         return AttributeEditor.default;
       case "/Autosuggest":
