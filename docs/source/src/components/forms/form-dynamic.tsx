@@ -162,7 +162,7 @@ const FormDynamic: React.FC<Props> = ({ onSubmit }) => {
     handleSubmit,
     reset,
     watch,
-    formState: { errors, isDirty, isSubmitting },
+    formState: { errors, isSubmitting },
   } = useForm({
     mode: "onBlur",
     resolver: yupResolver(validationSchema),
@@ -171,7 +171,6 @@ const FormDynamic: React.FC<Props> = ({ onSubmit }) => {
 
   // Watch multiple form values for conditional rendering
   const formType = watch("formType") as FormType;
-  const isPublished = watch("isPublished");
   const breakingNews = watch("breakingNews");
 
   const onHandleSubmit = (data: any) => {
