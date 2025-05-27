@@ -1,2 +1,2 @@
-export { default as CTextarea } from "./textarea";
+export { default } from "./textarea";
 export type { CTextareaProps } from "./textarea";

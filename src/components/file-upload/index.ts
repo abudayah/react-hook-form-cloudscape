@@ -1,2 +1,2 @@
-export { default as CFileUpload } from "./file-upload";
+export { default } from "./file-upload";
 export type { ControlledFileUploadProps } from "./file-upload";

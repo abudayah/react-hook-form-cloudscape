@@ -1,3 +1,3 @@
-export { default as CSelect } from "./select";
+export { default } from "./select";
 export type { CSelectProps } from "./select";
 export { default as SelectUtils } from "./utils";
