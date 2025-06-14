@@ -1,4 +1,5 @@
 import js from "@eslint/js";
+import eslintPluginVitest from "@vitest/eslint-plugin";
 import { defineConfig } from "eslint/config";
 import eslintConfigPrettier from "eslint-config-prettier/flat";
 import eslintPluginImport from "eslint-plugin-import";
@@ -6,7 +7,6 @@ import eslintPluginJsonc from "eslint-plugin-jsonc";
 import packageJsonPlugin from "eslint-plugin-package-json";
 import reactPlugin from "eslint-plugin-react";
 import reactHooksPlugin from "eslint-plugin-react-hooks";
-import eslintPluginVitest from "eslint-plugin-vitest";
 import globals from "globals";
 import * as tseslint from "typescript-eslint";
 
