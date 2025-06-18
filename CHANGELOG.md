@@ -1,3 +1,10 @@
+## [1.7.8](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.7...v1.7.8) (2025-06-18)
+
+
+### Bug Fixes
+
+* package-lock.json conflict ([ac9f3bf](https://github.com/abudayah/react-hook-form-cloudscape/commit/ac9f3bf70aa4c08eb67dfec17a7e003d82653fc4))
+
 ## [1.7.7](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.6...v1.7.7) (2025-05-27)
 
 
