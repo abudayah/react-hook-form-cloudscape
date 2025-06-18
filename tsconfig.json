@@ -2,20 +2,21 @@
   "compilerOptions": {
     "types": ["vitest/globals", "@testing-library/jest-dom"],
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "target": "ES2015",
-    "module": "ES2015",
+    "target": "ES2020",
+    "module": "ESNext",
     "moduleResolution": "node",
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
-    "importHelpers": true,
+    "allowSyntheticDefaultImports": true,
     "strict": true,
-    "declaration": true,
+    "noEmit": true,
+    "declaration": false,
     "jsx": "react-jsx",
-    "rootDir": "src",
     "baseUrl": "./",
-    "outDir": "./",
-    "declarationDir": "./components",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "sourceMap": true
   },
   "include": ["src"],

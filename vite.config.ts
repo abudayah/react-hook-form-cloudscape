@@ -30,7 +30,6 @@ const getComponentEntries = () => {
 };
 
 export default defineConfig({
-  base: "/react-hook-form-cloudscape",
   plugins: [
     react(),
     dts({
