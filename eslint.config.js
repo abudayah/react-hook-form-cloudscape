@@ -12,15 +12,9 @@ import * as tseslint from "typescript-eslint";
 
 const IGNORE_PATTERNS = [
   // Build artifacts and generated files
-  "components/**",
-  "**/coverage/**",
-  "**/*.es.js",
-  "**/*.es.js.map",
-  "**/*.umd.js",
-  "**/*.umd.map",
+  "dist/**",
 
   // Configuration and metadata
-  "index.d.ts",
   "*.config.ts",
   "CHANGELOG.md",
   "package-lock.json",

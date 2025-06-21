@@ -4,30 +4,11 @@ import react from "@vitejs/plugin-react";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 import dts from "vite-plugin-dts";
-import { readdirSync } from "node:fs";
+import { glob } from "glob";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-
-// Dynamically discover component directories
-const getComponentEntries = () => {
-  const componentsDir = resolve(__dirname, "src/components");
-  const componentDirs = readdirSync(componentsDir, { withFileTypes: true })
-    .filter((dirent) => dirent.isDirectory())
-    .map((dirent) => dirent.name);
-
-  const entries = {
-    index: resolve(__dirname, "src/index.ts"),
-  };
-
-  // Add each component's index as an entry point
-  componentDirs.forEach((componentName) => {
-    const indexPath = resolve(__dirname, `src/components/${componentName}/index.ts`);
-    entries[`components/${componentName}/index`] = indexPath;
-  });
-
-  return entries;
-};
+const componentEntries = glob.sync("src/components/**/index.ts").map((file) => resolve(__dirname, file));
 
 export default defineConfig({
   plugins: [
@@ -42,28 +23,19 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: ".",
+    outDir: "dist",
     lib: {
-      entry: getComponentEntries(),
+      entry: [resolve(__dirname, "src/index.ts"), ...componentEntries],
       name: "ReactHookFormCloudscape",
       formats: ["es"],
     },
     rollupOptions: {
-      external: ["react", "react-dom", "react-hook-form", /^@cloudscape-design\/.*$/],
+      external: [/^@cloudscape-design\/.*$/, "react", "react-dom", "react-hook-form"],
       output: {
         format: "es",
-        entryFileNames: (chunkInfo) => {
-          // Main entry point
-          if (chunkInfo.name === "index") {
-            return "index.js";
-          }
-          // Component entries - maintain the path structure
-          if (chunkInfo.name.startsWith("components/")) {
-            return `${chunkInfo.name}.js`;
-          }
-          return `${chunkInfo.name}.js`;
-        },
-        chunkFileNames: "chunks/[name]-[hash].js",
+        exports: "auto",
+        preserveModules: true,
+        preserveModulesRoot: "src",
       },
     },
     sourcemap: true,
