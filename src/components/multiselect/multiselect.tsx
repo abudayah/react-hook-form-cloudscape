@@ -11,8 +11,7 @@ import {
 
 import { mapSelectedOptionsWithOptions, transformMultiselectOptionsToArray } from "./utils";
 
-export interface ControlledMultiselectProps<T extends FieldValues>
-  extends Omit<MultiselectProps, "selectedOptions"> {
+export interface CMultiselectProps<T extends FieldValues> extends Omit<MultiselectProps, "selectedOptions"> {
   name: FieldPath<T>;
   control?: Control<T>;
   options?: MultiselectProps.Options;
@@ -31,7 +30,7 @@ const CMultiselect = <TFieldValues extends FieldValues>({
   onChange,
   shouldUnregister = false,
   ...props
-}: ControlledMultiselectProps<TFieldValues>) => {
+}: CMultiselectProps<TFieldValues>) => {
   const handleOnBlur = useCallback(
     (formOnBlur: () => void, e: NonCancelableCustomEvent<MultiselectProps.MultiselectChangeDetail>) => {
       formOnBlur();

@@ -10,7 +10,7 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
-export interface ControlledCardsProps<T extends FieldValues>
+export interface CCardsProps<T extends FieldValues>
   extends Omit<
     Required<Pick<CardsProps, "trackBy">> & Required<Pick<CardsProps, "selectionType">> & CardsProps,
     "value"
@@ -30,7 +30,7 @@ export const CCards = <TFieldValues extends FieldValues>({
   shouldUnregister = false,
   onSelectionChange,
   ...props
-}: ControlledCardsProps<TFieldValues>) => {
+}: CCardsProps<TFieldValues>) => {
   const handleOnChange = useCallback(
     (
       formOnChange: (selectedItems: TFieldValues[]) => void,

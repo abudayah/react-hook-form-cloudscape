@@ -13,7 +13,7 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
-export interface ControlledS3ResourceSelectorProps<T extends FieldValues>
+export interface CS3ResourceSelectorProps<T extends FieldValues>
   extends Omit<S3ResourceSelectorProps, "resource"> {
   name: FieldPath<T>;
   control?: Control<T>;
@@ -30,7 +30,7 @@ export const CS3ResourceSelector = <TFieldValues extends FieldValues>({
   shouldUnregister = false,
   onChange,
   ...props
-}: ControlledS3ResourceSelectorProps<TFieldValues>) => {
+}: CS3ResourceSelectorProps<TFieldValues>) => {
   const handleOnChange = useCallback(
     (
       formOnChange: (resource: S3ResourceSelectorProps.Resource) => void,

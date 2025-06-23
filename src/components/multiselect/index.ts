@@ -1,2 +1,2 @@
 export { default } from "./multiselect";
-export type { ControlledMultiselectProps } from "./multiselect";
+export type { CMultiselectProps } from "./multiselect";

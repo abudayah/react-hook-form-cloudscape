@@ -1,2 +1,2 @@
 export { default } from "./cards";
-export type { ControlledCardsProps } from "./cards";
+export type { CCardsProps } from "./cards";
