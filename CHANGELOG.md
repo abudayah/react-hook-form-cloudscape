@@ -1,3 +1,10 @@
+## [1.7.11](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.10...v1.7.11) (2025-06-23)
+
+
+### Bug Fixes
+
+* **bug:** bug fixes ([2987160](https://github.com/abudayah/react-hook-form-cloudscape/commit/298716004500faeaf7eca1a9cdcfc6dea15072ed))
+
 ## [1.7.10](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.9...v1.7.10) (2025-06-22)
 
 
