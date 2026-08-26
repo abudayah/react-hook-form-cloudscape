@@ -24,7 +24,7 @@ const CTagEditor = <TFieldValues extends FieldValues>({
   onChange,
   defaultValue,
   rules,
-  shouldUnregister,
+  shouldUnregister = false,
   ...props
 }: CTagEditorProps<TFieldValues>) => {
   const handleOnChange = useCallback(
@@ -43,11 +43,14 @@ const CTagEditor = <TFieldValues extends FieldValues>({
       control={control}
       defaultValue={defaultValue}
       name={name}
-      render={({ field: { ref, onChange, value } }) => (
+      render={({ field: { ref, onChange, onBlur, value } }) => (
         <TagEditor
           ref={ref}
           tags={(value as TagEditorProps.Tag[]) || []}
-          onChange={handleOnChange.bind(null, onChange)}
+          onChange={(e) => {
+            handleOnChange(onChange, e);
+            onBlur();
+          }}
           {...props}
         />
       )}

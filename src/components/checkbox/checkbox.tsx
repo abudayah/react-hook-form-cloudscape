@@ -12,9 +12,9 @@ import {
 
 export interface CCheckboxProps<T extends FieldValues> extends Omit<CheckboxProps, "checked"> {
   name: Path<T>;
-  control: Control<T>;
+  control?: Control<T>;
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "disabled">;
+  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
 }
 
@@ -40,8 +40,14 @@ const CCheckbox = <TFieldValues extends FieldValues>({
       control={control}
       defaultValue={defaultValue}
       name={name}
-      render={({ field: { ref, onChange, value = false } }) => (
-        <Checkbox ref={ref} checked={value} onChange={handleOnChange.bind(null, onChange)} {...props} />
+      render={({ field: { ref, onChange, onBlur, value } }) => (
+        <Checkbox
+          ref={ref}
+          checked={value}
+          onBlur={onBlur}
+          onChange={handleOnChange.bind(null, onChange)}
+          {...props}
+        />
       )}
       rules={rules}
       shouldUnregister={shouldUnregister}

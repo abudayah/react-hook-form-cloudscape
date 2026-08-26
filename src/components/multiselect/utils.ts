@@ -1,4 +1,4 @@
-import { MultiselectProps } from "@cloudscape-design/components/multiselect/interfaces";
+import { MultiselectProps } from "@cloudscape-design/components";
 
 export const transformMultiselectOptionsToArray = (
   selectedOptions: MultiselectProps.Options = [],
@@ -24,25 +24,31 @@ export const mapSelectedOptionsWithOptions = (
 ): Array<MultiselectProps.Option | MultiselectProps.OptionGroup> => {
   if (options?.length && selectedOptions?.length) {
     return options
-      .reduce((accOptions: Array<MultiselectProps.Option | MultiselectProps.OptionGroup>, currentOption) => {
-        if (options?.length) {
-          if ("options" in currentOption) {
-            const matchedOptions = mapSelectedOptionsWithOptions(currentOption.options, selectedOptions);
+      .reduce(
+        (
+          accOptions: Array<MultiselectProps.Option | MultiselectProps.OptionGroup>,
+          currentOption: MultiselectProps.Option | MultiselectProps.OptionGroup,
+        ) => {
+          if (options?.length) {
+            if ("options" in currentOption) {
+              const matchedOptions = mapSelectedOptionsWithOptions(currentOption.options, selectedOptions);
 
-            if (matchedOptions?.length) {
-              accOptions.push(...matchedOptions);
+              if (matchedOptions?.length) {
+                accOptions.push(...matchedOptions);
+              }
+            }
+
+            if ("value" in currentOption) {
+              if (selectedOptions.find((record) => record === currentOption.value)) {
+                accOptions.push(currentOption);
+              }
             }
           }
 
-          if ("value" in currentOption) {
-            if (selectedOptions.find((record) => record === currentOption.value)) {
-              accOptions.push(currentOption);
-            }
-          }
-        }
-
-        return accOptions;
-      }, [])
+          return accOptions;
+        },
+        [],
+      )
       .flat();
   }
 

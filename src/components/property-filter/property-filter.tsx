@@ -9,8 +9,7 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CPropertyFilterProps<T extends FieldValues>
-  extends Omit<PropertyFilterProps, "query" | "onChange"> {
+export interface CPropertyFilterProps<T extends FieldValues> extends Omit<PropertyFilterProps, "query"> {
   name: FieldPath<T>;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
@@ -24,6 +23,7 @@ export const CPropertyFilter = <TFieldValues extends FieldValues>({
   defaultValue,
   rules,
   shouldUnregister = false,
+  onChange,
   ...props
 }: CPropertyFilterProps<TFieldValues>) => {
   const handleOnChange = useCallback(
@@ -32,8 +32,9 @@ export const CPropertyFilter = <TFieldValues extends FieldValues>({
       e: NonCancelableCustomEvent<PropertyFilterProps.Query>,
     ) => {
       formOnChange(e.detail);
+      onChange?.(e);
     },
-    [],
+    [onChange],
   );
 
   return (

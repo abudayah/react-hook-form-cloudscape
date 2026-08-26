@@ -47,8 +47,15 @@ export const CCards = <TFieldValues extends FieldValues>({
       control={control}
       defaultValue={defaultValue}
       name={name}
-      render={({ field: { onChange, value } }) => (
-        <Cards selectedItems={value} onSelectionChange={handleOnChange.bind(null, onChange)} {...props} />
+      render={({ field: { onChange, onBlur, value } }) => (
+        <Cards
+          selectedItems={value}
+          onSelectionChange={(e) => {
+            handleOnChange(onChange, e);
+            onBlur();
+          }}
+          {...props}
+        />
       )}
       rules={rules}
       shouldUnregister={shouldUnregister}

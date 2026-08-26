@@ -23,7 +23,7 @@ const CTextFilter = <TFieldValues extends FieldValues>({
   control,
   defaultValue,
   rules,
-  shouldUnregister,
+  shouldUnregister = false,
   onChange,
   ...props
 }: CTextFilterProps<TFieldValues>) => {
@@ -40,11 +40,14 @@ const CTextFilter = <TFieldValues extends FieldValues>({
       control={control}
       defaultValue={defaultValue}
       name={name}
-      render={({ field: { ref, onChange, value } }) => (
+      render={({ field: { ref, onChange, onBlur, value } }) => (
         <TextFilter
           ref={ref}
           filteringText={value as string}
-          onChange={handleOnChange.bind(null, onChange)}
+          onChange={(e) => {
+            handleOnChange(onChange, e);
+            onBlur();
+          }}
           {...props}
         />
       )}

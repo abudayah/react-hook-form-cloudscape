@@ -12,7 +12,7 @@ import {
 
 export interface CToggleProps<T extends FieldValues> extends Omit<ToggleProps, "checked"> {
   name: Path<T>;
-  control: Control<T>;
+  control?: Control<T>;
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
   rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
@@ -40,11 +40,12 @@ const CToggle = <TFieldValues extends FieldValues>({
       control={control}
       defaultValue={defaultValue}
       name={name}
-      render={({ field: { ref, onChange, value = false } }) => (
+      render={({ field: { ref, onChange, onBlur, value = false } }) => (
         <Toggle
           ref={ref}
           checked={value}
           name={name}
+          onBlur={onBlur}
           onChange={handleOnChange.bind(null, onChange)}
           {...props}
         />

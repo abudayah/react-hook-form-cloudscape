@@ -47,11 +47,14 @@ export const CS3ResourceSelector = <TFieldValues extends FieldValues>({
       control={control}
       defaultValue={defaultValue}
       name={name}
-      render={({ field: { ref, onChange, value } }) => (
+      render={({ field: { ref, onChange, onBlur, value } }) => (
         <S3ResourceSelector
           ref={ref}
           resource={value ?? { uri: "" }}
-          onChange={handleOnChange.bind(null, onChange)}
+          onChange={(e) => {
+            handleOnChange(onChange, e);
+            onBlur();
+          }}
           {...props}
         />
       )}
