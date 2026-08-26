@@ -1,3 +1,13 @@
+## [1.7.12](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.11...v1.7.12) (2026-08-26)
+
+
+### Bug Fixes
+
+* handle edge cases in CAttributeEditor, CSelect and CDateRangePicker ([5b98d6e](https://github.com/abudayah/react-hook-form-cloudscape/commit/5b98d6e7b7414e19b612830ab49eaaf44084342b))
+* **multiselect:** correct onBlur handler never being called due to incorrect .bind usage ([da6089a](https://github.com/abudayah/react-hook-form-cloudscape/commit/da6089a20ece6e17ca5d6d6e6fa1aa7603b4d1c3))
+* **types:** unify control prop to optional and fix type inconsistencies ([bea5b96](https://github.com/abudayah/react-hook-form-cloudscape/commit/bea5b96bc696a0e55a31bb2a2ae44997fade1b61))
+* wire formOnBlur across all components missing RHF blur tracking ([c04c7ef](https://github.com/abudayah/react-hook-form-cloudscape/commit/c04c7efcfa43606fabf986f8324d437a51627d4f))
+
 ## [1.7.11](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.10...v1.7.11) (2025-06-23)
 
 
