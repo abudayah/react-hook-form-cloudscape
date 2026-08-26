@@ -27,7 +27,7 @@ export interface CAttributeEditorProps<T extends FieldValues>
   name: FieldArrayPath<T>;
   control: Control<T>;
   definition: Definition<T>[];
-  defaultValue: FieldArray<T>;
+  defaultValue?: FieldArray<T>;
   handleState?: boolean;
   onRemoveButtonClick?: (
     event: NonCancelableCustomEvent<AttributeEditorProps.RemoveButtonClickDetail>,
@@ -58,12 +58,18 @@ const CAttributeEditor = <TFieldValues extends FieldValues>({
   const definitionWithError = useMemo(
     () =>
       definition.map((def) => ({
-        errorText: (_item: TFieldValues, index: number) =>
-          def.label &&
-          (get(errors, `${name}.${index}.${def.label.toString().toLowerCase()}.message`) as
-            | string
-            | undefined),
         ...def,
+        errorText: (item: TFieldValues, index: number) => {
+          if (def.errorName) {
+            const fieldName = def.errorName(item, index);
+            return get(errors, `${fieldName}.message`) as string | undefined;
+          }
+          return def.label
+            ? (get(errors, `${name}.${index}.${def.label.toString().toLowerCase()}.message`) as
+                | string
+                | undefined)
+            : undefined;
+        },
       })),
     [definition, errors, name],
   );
@@ -73,7 +79,7 @@ const CAttributeEditor = <TFieldValues extends FieldValues>({
       definition={definitionWithError}
       items={(fields as TFieldValues[]) || []}
       onAddButtonClick={(e) => {
-        if (handleState) {
+        if (handleState && defaultValue !== undefined) {
           append(defaultValue);
         }
         onAddButtonClick?.(e, append);

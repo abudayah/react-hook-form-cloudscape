@@ -54,7 +54,7 @@ const CDateRangePicker = <TFieldValues extends FieldValues>({
       render={({ field: { ref, onBlur: formOnBlur, onChange: formOnChange, value } }) => (
         <DateRangePicker
           ref={ref}
-          value={value as DateRangePickerProps.Value}
+          value={(value ?? null) as unknown as DateRangePickerProps.Value}
           onBlur={(e) => {
             formOnBlur();
             handleOnBlur(e);
