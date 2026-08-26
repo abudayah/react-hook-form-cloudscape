@@ -1,3 +1,24 @@
+## [1.7.11](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.10...v1.7.11) (2025-06-23)
+
+
+### Bug Fixes
+
+* **bug:** bug fixes ([2987160](https://github.com/abudayah/react-hook-form-cloudscape/commit/298716004500faeaf7eca1a9cdcfc6dea15072ed))
+
+## [1.7.10](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.9...v1.7.10) (2025-06-22)
+
+
+### Bug Fixes
+
+* **exports:** update component imports pattern ([a11970b](https://github.com/abudayah/react-hook-form-cloudscape/commit/a11970b402571856bd9377be423633aa536ec3b5))
+
+## [1.7.9](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.8...v1.7.9) (2025-06-21)
+
+
+### Bug Fixes
+
+* **Exports:** correcting the components export paths ([393071c](https://github.com/abudayah/react-hook-form-cloudscape/commit/393071c642296cf10b987cbe4db8e92d2fbf34af))
+
 ## [1.7.9-dev.1](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.8...v1.7.9-dev.1) (2025-06-21)
 
 
