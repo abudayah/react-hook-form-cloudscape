@@ -33,7 +33,7 @@ const CMultiselect = <TFieldValues extends FieldValues>({
   ...props
 }: ControlledMultiselectProps<TFieldValues>) => {
   const handleOnBlur = useCallback(
-    (formOnBlur: () => void, e: NonCancelableCustomEvent<MultiselectProps.MultiselectChangeDetail>) => {
+    (formOnBlur: () => void, e: NonCancelableCustomEvent<object>) => {
       formOnBlur();
       onBlur?.(e);
     },
@@ -62,7 +62,7 @@ const CMultiselect = <TFieldValues extends FieldValues>({
             ref={ref}
             options={options}
             selectedOptions={mapSelectedOptionsWithOptions(options, value)}
-            onBlur={() => handleOnBlur.bind(null, onBlur)}
+            onBlur={handleOnBlur.bind(null, onBlur)}
             onChange={handleOnChange.bind(null, onChange)}
             {...props}
           />

@@ -29,11 +29,9 @@ export const CAutosuggest = <T extends FieldValues>({
   ...props
 }: CAutosuggestProps<T>) => {
   const handleOnBlur = useCallback(
-    (formOnBlur: (value: string) => void, event: NonCancelableCustomEvent<{ value: string } | null>) => {
-      if (event.detail?.value) {
-        formOnBlur(event.detail.value);
-      }
-      onBlur?.(event as NonCancelableCustomEvent<null>);
+    (formOnBlur: () => void, event: NonCancelableCustomEvent<null>) => {
+      formOnBlur();
+      onBlur?.(event);
     },
     [onBlur],
   );
