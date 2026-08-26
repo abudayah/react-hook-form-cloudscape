@@ -40,11 +40,14 @@ const CRadioGroup = <TFieldValues extends FieldValues>({
       control={control}
       defaultValue={defaultValue}
       name={name}
-      render={({ field: { onChange, value } }) => (
+      render={({ field: { ref, onChange, onBlur, value } }) => (
         <RadioGroup
-          items={props.items}
+          ref={ref}
           value={value}
-          onChange={handleOnChange.bind(null, onChange)}
+          onChange={(e) => {
+            handleOnChange(onChange, e);
+            onBlur();
+          }}
           {...props}
         />
       )}

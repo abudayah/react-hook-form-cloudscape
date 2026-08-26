@@ -40,8 +40,16 @@ const CTiles = <TFieldValues extends FieldValues>({
       control={control}
       defaultValue={defaultValue}
       name={name}
-      render={({ field: { onChange, value } }) => (
-        <Tiles items={props.items} value={value} onChange={handleOnChange.bind(null, onChange)} {...props} />
+      render={({ field: { ref, onChange, onBlur, value } }) => (
+        <Tiles
+          ref={ref}
+          value={value}
+          onChange={(e) => {
+            handleOnChange(onChange, e);
+            onBlur();
+          }}
+          {...props}
+        />
       )}
       rules={rules}
       shouldUnregister={shouldUnregister}

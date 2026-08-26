@@ -40,8 +40,15 @@ const CCodeEditor = <TFieldValues extends FieldValues>({
       control={control}
       defaultValue={defaultValue}
       name={name}
-      render={({ field: { onChange, value } }) => (
-        <CodeEditor value={value || ""} onChange={handleOnChange.bind(null, onChange)} {...props} />
+      render={({ field: { onChange, onBlur, value } }) => (
+        <CodeEditor
+          value={value || ""}
+          onChange={(e) => {
+            handleOnChange(onChange, e);
+            onBlur();
+          }}
+          {...props}
+        />
       )}
       rules={rules}
       shouldUnregister={shouldUnregister}

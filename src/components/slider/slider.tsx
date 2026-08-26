@@ -11,7 +11,7 @@ import {
 
 export interface CSliderProps<T extends FieldValues> extends Omit<SliderProps, "value" | "onChange"> {
   name: FieldPath<T>;
-  control: Control<T>;
+  control?: Control<T>;
   rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   defaultValue?: FieldPathValue<T, FieldPath<T>>;
   shouldUnregister?: boolean;
@@ -39,12 +39,13 @@ const CSlider = <TFieldValues extends FieldValues>({
       control={control}
       defaultValue={defaultValue}
       name={name}
-      render={({ field: { onChange: formOnChange, value } }) => (
+      render={({ field: { onChange: formOnChange, onBlur: formOnBlur, value } }) => (
         <Slider
           value={value}
           onChange={(e) => {
             formOnChange(e.detail.value);
             handleOnChange(e);
+            formOnBlur();
           }}
           {...props}
         />
