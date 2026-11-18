@@ -31,14 +31,14 @@ if (bundledRuntimeFiles.length > 0) {
   throw new Error(
     [
       "React runtime verification failed: private React internals were found in the built package.",
-      ...bundledRuntimeFiles.map((file) => ` - ${file}`),
+      ...bundledRuntimeFiles.map((file) => " - " + file),
       "Check that react, react-dom, and all their subpaths are externalized in vite.config.ts.",
-    ].join("\\n"),
+    ].join("\n"),
   );
 }
 
 const hasExternalJsxRuntime = files.some((file) =>
-  /from\\s+["']react\\/jsx-runtime["']/.test(readFileSync(file, "utf8")),
+  /from\s+["']react\/jsx-runtime["']/.test(readFileSync(file, "utf8")),
 );
 
 if (!hasExternalJsxRuntime) {
