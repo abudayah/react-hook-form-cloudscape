@@ -1,3 +1,10 @@
+## [1.7.13](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.12...v1.7.13) (2026-11-18)
+
+
+### Bug Fixes
+
+* externalize React runtime subpaths ([213a169](https://github.com/abudayah/react-hook-form-cloudscape/commit/213a169b46a60edadf1ab5cd852ed53af0d82615))
+
 ## [1.7.12](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.11...v1.7.12) (2026-08-26)
 
 
