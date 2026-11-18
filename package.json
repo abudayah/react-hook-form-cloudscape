@@ -41,7 +41,8 @@
     "lint:fix": "eslint . --fix",
     "prepare": "husky",
     "test": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "postbuild": "node scripts/verify-react-runtime.mjs"
   },
   "lint-staged": {
     "*.{ts,tsx,js,cjs}": [
