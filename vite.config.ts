@@ -30,7 +30,12 @@ export default defineConfig({
       formats: ["es"],
     },
     rollupOptions: {
-      external: [/^@cloudscape-design\/.*$/, "react", "react-dom", "react-hook-form"],
+      // Externalize React package subpaths as well as the package roots. In
+      // particular, bundling react/jsx-runtime embeds the build-time React
+      // version into this library and breaks consumers using another major.
+      external: (id) =>
+        /^@cloudscape-design\//.test(id) ||
+        /^(react|react-dom|react-hook-form)(\/|$)/.test(id),
       output: {
         format: "es",
         exports: "auto",
