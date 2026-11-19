@@ -1,3 +1,14 @@
+## [1.7.14](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.13...v1.7.14) (2026-11-19)
+
+
+### Bug Fixes
+
+* include optional platform packages in lockfile ([0c80fe4](https://github.com/abudayah/react-hook-form-cloudscape/commit/0c80fe4a69224b9c125a27f65c6a50a38f52ef52))
+* release 1.7.14 with RHF blur and disabled-state fixes ([7e0c488](https://github.com/abudayah/react-hook-form-cloudscape/commit/7e0c488208bb8b5569401c1895e46577001b8ed3)), closes [#162](https://github.com/abudayah/react-hook-form-cloudscape/issues/162) [#165](https://github.com/abudayah/react-hook-form-cloudscape/issues/165) [#169](https://github.com/abudayah/react-hook-form-cloudscape/issues/169) [#166](https://github.com/abudayah/react-hook-form-cloudscape/issues/166)
+* resolve build and test dependency issues ([f71aba4](https://github.com/abudayah/react-hook-form-cloudscape/commit/f71aba4a4bad5dfb0ea09c52f0d31d0e4391aafd))
+* restore npm lockfile for clean installs ([63ab1e1](https://github.com/abudayah/react-hook-form-cloudscape/commit/63ab1e147be92bc3d3ff788d0831473845e0d84f))
+* run package export verification only after build ([4abc937](https://github.com/abudayah/react-hook-form-cloudscape/commit/4abc9377ec0e67688c7a0c97cd821020e7823ab3))
+
 ## [1.7.13](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.12...v1.7.13) (2026-11-18)
 
 
