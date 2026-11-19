@@ -33,7 +33,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "npm run clean && npm run test:coverage && tsc --noEmit && vite build && npm run test:exports",
+    "build": "npm run clean && npm run test:coverage && tsc --noEmit && vite build && npm run verify:exports",
     "clean": "rm -rf dist",
     "dry-run": "npx semantic-release --dry-run > dry-run-output.txt",
     "format": "prettier --write .",
@@ -42,7 +42,7 @@
     "prepare": "husky",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
-    "test:exports": "vitest run src/tests/exports.test.ts",
+    "verify:exports": "node scripts/verify-package-exports.mjs",
     "postbuild": "node scripts/verify-react-runtime.mjs"
   },
   "lint-staged": {
