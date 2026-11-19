@@ -1,26 +1,22 @@
 // @vitest-environment jsdom
 
 import { fireEvent, render, screen } from "@testing-library/react";
+import { forwardRef } from "react";
 import { useForm } from "react-hook-form";
 import { describe, expect, it, vi } from "vitest";
 
 import CToggle from "./toggle";
 
 vi.mock("@cloudscape-design/components", () => ({
-  Toggle: ({
-    checked,
-    disabled,
-    name,
-    onBlur,
-    onChange,
-  }: {
+  Toggle: forwardRef<HTMLInputElement, {
     checked?: boolean;
     disabled?: boolean;
     name?: string;
     onBlur?: React.FocusEventHandler<HTMLInputElement>;
-    onChange?: () => void;
-  }) => (
+    onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  }>(({ checked, disabled, name, onBlur, onChange }, ref) => (
     <input
+      ref={ref}
       aria-label="toggle"
       type="checkbox"
       checked={checked}
@@ -29,7 +25,7 @@ vi.mock("@cloudscape-design/components", () => ({
       onBlur={onBlur}
       onChange={onChange}
     />
-  ),
+  )),
 }));
 
 describe("CToggle", () => {
