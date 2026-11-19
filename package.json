@@ -34,6 +34,7 @@
   ],
   "scripts": {
     "build": "npm run clean && npm run test:coverage && tsc --noEmit && vite build && npm run verify:exports",
+    "postbuild": "node scripts/verify-react-runtime.mjs",
     "clean": "rm -rf dist",
     "dry-run": "npx semantic-release --dry-run > dry-run-output.txt",
     "format": "prettier --write .",
@@ -42,8 +43,7 @@
     "prepare": "husky",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
-    "verify:exports": "node scripts/verify-package-exports.mjs",
-    "postbuild": "node scripts/verify-react-runtime.mjs"
+    "verify:exports": "node scripts/verify-package-exports.mjs"
   },
   "lint-staged": {
     "*.{ts,tsx,js,cjs}": [
@@ -62,6 +62,7 @@
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/npm": "^12.0.1",
     "@semantic-release/release-notes-generator": "^14.0.3",
+    "@testing-library/dom": "^10.0.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@types/node": "^24.0.3",
@@ -69,7 +70,8 @@
     "@types/react-dom": "^19.1.5",
     "@vitejs/plugin-react": "^4.4.1",
     "@vitest/coverage-v8": "^3.1.2",
-    "@vitest/eslint-plugin": "^1.2.5",
+    "@vitest/eslint-plugin": "1.2.5",
+    "ajv": "^8.20.0",
     "eslint": "^9.27.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-import": "^2.31.0",
