@@ -25,6 +25,8 @@ const CToggle = <TFieldValues extends FieldValues>({
   rules,
   shouldUnregister = false,
   onChange,
+  onBlur,
+  disabled,
   ...props
 }: CToggleProps<TFieldValues>) => {
   const handleOnChange = useCallback(
@@ -40,12 +42,17 @@ const CToggle = <TFieldValues extends FieldValues>({
       control={control}
       defaultValue={defaultValue}
       name={name}
-      render={({ field: { ref, onChange, onBlur, value = false } }) => (
+      disabled={disabled}
+      render={({ field: { ref, onChange, onBlur: formOnBlur, value = false, disabled: fieldDisabled } }) => (
         <Toggle
           ref={ref}
           checked={value}
+          disabled={fieldDisabled}
           name={name}
-          onBlur={onBlur}
+          onBlur={(e) => {
+            formOnBlur(e);
+            onBlur?.(e);
+          }}
           onChange={handleOnChange.bind(null, onChange)}
           {...props}
         />

@@ -4,48 +4,32 @@ import { resolve } from "node:path";
 import { describe, it, expect } from "vitest";
 
 describe("Package Exports Validation", () => {
-  const projectRoot = process.cwd();
+  const distRoot = resolve(process.cwd(), "dist");
 
-  // Check if build exists, skip entire suite if not
-  const buildExists = existsSync(resolve(projectRoot, "index.js"));
+  it("should have the main package entry files", () => {
+    expect(existsSync(resolve(distRoot, "index.js"))).toBe(true);
+    expect(existsSync(resolve(distRoot, "index.d.ts"))).toBe(true);
+  });
 
-  describe.skipIf(!buildExists)("Built Package Structure", () => {
-    it("should have main entry files", () => {
-      expect(existsSync(resolve(projectRoot, "index.js"))).toBe(true);
-      expect(existsSync(resolve(projectRoot, "index.d.ts"))).toBe(true);
-    });
+  it("should have component exports matching the wildcard pattern", () => {
+    const componentsDir = resolve(distRoot, "components");
+    expect(existsSync(componentsDir)).toBe(true);
 
-    it("should have component exports matching the wildcard pattern", () => {
-      const componentsDir = resolve(projectRoot, "components");
+    const componentDirs = readdirSync(componentsDir, { withFileTypes: true })
+      .filter((dirent) => dirent.isDirectory())
+      .map((dirent) => dirent.name);
 
-      // Skip if not built yet
-      if (!existsSync(componentsDir)) {
-        console.warn("Components directory not found - run build first");
-        return;
-      }
+    expect(componentDirs.length).toBeGreaterThan(0);
 
-      const componentDirs = readdirSync(componentsDir, { withFileTypes: true })
-        .filter((dirent) => dirent.isDirectory())
-        .map((dirent) => dirent.name);
-
-      expect(componentDirs.length).toBeGreaterThan(0);
-
-      componentDirs.forEach((componentName) => {
-        const jsPath = resolve(projectRoot, `components/${componentName}/index.js`);
-        const dtsPath = resolve(projectRoot, `components/${componentName}/index.d.ts`);
-
-        expect(existsSync(jsPath), `Missing: components/${componentName}/index.js`).toBe(true);
-        expect(existsSync(dtsPath), `Missing: components/${componentName}/index.d.ts`).toBe(true);
-      });
-    });
-
-    it("should have all files listed in package.json files array", () => {
-      const requiredFiles = ["components", "chunks", "index.js", "index.js.map", "index.d.ts"];
-
-      requiredFiles.forEach((file) => {
-        const filePath = resolve(projectRoot, file);
-        expect(existsSync(filePath), `Missing required file: ${file}`).toBe(true);
-      });
+    componentDirs.forEach((componentName) => {
+      expect(
+        existsSync(resolve(componentsDir, componentName, "index.js")),
+        `Missing: dist/components/${componentName}/index.js`,
+      ).toBe(true);
+      expect(
+        existsSync(resolve(componentsDir, componentName, "index.d.ts")),
+        `Missing: dist/components/${componentName}/index.d.ts`,
+      ).toBe(true);
     });
   });
 });

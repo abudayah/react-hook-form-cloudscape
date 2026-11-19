@@ -25,6 +25,8 @@ const CCheckbox = <TFieldValues extends FieldValues>({
   rules,
   shouldUnregister = false,
   onChange,
+  onBlur,
+  disabled,
   ...props
 }: CCheckboxProps<TFieldValues>) => {
   const handleOnChange = useCallback(
@@ -40,12 +42,18 @@ const CCheckbox = <TFieldValues extends FieldValues>({
       control={control}
       defaultValue={defaultValue}
       name={name}
-      render={({ field: { ref, onChange, onBlur, value } }) => (
+      disabled={disabled}
+      render={({ field: { ref, onChange, onBlur: formOnBlur, value, disabled: fieldDisabled } }) => (
         <Checkbox
           ref={ref}
           checked={value}
-          onBlur={onBlur}
+          disabled={fieldDisabled}
+          onBlur={(e) => {
+            formOnBlur(e);
+            onBlur?.(e);
+          }}
           onChange={handleOnChange.bind(null, onChange)}
+          name={name}
           {...props}
         />
       )}
