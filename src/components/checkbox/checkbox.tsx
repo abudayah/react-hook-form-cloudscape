@@ -49,7 +49,7 @@ const CCheckbox = <TFieldValues extends FieldValues>({
           checked={value}
           disabled={fieldDisabled}
           onBlur={(e) => {
-            formOnBlur(e);
+            formOnBlur();
             onBlur?.(e);
           }}
           onChange={handleOnChange.bind(null, onChange)}

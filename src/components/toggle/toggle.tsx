@@ -50,7 +50,7 @@ const CToggle = <TFieldValues extends FieldValues>({
           disabled={fieldDisabled}
           name={name}
           onBlur={(e) => {
-            formOnBlur(e);
+            formOnBlur();
             onBlur?.(e);
           }}
           onChange={handleOnChange.bind(null, onChange)}
