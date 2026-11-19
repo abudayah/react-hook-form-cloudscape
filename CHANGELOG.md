@@ -1,3 +1,11 @@
+## [1.7.15](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.14...v1.7.15) (2026-11-19)
+
+
+### Bug Fixes
+
+* make prepare lifecycle safe for npm ci dry run ([a9dfbfa](https://github.com/abudayah/react-hook-form-cloudscape/commit/a9dfbfa4918cc18fac6743e47d33ac114b65acf8))
+* skip Husky setup during npm dry run ([495a1d0](https://github.com/abudayah/react-hook-form-cloudscape/commit/495a1d01398844bceda93134fb23ee8439a70407))
+
 ## [1.7.14](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.13...v1.7.14) (2026-11-19)
 
 
