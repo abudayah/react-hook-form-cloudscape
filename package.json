@@ -40,7 +40,7 @@
     "format": "prettier --write .",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "prepare": "husky",
+    "prepare": "node scripts/prepare.mjs",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "verify:exports": "node scripts/verify-package-exports.mjs"
@@ -92,15 +92,13 @@
     "typescript-eslint": "^8.32.1",
     "vite": "^6.3.3",
     "vite-plugin-dts": "^4.5.3",
-    "vitest": "^3.1.2"
+    "vitest": "^3.1.2",
+    "glob": "^10.5.0"
   },
   "peerDependencies": {
     "@cloudscape-design/components": ">=3.0.0",
     "react": ">=16.8.0",
     "react-hook-form": ">=7.0.0"
-  },
-  "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "*"
   },
   "publishConfig": {
     "access": "public"
