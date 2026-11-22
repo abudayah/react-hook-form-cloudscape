@@ -6,7 +6,7 @@ import { CPropertyFilter } from "./property-filter";
 
 const UnseededPropertyFilter = () => {
   const { control } = useForm<{ filter: unknown }>();
-  return <CPropertyFilter control={control} name="filter" />;
+  return <CPropertyFilter control={control} name="filter" filteringProperties={[]} />;
 };
 
 describe("CPropertyFilter", () => {
