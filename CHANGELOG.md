@@ -1,3 +1,17 @@
+# [2.1.0](https://github.com/abudayah/react-hook-form-cloudscape/compare/v2.0.0...v2.1.0) (2026-11-22)
+
+
+### Bug Fixes
+
+* **package:** align exports and peer ranges with published artifacts ([7f96ace](https://github.com/abudayah/react-hook-form-cloudscape/commit/7f96ace7bb663215c548d1084639f113083b23d3))
+* **property-filter:** make onChange optional ([b86b79a](https://github.com/abudayah/react-hook-form-cloudscape/commit/b86b79a304c5274de08b16448e263b016f85bf94))
+* **release:** restore permissions and publish provenance ([3b8f944](https://github.com/abudayah/react-hook-form-cloudscape/commit/3b8f9440e4e7c6e1eef0dbaf64252b1634522573))
+
+
+### Features
+
+* **form-field:** connect React Hook Form errors to Cloudscape ([3611f4a](https://github.com/abudayah/react-hook-form-cloudscape/commit/3611f4a7853be6ef8ca86b1f8e63b7ba4f8c5bef))
+
 # [2.0.0](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.15...v2.0.0) (2026-11-22)
 
 
