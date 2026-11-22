@@ -39,15 +39,21 @@ const CCodeEditor = <TFieldValues extends FieldValues, TName extends FieldPath<T
       control={control}
       defaultValue={defaultValue}
       name={name}
-      render={({ field: { onChange, onBlur, value } }) => (
-        <CodeEditor
-          value={value || ""}
-          onChange={(e) => {
-            handleOnChange(onChange, e);
-            onBlur();
+      render={({ field: { ref, onChange, onBlur, value } }) => (
+        <div
+          onBlur={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+              onBlur();
+            }
           }}
-          {...props}
-        />
+        >
+          <CodeEditor
+            ref={ref}
+            value={value || ""}
+            onChange={(e) => handleOnChange(onChange, e)}
+            {...props}
+          />
+        </div>
       )}
       rules={rules}
       shouldUnregister={shouldUnregister}
