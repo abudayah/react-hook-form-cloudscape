@@ -28,7 +28,8 @@ describe("MultiSelectUtils", () => {
     });
 
     it("should handle nested grouped options", () => {
-      const options: MultiselectProps.Options = [
+      // Cloudscape types only allow one level of grouping; nested groups are exercised at runtime.
+      const options = [
         {
           label: "Group 1",
           options: [
@@ -43,7 +44,7 @@ describe("MultiSelectUtils", () => {
           ],
         },
         { label: "Option 4", value: "4" },
-      ];
+      ] as unknown as MultiselectProps.Options;
       expect(transformMultiselectOptionsToArray(options)).toEqual(["1", "2", "3", "4"]);
     });
   });
@@ -78,7 +79,8 @@ describe("MultiSelectUtils", () => {
     });
 
     it("should handle nested grouped options", () => {
-      const options: MultiselectProps.Options = [
+      // Cloudscape types only allow one level of grouping; nested groups are exercised at runtime.
+      const options = [
         {
           label: "Group 1",
           options: [
@@ -93,7 +95,7 @@ describe("MultiSelectUtils", () => {
           ],
         },
         { label: "Option 4", value: "4" },
-      ];
+      ] as unknown as MultiselectProps.Options;
       const selectedOptions = ["2", "4"];
       expect(mapSelectedOptionsWithOptions(options, selectedOptions)).toEqual([
         { label: "Option 2", value: "2" },

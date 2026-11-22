@@ -34,12 +34,12 @@
   ],
   "scripts": {
     "build": "npm run clean && npm run test:coverage && tsc --noEmit && vite build && npm run verify:exports",
+    "postbuild": "node scripts/verify-react-runtime.mjs",
     "clean": "rm -rf dist",
     "dry-run": "npx semantic-release --dry-run > dry-run-output.txt",
     "format": "prettier --write .",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "postbuild": "node scripts/verify-react-runtime.mjs",
     "prepare": "node scripts/prepare.mjs",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
