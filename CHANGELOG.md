@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/abudayah/react-hook-form-cloudscape/compare/v2.1.0...v2.1.1) (2026-11-22)
+
+
+### Bug Fixes
+
+* **forms:** track touched state on actual blur ([debe578](https://github.com/abudayah/react-hook-form-cloudscape/commit/debe5789a780e40dd4ff59a775394074d8114582))
+
 # [2.1.0](https://github.com/abudayah/react-hook-form-cloudscape/compare/v2.0.0...v2.1.0) (2026-11-22)
 
 
