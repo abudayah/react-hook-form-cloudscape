@@ -1,2 +1,2 @@
-export { default } from "./multiselect";
-export type { CMultiselectProps } from "./multiselect";
+export { default } from "./multiselect.js";
+export type { CMultiselectProps } from "./multiselect.js";

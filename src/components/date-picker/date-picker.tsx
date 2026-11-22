@@ -9,17 +9,21 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CDatePickerProps<T extends FieldValues> extends Omit<DatePickerProps, "value"> {
-  name: FieldPath<T>;
+export interface CDatePickerProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
+  extends Omit<DatePickerProps, "value"> {
+  name: TName;
   control?: Control<T>;
-  defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
+  defaultValue?: FieldPathValue<T, TName>;
+  rules?: Omit<RegisterOptions<T, TName>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
   onBlur?: DatePickerProps["onBlur"];
   onChange?: DatePickerProps["onChange"];
 }
 
-const CDatePicker = <TFieldValues extends FieldValues>({
+const CDatePicker = <
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>({
   name,
   control,
   defaultValue,
@@ -28,7 +32,7 @@ const CDatePicker = <TFieldValues extends FieldValues>({
   onBlur,
   onChange,
   ...props
-}: CDatePickerProps<TFieldValues>) => {
+}: CDatePickerProps<TFieldValues, TName>) => {
   const handleOnBlur = useCallback(
     (event: NonCancelableCustomEvent<null>) => {
       onBlur?.(event);

@@ -1,2 +1,2 @@
-export { default } from "./autosuggest";
-export type { CAutosuggestProps } from "./autosuggest";
+export { default } from "./autosuggest.js";
+export type { CAutosuggestProps } from "./autosuggest.js";

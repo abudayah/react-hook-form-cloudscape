@@ -1,2 +1,2 @@
-export { default } from "./input";
-export type { CInputProps } from "./input";
+export { default } from "./input.js";
+export type { CInputProps } from "./input.js";

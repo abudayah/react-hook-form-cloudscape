@@ -6,19 +6,22 @@ import {
   FieldPath,
   FieldPathValue,
   FieldValues,
-  Path,
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CCodeEditorProps<T extends FieldValues> extends Omit<CodeEditorProps, "value"> {
-  name: Path<T>;
+export interface CCodeEditorProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
+  extends Omit<CodeEditorProps, "value"> {
+  name: TName;
   control?: Control<T>;
-  defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
+  defaultValue?: FieldPathValue<T, TName>;
+  rules?: Omit<RegisterOptions<T, TName>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
 }
 
-const CCodeEditor = <TFieldValues extends FieldValues>({
+const CCodeEditor = <
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>({
   name,
   control,
   onChange,
@@ -26,7 +29,7 @@ const CCodeEditor = <TFieldValues extends FieldValues>({
   rules,
   shouldUnregister = false,
   ...props
-}: CCodeEditorProps<TFieldValues>) => {
+}: CCodeEditorProps<TFieldValues, TName>) => {
   const handleOnChange = useCallback(
     (formOnChange: (value: string) => void, e: NonCancelableCustomEvent<CodeEditorProps.ChangeDetail>) => {
       formOnChange(e.detail.value);
@@ -40,15 +43,21 @@ const CCodeEditor = <TFieldValues extends FieldValues>({
       control={control}
       defaultValue={defaultValue}
       name={name}
-      render={({ field: { onChange, onBlur, value } }) => (
-        <CodeEditor
-          value={value || ""}
-          onChange={(e) => {
-            handleOnChange(onChange, e);
-            onBlur();
+      render={({ field: { ref, onChange, onBlur, value } }) => (
+        <div
+          onBlur={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+              onBlur();
+            }
           }}
-          {...props}
-        />
+        >
+          <CodeEditor
+            ref={ref}
+            value={value || ""}
+            onChange={(e) => handleOnChange(onChange, e)}
+            {...props}
+          />
+        </div>
       )}
       rules={rules}
       shouldUnregister={shouldUnregister}

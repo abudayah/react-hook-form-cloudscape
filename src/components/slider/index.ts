@@ -1,2 +1,2 @@
-export { default } from "./slider";
-export type { CSliderProps } from "./slider";
+export { default } from "./slider.js";
+export type { CSliderProps } from "./slider.js";

@@ -6,19 +6,19 @@ import {
   FieldPath,
   FieldPathValue,
   FieldValues,
-  Path,
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CAutosuggestProps<T extends FieldValues> extends Omit<AutosuggestProps, "value"> {
-  name: Path<T>;
+export interface CAutosuggestProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
+  extends Omit<AutosuggestProps, "value"> {
+  name: TName;
   control?: Control<T>;
-  defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
+  defaultValue?: FieldPathValue<T, TName>;
+  rules?: Omit<RegisterOptions<T, TName>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
 }
 
-export const CAutosuggest = <T extends FieldValues>({
+export const CAutosuggest = <T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>({
   name,
   control,
   defaultValue,
@@ -27,7 +27,7 @@ export const CAutosuggest = <T extends FieldValues>({
   onBlur,
   onChange,
   ...props
-}: CAutosuggestProps<T>) => {
+}: CAutosuggestProps<T, TName>) => {
   const handleOnBlur = useCallback(
     (formOnBlur: () => void, event: NonCancelableCustomEvent<null>) => {
       formOnBlur();

@@ -6,19 +6,22 @@ import {
   FieldPath,
   FieldPathValue,
   FieldValues,
-  Path,
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CTimeInputProps<T extends FieldValues> extends Omit<TimeInputProps, "value"> {
-  name: Path<T>;
+export interface CTimeInputProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
+  extends Omit<TimeInputProps, "value"> {
+  name: TName;
   control?: Control<T>;
-  defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
+  defaultValue?: FieldPathValue<T, TName>;
+  rules?: Omit<RegisterOptions<T, TName>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
 }
 
-const CTimeInput = <TFieldValues extends FieldValues>({
+const CTimeInput = <
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>({
   name,
   control,
   defaultValue,
@@ -27,7 +30,7 @@ const CTimeInput = <TFieldValues extends FieldValues>({
   onBlur,
   onChange,
   ...props
-}: CTimeInputProps<TFieldValues>) => {
+}: CTimeInputProps<TFieldValues, TName>) => {
   const handleOnBlur = useCallback(
     (formOnBlur: () => void, e: NonCancelableCustomEvent<null>) => {
       formOnBlur();

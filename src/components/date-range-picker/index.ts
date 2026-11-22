@@ -1,2 +1,2 @@
-export { default } from "./date-range-picker";
-export type { CDateRangePickerProps } from "./date-range-picker";
+export { default } from "./date-range-picker.js";
+export type { CDateRangePickerProps } from "./date-range-picker.js";
