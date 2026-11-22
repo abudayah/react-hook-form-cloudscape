@@ -6,19 +6,18 @@ import {
   FieldPath,
   FieldPathValue,
   FieldValues,
-  Path,
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CTextareaProps<T extends FieldValues> extends Omit<TextareaProps, "value"> {
-  name: Path<T>;
+export interface CTextareaProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>> extends Omit<TextareaProps, "value"> {
+  name: TName;
   control?: Control<T>;
-  defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
+  defaultValue?: FieldPathValue<T, TName>;
+  rules?: Omit<RegisterOptions<T, TName>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
 }
 
-const CTextarea = <TFieldValues extends FieldValues>({
+const CTextarea = <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>({
   name,
   control,
   defaultValue,
@@ -27,7 +26,7 @@ const CTextarea = <TFieldValues extends FieldValues>({
   onBlur,
   onChange,
   ...props
-}: CTextareaProps<TFieldValues>) => {
+}: CTextareaProps<TFieldValues, TName>) => {
   const handleOnBlur = useCallback(
     (formOnBlur: () => void, e: NonCancelableCustomEvent<null>) => {
       formOnBlur();

@@ -6,19 +6,18 @@ import {
   FieldPath,
   FieldPathValue,
   FieldValues,
-  Path,
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CTilesProps<T extends FieldValues> extends Omit<TilesProps, "value"> {
-  name: Path<T>;
+export interface CTilesProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>> extends Omit<TilesProps, "value"> {
+  name: TName;
   control?: Control<T>;
-  defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
+  defaultValue?: FieldPathValue<T, TName>;
+  rules?: Omit<RegisterOptions<T, TName>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
 }
 
-const CTiles = <TFieldValues extends FieldValues>({
+const CTiles = <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>({
   name,
   control,
   onChange,
@@ -26,7 +25,7 @@ const CTiles = <TFieldValues extends FieldValues>({
   rules,
   shouldUnregister = false,
   ...props
-}: CTilesProps<TFieldValues>) => {
+}: CTilesProps<TFieldValues, TName>) => {
   const handleOnChange = useCallback(
     (formOnChange: (value: string) => void, e: NonCancelableCustomEvent<TilesProps.ChangeDetail>) => {
       formOnChange(e.detail.value);

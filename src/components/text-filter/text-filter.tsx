@@ -6,19 +6,18 @@ import {
   FieldPath,
   FieldPathValue,
   FieldValues,
-  Path,
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CTextFilterProps<T extends FieldValues> extends Omit<TextFilterProps, "filteringText"> {
-  name: Path<T>;
+export interface CTextFilterProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>> extends Omit<TextFilterProps, "filteringText"> {
+  name: TName;
   control?: Control<T>;
-  defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
+  defaultValue?: FieldPathValue<T, TName>;
+  rules?: Omit<RegisterOptions<T, TName>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
 }
 
-const CTextFilter = <TFieldValues extends FieldValues>({
+const CTextFilter = <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>({
   name,
   control,
   defaultValue,
@@ -26,7 +25,7 @@ const CTextFilter = <TFieldValues extends FieldValues>({
   shouldUnregister = false,
   onChange,
   ...props
-}: CTextFilterProps<TFieldValues>) => {
+}: CTextFilterProps<TFieldValues, TName>) => {
   const handleOnChange = useCallback(
     (formOnChange: (value: string) => void, e: NonCancelableCustomEvent<TextFilterProps.ChangeDetail>) => {
       formOnChange(e.detail.filteringText);
