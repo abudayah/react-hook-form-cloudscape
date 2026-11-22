@@ -10,19 +10,18 @@ import {
   FieldPath,
   FieldPathValue,
   FieldValues,
-  Path,
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CDateRangePickerProps<T extends FieldValues> extends Omit<DateRangePickerProps, "value"> {
-  name: Path<T>;
+export interface CDateRangePickerProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>> extends Omit<DateRangePickerProps, "value"> {
+  name: TName;
   control?: Control<T>;
-  defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
+  defaultValue?: FieldPathValue<T, TName>;
+  rules?: Omit<RegisterOptions<T, TName>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
 }
 
-const CDateRangePicker = <TFieldValues extends FieldValues>({
+const CDateRangePicker = <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>({
   name,
   control,
   onBlur,
@@ -31,7 +30,7 @@ const CDateRangePicker = <TFieldValues extends FieldValues>({
   rules,
   shouldUnregister = false,
   ...props
-}: CDateRangePickerProps<TFieldValues>) => {
+}: CDateRangePickerProps<TFieldValues, TName>) => {
   const handleOnBlur = useCallback(
     (event: NonCancelableCustomEvent<null>) => {
       onBlur?.(event);

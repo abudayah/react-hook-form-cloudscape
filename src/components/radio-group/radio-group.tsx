@@ -6,19 +6,18 @@ import {
   FieldPath,
   FieldPathValue,
   FieldValues,
-  Path,
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CRadioGroupProps<T extends FieldValues> extends Omit<RadioGroupProps, "value"> {
-  name: Path<T>;
+export interface CRadioGroupProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>> extends Omit<RadioGroupProps, "value"> {
+  name: TName;
   control?: Control<T>;
-  defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
+  defaultValue?: FieldPathValue<T, TName>;
+  rules?: Omit<RegisterOptions<T, TName>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
 }
 
-const CRadioGroup = <TFieldValues extends FieldValues>({
+const CRadioGroup = <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>({
   name,
   control,
   onChange,
@@ -26,7 +25,7 @@ const CRadioGroup = <TFieldValues extends FieldValues>({
   defaultValue,
   shouldUnregister = false,
   ...props
-}: CRadioGroupProps<TFieldValues>) => {
+}: CRadioGroupProps<TFieldValues, TName>) => {
   const handleOnChange = useCallback(
     (formOnChange: (value: string) => void, e: NonCancelableCustomEvent<RadioGroupProps.ChangeDetail>) => {
       formOnChange(e.detail.value);

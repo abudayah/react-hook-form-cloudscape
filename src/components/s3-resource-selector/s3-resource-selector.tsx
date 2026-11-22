@@ -13,16 +13,16 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CS3ResourceSelectorProps<T extends FieldValues>
+export interface CS3ResourceSelectorProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
   extends Omit<S3ResourceSelectorProps, "resource"> {
-  name: FieldPath<T>;
+  name: TName;
   control?: Control<T>;
-  defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
+  defaultValue?: FieldPathValue<T, TName>;
+  rules?: Omit<RegisterOptions<T, TName>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
 }
 
-export const CS3ResourceSelector = <TFieldValues extends FieldValues>({
+export const CS3ResourceSelector = <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>({
   name,
   control,
   defaultValue,
@@ -30,7 +30,7 @@ export const CS3ResourceSelector = <TFieldValues extends FieldValues>({
   shouldUnregister = false,
   onChange,
   ...props
-}: CS3ResourceSelectorProps<TFieldValues>) => {
+}: CS3ResourceSelectorProps<TFieldValues, TName>) => {
   const handleOnChange = useCallback(
     (
       formOnChange: (resource: S3ResourceSelectorProps.Resource) => void,
