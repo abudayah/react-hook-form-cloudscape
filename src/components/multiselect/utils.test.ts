@@ -113,5 +113,16 @@ describe("MultiSelectUtils", () => {
         { label: "Option 4", value: "4" },
       ]);
     });
+
+    it("should preserve empty-string selections and skip options without string values", () => {
+      const options: MultiselectProps.Options = [
+        { label: "Missing" },
+        { label: "None", value: "" },
+        { label: "One", value: "1" },
+      ];
+
+      expect(transformMultiselectOptionsToArray(options)).toEqual(["", "1"]);
+      expect(mapSelectedOptionsWithOptions(options, [""])).toEqual([{ label: "None", value: "" }]);
+    });
   });
 });

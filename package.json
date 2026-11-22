@@ -46,8 +46,9 @@
     "lint:fast": "oxlint --react-plugin --import-plugin src",
     "lint:fix": "eslint . --fix",
     "prepare": "node scripts/prepare.mjs",
-    "test": "vitest",
-    "test:coverage": "vitest run --coverage",
+    "test": "vitest --project unit",
+    "test:browser": "vitest run --project browser",
+    "test:coverage": "vitest run --project unit --coverage",
     "typecheck:tests": "tsc --project tsconfig.tests.json --noEmit",
     "verify:exports": "node scripts/verify-package-exports.mjs",
     "verify:lockfile": "node scripts/verify-lockfile-integrity.mjs",
@@ -79,6 +80,8 @@
     "@types/react": "^19.1.4",
     "@types/react-dom": "^19.1.5",
     "@vitejs/plugin-react": "^6.3.0",
+    "@vitest/browser": "5.1.1",
+    "@vitest/browser-playwright": "5.1.1",
     "@vitest/coverage-v8": "^5.1.1",
     "@vitest/eslint-plugin": "1.2.5",
     "ajv": "^8.20.0",
@@ -95,6 +98,7 @@
     "jsdom": "^26.1.0",
     "lint-staged": "^16.1.2",
     "oxlint": "1.94.0",
+    "playwright": "1.65.1",
     "prettier": "3.5.3",
     "publint": "0.3.25",
     "react": "^19.3.1",
@@ -105,7 +109,8 @@
     "typescript-eslint": "^8.32.1",
     "vite": "^8.3.8",
     "vite-plugin-dts": "^5.1.2",
-    "vitest": "^5.1.1"
+    "vitest": "^5.1.1",
+    "vitest-browser-react": "2.3.0"
   },
   "peerDependencies": {
     "@cloudscape-design/components": ">=3.0.622",
