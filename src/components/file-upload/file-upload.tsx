@@ -9,15 +9,19 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CFileUploadProps<T extends FieldValues> extends Omit<FileUploadProps, "value"> {
-  name: FieldPath<T>;
+export interface CFileUploadProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
+  extends Omit<FileUploadProps, "value"> {
+  name: TName;
   control?: Control<T>;
-  defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
+  defaultValue?: FieldPathValue<T, TName>;
+  rules?: Omit<RegisterOptions<T, TName>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
 }
 
-export const CFileUpload = <TFieldValues extends FieldValues>({
+export const CFileUpload = <
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>({
   name,
   control,
   defaultValue,
@@ -25,7 +29,7 @@ export const CFileUpload = <TFieldValues extends FieldValues>({
   shouldUnregister = false,
   onChange,
   ...props
-}: CFileUploadProps<TFieldValues>) => {
+}: CFileUploadProps<TFieldValues, TName>) => {
   const generateFilesArray = (files: File[]) => {
     return files?.length ? files : [];
   };
