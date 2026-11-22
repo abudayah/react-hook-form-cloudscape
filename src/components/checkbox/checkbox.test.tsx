@@ -1,32 +1,8 @@
-// @vitest-environment jsdom
-
 import { fireEvent, render, screen } from "@testing-library/react";
-import { forwardRef } from "react";
 import { useForm } from "react-hook-form";
 import { describe, expect, it, vi } from "vitest";
 
 import CCheckbox from "./checkbox";
-
-vi.mock("@cloudscape-design/components", () => ({
-  Checkbox: forwardRef<HTMLInputElement, {
-    checked?: boolean;
-    disabled?: boolean;
-    name?: string;
-    onBlur?: React.FocusEventHandler<HTMLInputElement>;
-    onChange?: React.ChangeEventHandler<HTMLInputElement>;
-  }>(({ checked, disabled, name, onBlur, onChange }, ref) => (
-    <input
-      ref={ref}
-      aria-label="checkbox"
-      type="checkbox"
-      checked={checked}
-      disabled={disabled}
-      name={name}
-      onBlur={onBlur}
-      onChange={onChange}
-    />
-  )),
-}));
 
 describe("CCheckbox", () => {
   it("preserves the React Hook Form blur handler when an external onBlur is provided", () => {
@@ -40,7 +16,9 @@ describe("CCheckbox", () => {
 
       return (
         <>
-          <CCheckbox control={control} name="enabled" onBlur={externalOnBlur} />
+          <CCheckbox control={control} name="enabled" onBlur={externalOnBlur}>
+            Enabled
+          </CCheckbox>
           <output>{formState.touchedFields.enabled ? "touched" : "untouched"}</output>
         </>
       );
@@ -48,7 +26,7 @@ describe("CCheckbox", () => {
 
     render(<Form />);
 
-    fireEvent.blur(screen.getByLabelText("checkbox"));
+    fireEvent.blur(screen.getByRole("checkbox", { name: "Enabled" }));
 
     expect(externalOnBlur).toHaveBeenCalledTimes(1);
     expect(screen.getByText("touched")).toBeInTheDocument();
@@ -60,12 +38,16 @@ describe("CCheckbox", () => {
         defaultValues: { enabled: false },
       });
 
-      return <CCheckbox control={control} name="enabled" disabled />;
+      return (
+        <CCheckbox control={control} name="enabled" disabled>
+          Enabled
+        </CCheckbox>
+      );
     };
 
     render(<Form />);
 
-    const checkbox = screen.getByLabelText("checkbox");
+    const checkbox = screen.getByRole("checkbox", { name: "Enabled" });
     expect(checkbox).toHaveAttribute("name", "enabled");
     expect(checkbox).toBeDisabled();
   });

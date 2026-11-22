@@ -77,5 +77,11 @@ describe("SelectUtils", () => {
       const result = SelectUtils.mapSelectedOptionWithOptions(options, selectedOption);
       expect(result).toEqual({ label: "Option 3", value: "value3" });
     });
+
+    it("should return an option whose value is the empty string", () => {
+      const options: SelectProps.Options = [{ label: "None", value: "" }];
+
+      expect(SelectUtils.mapSelectedOptionWithOptions(options, "")).toEqual({ label: "None", value: "" });
+    });
   });
 });
