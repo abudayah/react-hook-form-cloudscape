@@ -2,6 +2,7 @@
   "name": "react-hook-form-cloudscape",
   "version": "2.1.1",
   "description": "A React Hook Form wrapper designed for effortless integration of validations into Cloudscape forms and inputs",
+  "author": "abudayah <anas.abudayah@gmail.com>",
   "keywords": [
     "react",
     "react-hook-form",
@@ -31,6 +32,7 @@
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "sideEffects": false,
   "files": [
     "dist"
   ],
@@ -80,7 +82,7 @@
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsonc": "^2.20.1",
-    "eslint-plugin-package-json": "^0.33.2",
+    "eslint-plugin-package-json": "^1.14.0",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "glob": "^10.5.0",
@@ -112,8 +114,5 @@
   },
   "engines": {
     "node": ">=22.12.0"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
