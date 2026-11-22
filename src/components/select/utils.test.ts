@@ -17,6 +17,12 @@ describe("SelectUtils", () => {
       expect(result).toBeNull();
     });
 
+    it("should preserve an empty-string option value", () => {
+      const options: SelectProps.Options = [{ label: "None", value: "" }];
+      const result = SelectUtils.mapSelectedOptionWithOptions(options, "");
+      expect(result).toEqual({ label: "None", value: "" });
+    });
+
     it("should return null if selectedOption is not found in the options", () => {
       const options: SelectProps.Options = [{ label: "Option 1", value: "value1" }];
       const selectedOption = "value2";

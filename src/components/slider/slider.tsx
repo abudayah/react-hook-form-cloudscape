@@ -1,7 +1,5 @@
 import { NonCancelableCustomEvent, Slider, SliderProps } from "@cloudscape-design/components";
 import { useCallback } from "react";
-
-import { FocusBoundary } from "../../utils/focus-boundary";
 import {
   Control,
   Controller,
@@ -11,16 +9,22 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CSliderProps<T extends FieldValues> extends Omit<SliderProps, "value" | "onChange"> {
-  name: FieldPath<T>;
+import { FocusBoundary } from "../../utils/focus-boundary";
+
+export interface CSliderProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
+  extends Omit<SliderProps, "value" | "onChange"> {
+  name: TName;
   control?: Control<T>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
-  defaultValue?: FieldPathValue<T, FieldPath<T>>;
+  rules?: Omit<RegisterOptions<T, TName>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
+  defaultValue?: FieldPathValue<T, TName>;
   shouldUnregister?: boolean;
   onChange?: (event: NonCancelableCustomEvent<SliderProps.ChangeDetail>) => void;
 }
 
-const CSlider = <TFieldValues extends FieldValues>({
+const CSlider = <
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>({
   name,
   control,
   defaultValue,
@@ -28,7 +32,7 @@ const CSlider = <TFieldValues extends FieldValues>({
   shouldUnregister = false,
   onChange,
   ...props
-}: CSliderProps<TFieldValues>) => {
+}: CSliderProps<TFieldValues, TName>) => {
   const handleOnChange = useCallback(
     (event: NonCancelableCustomEvent<SliderProps.ChangeDetail>) => {
       onChange?.(event);
@@ -44,12 +48,12 @@ const CSlider = <TFieldValues extends FieldValues>({
       render={({ field: { onChange: formOnChange, onBlur: formOnBlur, value } }) => (
         <FocusBoundary onBlur={formOnBlur}>
           <Slider
-          value={value}
-          onChange={(e) => {
-            formOnChange(e.detail.value);
-            handleOnChange(e);
-          }}
-          {...props}
+            value={value}
+            onChange={(e) => {
+              formOnChange(e.detail.value);
+              handleOnChange(e);
+            }}
+            {...props}
           />
         </FocusBoundary>
       )}

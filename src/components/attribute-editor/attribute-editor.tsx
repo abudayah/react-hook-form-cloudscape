@@ -5,41 +5,53 @@ import {
 } from "@cloudscape-design/components";
 import { useMemo } from "react";
 import {
-  ArrayPath,
   Control,
   FieldArray,
   FieldArrayPath,
   FieldValues,
   get,
+  Path,
   useFieldArray,
   UseFieldArrayAppend,
   UseFieldArrayRemove,
   useFormState,
 } from "react-hook-form";
 
-export interface Definition<T> extends Omit<AttributeEditorProps.FieldDefinition<T>, "errorText"> {
+/**
+ * A field definition for one row in the named field array.
+ *
+ * `key` is the actual row property name used to locate validation errors.
+ * Prefer it to `label`, which is presentation text and may be localized.
+ */
+export interface Definition<TRow> extends Omit<AttributeEditorProps.FieldDefinition<TRow>, "errorText"> {
   label: string;
-  errorName?: (item: T, index: number) => string;
+  key?: keyof TRow & string;
+  errorName?: (item: TRow, index: number) => string;
 }
 
-export interface CAttributeEditorProps<T extends FieldValues>
-  extends Omit<AttributeEditorProps<T>, "items" | "onRemoveButtonClick" | "onAddButtonClick"> {
-  name: FieldArrayPath<T>;
+export interface CAttributeEditorProps<
+  T extends FieldValues,
+  TName extends FieldArrayPath<T> = FieldArrayPath<T>,
+> extends Omit<
+    AttributeEditorProps<FieldArray<T, TName>>,
+    "items" | "onRemoveButtonClick" | "onAddButtonClick"
+  > {
+  name: TName;
   control: Control<T>;
-  definition: Definition<T>[];
-  defaultValue?: FieldArray<T>;
+  definition: Definition<FieldArray<T, TName>>[];
+  defaultValue?: FieldArray<T, TName>;
   handleState?: boolean;
   onRemoveButtonClick?: (
     event: NonCancelableCustomEvent<AttributeEditorProps.RemoveButtonClickDetail>,
     remove: UseFieldArrayRemove,
   ) => void;
-  onAddButtonClick?: (
-    event: NonCancelableCustomEvent<object>,
-    append: UseFieldArrayAppend<T, ArrayPath<T>>,
-  ) => void;
+  onAddButtonClick?: (event: NonCancelableCustomEvent<object>, append: UseFieldArrayAppend<T, TName>) => void;
 }
 
-const CAttributeEditor = <TFieldValues extends FieldValues>({
+const CAttributeEditor = <
+  TFieldValues extends FieldValues,
+  TName extends FieldArrayPath<TFieldValues> = FieldArrayPath<TFieldValues>,
+>({
   name,
   control,
   definition,
@@ -48,26 +60,23 @@ const CAttributeEditor = <TFieldValues extends FieldValues>({
   onAddButtonClick,
   onRemoveButtonClick,
   ...props
-}: CAttributeEditorProps<TFieldValues>) => {
-  const { errors } = useFormState({ control });
-  const { fields, append, remove } = useFieldArray<TFieldValues>({
+}: CAttributeEditorProps<TFieldValues, TName>) => {
+  const { errors } = useFormState({ control, name: name as Path<TFieldValues> });
+  const { fields, append, remove } = useFieldArray<TFieldValues, TName>({
     name,
     control,
   });
 
   const definitionWithError = useMemo(
     () =>
-      definition.map((def) => ({
+      definition.map(({ key, ...def }) => ({
         ...def,
-        errorText: (item: TFieldValues, index: number) => {
-          if (def.errorName) {
-            const fieldName = def.errorName(item, index);
-            return get(errors, `${fieldName}.message`) as string | undefined;
-          }
-          return def.label
-            ? (get(errors, `${name}.${index}.${def.label.toString().toLowerCase()}.message`) as
-                | string
-                | undefined)
+        errorText: (item: FieldArray<TFieldValues, TName>, index: number) => {
+          const fieldName = def.errorName?.(item, index) ?? (key ? `${name}.${index}.${key}` : undefined);
+          const legacyLabelPath =
+            fieldName ?? (def.label ? `${name}.${index}.${def.label.toLowerCase()}` : undefined);
+          return legacyLabelPath
+            ? (get(errors, `${legacyLabelPath}.message`) as string | undefined)
             : undefined;
         },
       })),
@@ -77,18 +86,24 @@ const CAttributeEditor = <TFieldValues extends FieldValues>({
   return (
     <AttributeEditor
       definition={definitionWithError}
-      items={(fields as TFieldValues[]) || []}
-      onAddButtonClick={(e) => {
-        if (handleState && defaultValue !== undefined) {
-          append(defaultValue);
-        }
-        onAddButtonClick?.(e, append);
-      }}
-      onRemoveButtonClick={(e) => {
+      items={fields as unknown as FieldArray<TFieldValues, TName>[]}
+      onAddButtonClick={(event) => {
         if (handleState) {
-          remove(e.detail.itemIndex);
+          if (defaultValue === undefined) {
+            console.warn(
+              `CAttributeEditor "${name}" requires defaultValue when handleState is enabled; provide a row template or set handleState={false}.`,
+            );
+          } else {
+            append(defaultValue);
+          }
         }
-        onRemoveButtonClick?.(e, remove);
+        onAddButtonClick?.(event, append);
+      }}
+      onRemoveButtonClick={(event) => {
+        if (handleState) {
+          remove(event.detail.itemIndex);
+        }
+        onRemoveButtonClick?.(event, remove);
       }}
       {...props}
     />

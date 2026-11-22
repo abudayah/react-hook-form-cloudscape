@@ -1,5 +1,5 @@
 export { default as CAttributeEditor } from "./components/attribute-editor";
-export type { CAttributeEditorProps } from "./components/attribute-editor";
+export type { CAttributeEditorProps, Definition } from "./components/attribute-editor";
 export { default as CAutosuggest } from "./components/autosuggest";
 export type { CAutosuggestProps } from "./components/autosuggest";
 export { default as CCards } from "./components/cards";

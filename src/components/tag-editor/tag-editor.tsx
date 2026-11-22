@@ -1,26 +1,29 @@
 import { NonCancelableCustomEvent, TagEditor, TagEditorProps } from "@cloudscape-design/components";
 import { useCallback } from "react";
-
-import { FocusBoundary } from "../../utils/focus-boundary";
 import {
   Control,
   Controller,
   FieldPath,
   FieldPathValue,
   FieldValues,
-  Path,
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CTagEditorProps<T extends FieldValues> extends Omit<TagEditorProps, "tags"> {
-  name: Path<T>;
+import { FocusBoundary } from "../../utils/focus-boundary";
+
+export interface CTagEditorProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
+  extends Omit<TagEditorProps, "tags"> {
+  name: TName;
   control?: Control<T>;
-  defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
+  defaultValue?: FieldPathValue<T, TName>;
+  rules?: Omit<RegisterOptions<T, TName>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
 }
 
-const CTagEditor = <TFieldValues extends FieldValues>({
+const CTagEditor = <
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>({
   name,
   control,
   onChange,
@@ -28,7 +31,7 @@ const CTagEditor = <TFieldValues extends FieldValues>({
   rules,
   shouldUnregister = false,
   ...props
-}: CTagEditorProps<TFieldValues>) => {
+}: CTagEditorProps<TFieldValues, TName>) => {
   const handleOnChange = useCallback(
     (
       formOnChange: (tags: TagEditorProps.Tag[]) => void,
@@ -48,10 +51,10 @@ const CTagEditor = <TFieldValues extends FieldValues>({
       render={({ field: { ref, onChange, onBlur, value } }) => (
         <FocusBoundary onBlur={onBlur}>
           <TagEditor
-          ref={ref}
-          tags={(value as TagEditorProps.Tag[]) || []}
-          onChange={(e) => handleOnChange(onChange, e)}
-          {...props}
+            ref={ref}
+            tags={(value as TagEditorProps.Tag[]) || []}
+            onChange={(e) => handleOnChange(onChange, e)}
+            {...props}
           />
         </FocusBoundary>
       )}

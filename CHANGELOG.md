@@ -1,3 +1,24 @@
+# [2.0.0](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.15...v2.0.0) (2026-11-22)
+
+
+* feat(attribute-editor)!: type definitions against field-array rows ([8e01707](https://github.com/abudayah/react-hook-form-cloudscape/commit/8e017074a13f36e25a2e4e59f319c60a68f9de0b))
+
+
+### Bug Fixes
+
+* **attribute-editor:** narrow field-array subscription path ([20a4bf8](https://github.com/abudayah/react-hook-form-cloudscape/commit/20a4bf803cb07613b0e5fb8bc9ba9ca196f056c3))
+* **forms:** preserve controlled selection values ([9dd4893](https://github.com/abudayah/react-hook-form-cloudscape/commit/9dd4893c54de060caef19fa7b30b5c7133f81be6))
+* **forms:** prevent property filter crash when field is uninitialized ([2f890a4](https://github.com/abudayah/react-hook-form-cloudscape/commit/2f890a4fcac34ba1c9b361f6d519c66c40c963db))
+* **forms:** restore focus and blur behavior for filter and editor ([c218717](https://github.com/abudayah/react-hook-form-cloudscape/commit/c218717296c079cfea8fe6da3f8ace0d47f58ad6))
+* **types:** bind remaining wrapper props to field names ([ffe1497](https://github.com/abudayah/react-hook-form-cloudscape/commit/ffe14970f7927f5601e9a7a0b26185b44da6c496))
+* **types:** bind wrapper defaults and rules to field names ([8724f10](https://github.com/abudayah/react-hook-form-cloudscape/commit/8724f10ba2b7db5acd5d218a60fafb312c14aa7d))
+* **types:** constrain boolean and card fields by name ([fc2c071](https://github.com/abudayah/react-hook-form-cloudscape/commit/fc2c071b5fd01cf054b7866a3fed45b7321ab7f4))
+
+
+### BREAKING CHANGES
+
+* CAttributeEditorProps now types definition callbacks and defaultValue against the row type selected by its field-array name. Consumers that explicitly annotate Definition with the whole form type should update it to the row type. Use the new key property for validation error lookup instead of deriving paths from the visible label.
+
 ## [1.7.15](https://github.com/abudayah/react-hook-form-cloudscape/compare/v1.7.14...v1.7.15) (2026-11-19)
 
 

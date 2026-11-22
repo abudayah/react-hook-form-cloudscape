@@ -1,30 +1,32 @@
 import { Cards, CardsProps, NonCancelableCustomEvent } from "@cloudscape-design/components";
 import { useCallback } from "react";
-
-import { FocusBoundary } from "../../utils/focus-boundary";
 import {
   Control,
   Controller,
   FieldPath,
   FieldPathValue,
   FieldValues,
-  Path,
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CCardsProps<T extends FieldValues>
+import { FocusBoundary } from "../../utils/focus-boundary";
+
+export interface CCardsProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
   extends Omit<
     Required<Pick<CardsProps, "trackBy">> & Required<Pick<CardsProps, "selectionType">> & CardsProps,
     "value" | "selectedItems"
   > {
-  name: Path<T>;
+  name: TName;
   control?: Control<T>;
   shouldUnregister?: boolean;
-  defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
+  defaultValue?: FieldPathValue<T, TName>;
+  rules?: Omit<RegisterOptions<T, TName>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
 }
 
-export const CCards = <TFieldValues extends FieldValues>({
+export const CCards = <
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>({
   name,
   control,
   defaultValue,
@@ -32,7 +34,7 @@ export const CCards = <TFieldValues extends FieldValues>({
   shouldUnregister = false,
   onSelectionChange,
   ...props
-}: CCardsProps<TFieldValues>) => {
+}: CCardsProps<TFieldValues, TName>) => {
   const handleOnChange = useCallback(
     (
       formOnChange: (selectedItems: TFieldValues[]) => void,

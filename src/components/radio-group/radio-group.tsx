@@ -1,26 +1,29 @@
 import { NonCancelableCustomEvent, RadioGroup, RadioGroupProps } from "@cloudscape-design/components";
 import { useCallback } from "react";
-
-import { FocusBoundary } from "../../utils/focus-boundary";
 import {
   Control,
   Controller,
   FieldPath,
   FieldPathValue,
   FieldValues,
-  Path,
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CRadioGroupProps<T extends FieldValues> extends Omit<RadioGroupProps, "value"> {
-  name: Path<T>;
+import { FocusBoundary } from "../../utils/focus-boundary";
+
+export interface CRadioGroupProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
+  extends Omit<RadioGroupProps, "value"> {
+  name: TName;
   control?: Control<T>;
-  defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
+  defaultValue?: FieldPathValue<T, TName>;
+  rules?: Omit<RegisterOptions<T, TName>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
 }
 
-const CRadioGroup = <TFieldValues extends FieldValues>({
+const CRadioGroup = <
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>({
   name,
   control,
   onChange,
@@ -28,7 +31,7 @@ const CRadioGroup = <TFieldValues extends FieldValues>({
   defaultValue,
   shouldUnregister = false,
   ...props
-}: CRadioGroupProps<TFieldValues>) => {
+}: CRadioGroupProps<TFieldValues, TName>) => {
   const handleOnChange = useCallback(
     (formOnChange: (value: string) => void, e: NonCancelableCustomEvent<RadioGroupProps.ChangeDetail>) => {
       formOnChange(e.detail.value);
@@ -44,12 +47,7 @@ const CRadioGroup = <TFieldValues extends FieldValues>({
       name={name}
       render={({ field: { ref, onChange, onBlur, value } }) => (
         <FocusBoundary onBlur={onBlur}>
-          <RadioGroup
-          ref={ref}
-          value={value}
-          onChange={(e) => handleOnChange(onChange, e)}
-          {...props}
-          />
+          <RadioGroup ref={ref} value={value} onChange={(e) => handleOnChange(onChange, e)} {...props} />
         </FocusBoundary>
       )}
       rules={rules}
