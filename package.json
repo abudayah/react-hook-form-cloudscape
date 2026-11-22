@@ -45,7 +45,9 @@
     "prepare": "node scripts/prepare.mjs",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
-    "verify:exports": "node scripts/verify-package-exports.mjs"
+    "typecheck:tests": "tsc --project tsconfig.tests.json --noEmit",
+    "verify:exports": "node scripts/verify-package-exports.mjs",
+    "verify:package": "npm pack && npx --yes @arethetypeswrong/cli --pack . --profile esm-only && npx --yes publint"
   },
   "lint-staged": {
     "*.{ts,tsx,js,cjs}": [
