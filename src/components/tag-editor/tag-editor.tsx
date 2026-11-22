@@ -9,6 +9,8 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
+import { FocusBoundary } from "../../utils/focus-boundary";
+
 export interface CTagEditorProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
   extends Omit<TagEditorProps, "tags"> {
   name: TName;
@@ -47,15 +49,14 @@ const CTagEditor = <
       defaultValue={defaultValue}
       name={name}
       render={({ field: { ref, onChange, onBlur, value } }) => (
-        <TagEditor
-          ref={ref}
-          tags={(value as TagEditorProps.Tag[]) || []}
-          onChange={(e) => {
-            handleOnChange(onChange, e);
-            onBlur();
-          }}
-          {...props}
-        />
+        <FocusBoundary onBlur={onBlur}>
+          <TagEditor
+            ref={ref}
+            tags={(value as TagEditorProps.Tag[]) || []}
+            onChange={(e) => handleOnChange(onChange, e)}
+            {...props}
+          />
+        </FocusBoundary>
       )}
       rules={rules}
       shouldUnregister={shouldUnregister}

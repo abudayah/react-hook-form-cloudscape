@@ -9,6 +9,8 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
+import { FocusBoundary } from "../../utils/focus-boundary";
+
 export interface CFileUploadProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
   extends Omit<FileUploadProps, "value"> {
   name: TName;
@@ -48,15 +50,14 @@ export const CFileUpload = <
       defaultValue={defaultValue}
       name={name}
       render={({ field: { ref, onChange, onBlur, value } }) => (
-        <FileUpload
-          ref={ref}
-          value={generateFilesArray(value)}
-          onChange={(e) => {
-            handleOnChange(onChange, e);
-            onBlur();
-          }}
-          {...props}
-        />
+        <FocusBoundary onBlur={onBlur}>
+          <FileUpload
+            ref={ref}
+            value={generateFilesArray(value)}
+            onChange={(e) => handleOnChange(onChange, e)}
+            {...props}
+          />
+        </FocusBoundary>
       )}
       rules={rules}
       shouldUnregister={shouldUnregister}

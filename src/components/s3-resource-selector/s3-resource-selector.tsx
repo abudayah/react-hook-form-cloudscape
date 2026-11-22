@@ -13,6 +13,8 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
+import { FocusBoundary } from "../../utils/focus-boundary";
+
 export interface CS3ResourceSelectorProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
   extends Omit<S3ResourceSelectorProps, "resource"> {
   name: TName;
@@ -51,15 +53,14 @@ export const CS3ResourceSelector = <
       defaultValue={defaultValue}
       name={name}
       render={({ field: { ref, onChange, onBlur, value } }) => (
-        <S3ResourceSelector
-          ref={ref}
-          resource={value ?? { uri: "" }}
-          onChange={(e) => {
-            handleOnChange(onChange, e);
-            onBlur();
-          }}
-          {...props}
-        />
+        <FocusBoundary onBlur={onBlur}>
+          <S3ResourceSelector
+            ref={ref}
+            resource={value ?? { uri: "" }}
+            onChange={(e) => handleOnChange(onChange, e)}
+            {...props}
+          />
+        </FocusBoundary>
       )}
       rules={rules}
       shouldUnregister={shouldUnregister}

@@ -9,6 +9,8 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
+import { FocusBoundary } from "../../utils/focus-boundary";
+
 export interface CCardsProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
   extends Omit<
     Required<Pick<CardsProps, "trackBy">> & Required<Pick<CardsProps, "selectionType">> & CardsProps,
@@ -49,12 +51,14 @@ export const CCards = <
       control={control}
       defaultValue={defaultValue}
       name={name}
-      render={({ field: { onChange, value } }) => (
-        <Cards
-          {...props}
-          selectedItems={value ?? []}
-          onSelectionChange={(e) => handleOnChange(onChange, e)}
-        />
+      render={({ field: { onChange, onBlur, value } }) => (
+        <FocusBoundary onBlur={onBlur}>
+          <Cards
+            {...props}
+            selectedItems={value ?? []}
+            onSelectionChange={(e) => handleOnChange(onChange, e)}
+          />
+        </FocusBoundary>
       )}
       rules={rules}
       shouldUnregister={shouldUnregister}

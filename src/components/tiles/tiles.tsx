@@ -9,6 +9,8 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
+import { FocusBoundary } from "../../utils/focus-boundary";
+
 export interface CTilesProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
   extends Omit<TilesProps, "value"> {
   name: TName;
@@ -44,15 +46,9 @@ const CTiles = <
       defaultValue={defaultValue}
       name={name}
       render={({ field: { ref, onChange, onBlur, value } }) => (
-        <Tiles
-          ref={ref}
-          value={value}
-          onChange={(e) => {
-            handleOnChange(onChange, e);
-            onBlur();
-          }}
-          {...props}
-        />
+        <FocusBoundary onBlur={onBlur}>
+          <Tiles ref={ref} value={value} onChange={(e) => handleOnChange(onChange, e)} {...props} />
+        </FocusBoundary>
       )}
       rules={rules}
       shouldUnregister={shouldUnregister}

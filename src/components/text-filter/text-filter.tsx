@@ -9,6 +9,8 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
+import { FocusBoundary } from "../../utils/focus-boundary";
+
 export interface CTextFilterProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
   extends Omit<TextFilterProps, "filteringText"> {
   name: TName;
@@ -44,15 +46,14 @@ const CTextFilter = <
       defaultValue={defaultValue}
       name={name}
       render={({ field: { ref, onChange, onBlur, value } }) => (
-        <TextFilter
-          ref={ref}
-          filteringText={value as string}
-          onChange={(e) => {
-            handleOnChange(onChange, e);
-            onBlur();
-          }}
-          {...props}
-        />
+        <FocusBoundary onBlur={onBlur}>
+          <TextFilter
+            ref={ref}
+            filteringText={value as string}
+            onChange={(e) => handleOnChange(onChange, e)}
+            {...props}
+          />
+        </FocusBoundary>
       )}
       rules={rules}
       shouldUnregister={shouldUnregister}

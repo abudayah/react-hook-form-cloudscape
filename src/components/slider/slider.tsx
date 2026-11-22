@@ -9,6 +9,8 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
+import { FocusBoundary } from "../../utils/focus-boundary";
+
 export interface CSliderProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
   extends Omit<SliderProps, "value" | "onChange"> {
   name: TName;
@@ -44,15 +46,16 @@ const CSlider = <
       defaultValue={defaultValue}
       name={name}
       render={({ field: { onChange: formOnChange, onBlur: formOnBlur, value } }) => (
-        <Slider
-          value={value}
-          onChange={(e) => {
-            formOnChange(e.detail.value);
-            handleOnChange(e);
-            formOnBlur();
-          }}
-          {...props}
-        />
+        <FocusBoundary onBlur={formOnBlur}>
+          <Slider
+            value={value}
+            onChange={(e) => {
+              formOnChange(e.detail.value);
+              handleOnChange(e);
+            }}
+            {...props}
+          />
+        </FocusBoundary>
       )}
       rules={rules}
       shouldUnregister={shouldUnregister}
