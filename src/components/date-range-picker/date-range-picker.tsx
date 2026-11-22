@@ -56,6 +56,7 @@ const CDateRangePicker = <
       name={name}
       render={({ field: { ref, onBlur: formOnBlur, onChange: formOnChange, value } }) => (
         <DateRangePicker
+          {...props}
           ref={ref}
           value={(value ?? null) as unknown as DateRangePickerProps.Value}
           onBlur={(e) => {
@@ -66,7 +67,6 @@ const CDateRangePicker = <
             formOnChange(e.detail.value);
             handleOnChange(e);
           }}
-          {...props}
         />
       )}
       rules={rules}

@@ -55,10 +55,10 @@ export const CS3ResourceSelector = <
       render={({ field: { ref, onChange, onBlur, value } }) => (
         <FocusBoundary onBlur={onBlur}>
           <S3ResourceSelector
+            {...props}
             ref={ref}
             resource={value ?? { uri: "" }}
             onChange={(e) => handleOnChange(onChange, e)}
-            {...props}
           />
         </FocusBoundary>
       )}

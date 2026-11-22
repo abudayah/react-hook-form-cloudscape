@@ -48,10 +48,10 @@ const CTextFilter = <
       render={({ field: { ref, onChange, onBlur, value } }) => (
         <FocusBoundary onBlur={onBlur}>
           <TextFilter
+            {...props}
             ref={ref}
             filteringText={value as string}
             onChange={(e) => handleOnChange(onChange, e)}
-            {...props}
           />
         </FocusBoundary>
       )}

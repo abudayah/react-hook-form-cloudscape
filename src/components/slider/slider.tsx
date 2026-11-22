@@ -48,12 +48,12 @@ const CSlider = <
       render={({ field: { onChange: formOnChange, onBlur: formOnBlur, value } }) => (
         <FocusBoundary onBlur={formOnBlur}>
           <Slider
+            {...props}
             value={value}
             onChange={(e) => {
               formOnChange(e.detail.value);
               handleOnChange(e);
             }}
-            {...props}
           />
         </FocusBoundary>
       )}

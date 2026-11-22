@@ -71,6 +71,18 @@ const { control, handleSubmit, formState: { errors } } = useForm<FormValues>();
 
 `CPropertyFilter` and `CTextFilter` are useful for binding transient filtering UI state. `CCards` binds the selected card set. Treat these as view state unless the application explicitly intends to persist the filter or selection as business data.
 
+## Focus management
+
+The wrappers forward React Hook Form's field ref to Cloudscape controls that expose a focusable ref, so `setFocus()` and focus-on-error work as expected. `CSlider`, `CCards`, and `CAttributeEditor` do not expose a focusable Cloudscape ref and cannot be focused programmatically. The wrappers also keep their internal ref, so consumer `ref` props are not forwarded; use React Hook Form's `setFocus()` instead.
+
+## AttributeEditor error paths
+
+Each `definition` entry must provide a `key` (the row property name) or a custom `errorName` callback. The key is used to resolve per-row validation messages. Definitions without either cannot display row-level errors.
+
+## FormProvider
+
+Passing `control` explicitly is recommended because it preserves field-name typing. `FormProvider` is supported, but TypeScript cannot infer the form type from context, so any string may compile as a field name.
+
 ## Demos and usage
 
 See the [interactive demos](https://abudayah.github.io/react-hook-form-cloudscape).

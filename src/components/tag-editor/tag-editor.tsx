@@ -51,10 +51,10 @@ const CTagEditor = <
       render={({ field: { ref, onChange, onBlur, value } }) => (
         <FocusBoundary onBlur={onBlur}>
           <TagEditor
+            {...props}
             ref={ref}
             tags={(value as TagEditorProps.Tag[]) || []}
             onChange={(e) => handleOnChange(onChange, e)}
-            {...props}
           />
         </FocusBoundary>
       )}

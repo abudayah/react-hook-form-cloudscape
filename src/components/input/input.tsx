@@ -52,6 +52,7 @@ const CInput = <
       name={name}
       render={({ field: { ref, onBlur: formOnBlur, onChange: formOnChange, value } }) => (
         <Input
+          {...props}
           ref={ref}
           name={name}
           value={value}
@@ -63,7 +64,6 @@ const CInput = <
             formOnChange(e.detail.value);
             handleOnChange(e);
           }}
-          {...props}
         />
       )}
       rules={rules}

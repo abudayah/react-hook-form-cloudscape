@@ -54,6 +54,7 @@ const CDatePicker = <
       name={name}
       render={({ field: { ref, onChange: formOnChange, onBlur: formOnBlur, value } }) => (
         <DatePicker
+          {...props}
           ref={ref}
           name={name}
           value={value}
@@ -65,7 +66,6 @@ const CDatePicker = <
             formOnChange(e.detail.value);
             handleOnChange(e);
           }}
-          {...props}
         />
       )}
       rules={rules}

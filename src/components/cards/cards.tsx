@@ -11,21 +11,31 @@ import {
 
 import { FocusBoundary } from "../../utils/focus-boundary";
 
-export interface CCardsProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
-  extends Omit<
-    Required<Pick<CardsProps, "trackBy">> & Required<Pick<CardsProps, "selectionType">> & CardsProps,
-    "value" | "selectedItems"
+type CardsItem<T extends FieldValues, TName extends FieldPath<T>> =
+  FieldPathValue<T, TName> extends ReadonlyArray<infer TItem> ? TItem : never;
+
+export interface CCardsProps<
+  T extends FieldValues,
+  TName extends FieldPath<T> = FieldPath<T>,
+  TItem = CardsItem<T, TName>,
+> extends Omit<
+    Required<Pick<CardsProps<TItem>, "trackBy">> &
+      Required<Pick<CardsProps<TItem>, "selectionType">> &
+      CardsProps<TItem>,
+    "selectedItems" | "onSelectionChange"
   > {
   name: TName;
   control?: Control<T>;
   shouldUnregister?: boolean;
   defaultValue?: FieldPathValue<T, TName>;
   rules?: Omit<RegisterOptions<T, TName>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
+  onSelectionChange?: (event: NonCancelableCustomEvent<CardsProps.SelectionChangeDetail<TItem>>) => void;
 }
 
 export const CCards = <
   TFieldValues extends FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+  TItem = CardsItem<TFieldValues, TName>,
 >({
   name,
   control,
@@ -34,11 +44,11 @@ export const CCards = <
   shouldUnregister = false,
   onSelectionChange,
   ...props
-}: CCardsProps<TFieldValues, TName>) => {
+}: CCardsProps<TFieldValues, TName, TItem>) => {
   const handleOnChange = useCallback(
     (
-      formOnChange: (selectedItems: TFieldValues[]) => void,
-      e: NonCancelableCustomEvent<CardsProps.SelectionChangeDetail<TFieldValues>>,
+      formOnChange: (selectedItems: TItem[]) => void,
+      e: NonCancelableCustomEvent<CardsProps.SelectionChangeDetail<TItem>>,
     ) => {
       formOnChange(e.detail.selectedItems);
       onSelectionChange?.(e);

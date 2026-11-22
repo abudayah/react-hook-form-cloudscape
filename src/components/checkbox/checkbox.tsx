@@ -52,6 +52,7 @@ const CCheckbox = <
       name={name}
       render={({ field: { ref, onChange, onBlur: formOnBlur, value = false, disabled: fieldDisabled } }) => (
         <Checkbox
+          {...props}
           ref={ref}
           checked={value}
           disabled={disabled || fieldDisabled}
@@ -61,7 +62,6 @@ const CCheckbox = <
           }}
           onChange={handleOnChange.bind(null, onChange)}
           name={name}
-          {...props}
         />
       )}
       rules={rules}

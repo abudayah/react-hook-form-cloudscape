@@ -62,12 +62,12 @@ const CMultiselect = <
       render={({ field: { ref, onChange, onBlur, value } }) => {
         return (
           <Multiselect
+            {...props}
             ref={ref}
             options={options}
             selectedOptions={mapSelectedOptionsWithOptions(options, value)}
             onBlur={handleOnBlur.bind(null, onBlur)}
             onChange={handleOnChange.bind(null, onChange)}
-            {...props}
           />
         );
       }}
