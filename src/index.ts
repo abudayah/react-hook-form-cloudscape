@@ -1,3 +1,5 @@
+export { default as CFormField } from "./components/form-field/index.js";
+export type { CFormFieldProps } from "./components/form-field/index.js";
 export { default as CAttributeEditor } from "./components/attribute-editor";
 export type { CAttributeEditorProps } from "./components/attribute-editor";
 export { default as CAutosuggest } from "./components/autosuggest";
