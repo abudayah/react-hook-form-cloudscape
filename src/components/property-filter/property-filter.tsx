@@ -42,9 +42,22 @@ export const CPropertyFilter = <TFieldValues extends FieldValues>({
       control={control}
       defaultValue={defaultValue}
       name={name}
-      render={({ field: { onChange, value } }) => {
-        return <PropertyFilter query={value} onChange={handleOnChange.bind(null, onChange)} {...props} />;
-      }}
+      render={({ field: { ref, onChange, onBlur, value } }) => (
+        <div
+          onBlur={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+              onBlur();
+            }
+          }}
+        >
+          <PropertyFilter
+            ref={ref}
+            query={value ?? { tokens: [], operation: "and" }}
+            onChange={handleOnChange.bind(null, onChange)}
+            {...props}
+          />
+        </div>
+      )}
       rules={rules}
       shouldUnregister={shouldUnregister}
     />
