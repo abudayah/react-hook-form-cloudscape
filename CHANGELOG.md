@@ -1,3 +1,10 @@
+## [2.1.2](https://github.com/abudayah/react-hook-form-cloudscape/compare/v2.1.1...v2.1.2) (2026-11-22)
+
+
+### Bug Fixes
+
+* **api:** type Cards items and protect internal refs ([4bab0db](https://github.com/abudayah/react-hook-form-cloudscape/commit/4bab0db0d44eaa4d9772fc27ee008ab5f1a98449))
+
 ## [2.1.1](https://github.com/abudayah/react-hook-form-cloudscape/compare/v2.1.0...v2.1.1) (2026-11-22)
 
 
