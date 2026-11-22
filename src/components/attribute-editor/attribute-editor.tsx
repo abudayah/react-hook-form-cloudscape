@@ -10,6 +10,7 @@ import {
   FieldArrayPath,
   FieldValues,
   get,
+  Path,
   useFieldArray,
   UseFieldArrayAppend,
   UseFieldArrayRemove,
@@ -60,7 +61,7 @@ const CAttributeEditor = <
   onRemoveButtonClick,
   ...props
 }: CAttributeEditorProps<TFieldValues, TName>) => {
-  const { errors } = useFormState({ control, name });
+  const { errors } = useFormState({ control, name: name as Path<TFieldValues> });
   const { fields, append, remove } = useFieldArray<TFieldValues, TName>({
     name,
     control,
