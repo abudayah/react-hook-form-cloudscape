@@ -2,10 +2,10 @@ import { SelectProps } from "@cloudscape-design/components";
 
 const mapSelectedOptionWithOptions = (
   options: SelectProps.Options = [],
-  selectedOption: string,
+  selectedOption: string | undefined,
 ): SelectProps.Option | null => {
   let singleSelectedOption = null;
-  if (options && selectedOption) {
+  if (options.length && selectedOption != null) {
     singleSelectedOption = options.reduce(
       (accOptions: SelectProps.Option[], currentOption: SelectProps.Option | SelectProps.OptionGroup) => {
         if ("options" in currentOption) {
@@ -14,8 +14,7 @@ const mapSelectedOptionWithOptions = (
           if (matchedOptions) {
             accOptions.push(matchedOptions);
           }
-        }
-        if ("value" in currentOption && currentOption.value === selectedOption) {
+        } else if (currentOption.value === selectedOption) {
           accOptions.push(currentOption);
         }
         return accOptions;
@@ -24,7 +23,7 @@ const mapSelectedOptionWithOptions = (
     )[0];
   }
 
-  return singleSelectedOption ? singleSelectedOption : null;
+  return singleSelectedOption ?? null;
 };
 
 const SelectUtils = {

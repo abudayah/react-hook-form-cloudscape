@@ -42,12 +42,11 @@ const CToggle = <TFieldValues extends FieldValues>({
       control={control}
       defaultValue={defaultValue}
       name={name}
-      disabled={disabled}
       render={({ field: { ref, onChange, onBlur: formOnBlur, value = false, disabled: fieldDisabled } }) => (
         <Toggle
           ref={ref}
           checked={value}
-          disabled={fieldDisabled}
+          disabled={disabled || fieldDisabled}
           name={name}
           onBlur={(e) => {
             formOnBlur();

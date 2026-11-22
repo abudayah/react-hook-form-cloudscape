@@ -13,7 +13,7 @@ import {
 export interface CCardsProps<T extends FieldValues>
   extends Omit<
     Required<Pick<CardsProps, "trackBy">> & Required<Pick<CardsProps, "selectionType">> & CardsProps,
-    "value"
+    "value" | "selectedItems"
   > {
   name: Path<T>;
   control?: Control<T>;
@@ -47,14 +47,11 @@ export const CCards = <TFieldValues extends FieldValues>({
       control={control}
       defaultValue={defaultValue}
       name={name}
-      render={({ field: { onChange, onBlur, value } }) => (
+      render={({ field: { onChange, value } }) => (
         <Cards
-          selectedItems={value}
-          onSelectionChange={(e) => {
-            handleOnChange(onChange, e);
-            onBlur();
-          }}
           {...props}
+          selectedItems={value ?? []}
+          onSelectionChange={(e) => handleOnChange(onChange, e)}
         />
       )}
       rules={rules}
