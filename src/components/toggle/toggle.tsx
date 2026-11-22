@@ -10,7 +10,10 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CToggleProps<T extends FieldValues, TName extends FieldPathByValue<T, boolean | undefined> = FieldPathByValue<T, boolean | undefined>> extends Omit<ToggleProps, "checked"> {
+export interface CToggleProps<
+  T extends FieldValues,
+  TName extends FieldPathByValue<T, boolean | undefined> = FieldPathByValue<T, boolean | undefined>,
+> extends Omit<ToggleProps, "checked"> {
   name: TName;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, TName>;
@@ -18,7 +21,13 @@ export interface CToggleProps<T extends FieldValues, TName extends FieldPathByVa
   shouldUnregister?: boolean;
 }
 
-const CToggle = <TFieldValues extends FieldValues, TName extends FieldPathByValue<TFieldValues, boolean | undefined> = FieldPathByValue<TFieldValues, boolean | undefined>>({
+const CToggle = <
+  TFieldValues extends FieldValues,
+  TName extends FieldPathByValue<TFieldValues, boolean | undefined> = FieldPathByValue<
+    TFieldValues,
+    boolean | undefined
+  >,
+>({
   name,
   control,
   defaultValue,

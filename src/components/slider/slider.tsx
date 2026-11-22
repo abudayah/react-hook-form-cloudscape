@@ -9,7 +9,8 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CSliderProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>> extends Omit<SliderProps, "value" | "onChange"> {
+export interface CSliderProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
+  extends Omit<SliderProps, "value" | "onChange"> {
   name: TName;
   control?: Control<T>;
   rules?: Omit<RegisterOptions<T, TName>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
@@ -18,7 +19,10 @@ export interface CSliderProps<T extends FieldValues, TName extends FieldPath<T> 
   onChange?: (event: NonCancelableCustomEvent<SliderProps.ChangeDetail>) => void;
 }
 
-const CSlider = <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>({
+const CSlider = <
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>({
   name,
   control,
   defaultValue,

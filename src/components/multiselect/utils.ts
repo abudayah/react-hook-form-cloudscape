@@ -24,7 +24,8 @@ export const mapSelectedOptionsWithOptions = (
       return mapSelectedOptionsWithOptions(currentOption.options, selectedOptions);
     }
 
-    return typeof currentOption.value === "string" && selectedOptions.some((record) => record === currentOption.value)
+    return typeof currentOption.value === "string" &&
+      selectedOptions.some((record) => record === currentOption.value)
       ? [currentOption]
       : [];
   });

@@ -13,7 +13,8 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CDateRangePickerProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>> extends Omit<DateRangePickerProps, "value"> {
+export interface CDateRangePickerProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
+  extends Omit<DateRangePickerProps, "value"> {
   name: TName;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, TName>;
@@ -21,7 +22,10 @@ export interface CDateRangePickerProps<T extends FieldValues, TName extends Fiel
   shouldUnregister?: boolean;
 }
 
-const CDateRangePicker = <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>({
+const CDateRangePicker = <
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>({
   name,
   control,
   onBlur,

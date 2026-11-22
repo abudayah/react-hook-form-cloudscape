@@ -21,7 +21,10 @@ export interface CCardsProps<T extends FieldValues, TName extends FieldPath<T> =
   rules?: Omit<RegisterOptions<T, TName>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
 }
 
-export const CCards = <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>({
+export const CCards = <
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>({
   name,
   control,
   defaultValue,

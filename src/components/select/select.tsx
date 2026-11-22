@@ -9,9 +9,10 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
-import SelectUtils from "./utils";
+import SelectUtils from "./utils.js";
 
-export interface CSelectProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>> extends Omit<SelectProps, "selectedOption"> {
+export interface CSelectProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
+  extends Omit<SelectProps, "selectedOption"> {
   name: TName;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, TName>;
@@ -19,7 +20,10 @@ export interface CSelectProps<T extends FieldValues, TName extends FieldPath<T> 
   shouldUnregister?: boolean;
 }
 
-const CSelect = <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>({
+const CSelect = <
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>({
   name,
   control,
   defaultValue,

@@ -9,7 +9,8 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CInputProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>> extends Omit<InputProps, "value"> {
+export interface CInputProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
+  extends Omit<InputProps, "value"> {
   name: TName;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, TName>;
@@ -17,7 +18,10 @@ export interface CInputProps<T extends FieldValues, TName extends FieldPath<T> =
   shouldUnregister?: boolean;
 }
 
-const CInput = <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>({
+const CInput = <
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>({
   name,
   control,
   defaultValue,

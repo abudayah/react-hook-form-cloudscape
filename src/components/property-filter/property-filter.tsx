@@ -9,7 +9,8 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CPropertyFilterProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>> extends Omit<PropertyFilterProps, "query"> {
+export interface CPropertyFilterProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
+  extends Omit<PropertyFilterProps, "query"> {
   name: TName;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, TName>;
@@ -17,7 +18,10 @@ export interface CPropertyFilterProps<T extends FieldValues, TName extends Field
   shouldUnregister?: boolean;
 }
 
-export const CPropertyFilter = <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>({
+export const CPropertyFilter = <
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>({
   name,
   control,
   defaultValue,

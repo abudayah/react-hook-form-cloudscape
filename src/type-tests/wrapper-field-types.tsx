@@ -1,5 +1,6 @@
-import { CCheckbox, CInput, CToggle } from "../index";
 import { useForm } from "react-hook-form";
+
+import { CCheckbox, CInput, CToggle } from "../index";
 
 type FormValues = {
   age: number;

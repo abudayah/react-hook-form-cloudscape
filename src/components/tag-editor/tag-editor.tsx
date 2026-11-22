@@ -9,7 +9,8 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CTagEditorProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>> extends Omit<TagEditorProps, "tags"> {
+export interface CTagEditorProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
+  extends Omit<TagEditorProps, "tags"> {
   name: TName;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, TName>;
@@ -17,7 +18,10 @@ export interface CTagEditorProps<T extends FieldValues, TName extends FieldPath<
   shouldUnregister?: boolean;
 }
 
-const CTagEditor = <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>({
+const CTagEditor = <
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>({
   name,
   control,
   onChange,

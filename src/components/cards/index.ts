@@ -1,2 +1,2 @@
-export { default } from "./cards";
-export type { CCardsProps } from "./cards";
+export { default } from "./cards.js";
+export type { CCardsProps } from "./cards.js";

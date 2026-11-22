@@ -22,7 +22,10 @@ export interface CS3ResourceSelectorProps<T extends FieldValues, TName extends F
   shouldUnregister?: boolean;
 }
 
-export const CS3ResourceSelector = <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>({
+export const CS3ResourceSelector = <
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>({
   name,
   control,
   defaultValue,

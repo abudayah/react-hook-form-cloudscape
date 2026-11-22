@@ -9,7 +9,8 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CTimeInputProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>> extends Omit<TimeInputProps, "value"> {
+export interface CTimeInputProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
+  extends Omit<TimeInputProps, "value"> {
   name: TName;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, TName>;
@@ -17,7 +18,10 @@ export interface CTimeInputProps<T extends FieldValues, TName extends FieldPath<
   shouldUnregister?: boolean;
 }
 
-const CTimeInput = <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>({
+const CTimeInput = <
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>({
   name,
   control,
   defaultValue,

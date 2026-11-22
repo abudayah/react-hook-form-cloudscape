@@ -32,7 +32,10 @@ export interface Definition<TRow> extends Omit<AttributeEditorProps.FieldDefinit
 export interface CAttributeEditorProps<
   T extends FieldValues,
   TName extends FieldArrayPath<T> = FieldArrayPath<T>,
-> extends Omit<AttributeEditorProps<FieldArray<T, TName>>, "items" | "onRemoveButtonClick" | "onAddButtonClick"> {
+> extends Omit<
+    AttributeEditorProps<FieldArray<T, TName>>,
+    "items" | "onRemoveButtonClick" | "onAddButtonClick"
+  > {
   name: TName;
   control: Control<T>;
   definition: Definition<FieldArray<T, TName>>[];
@@ -42,10 +45,7 @@ export interface CAttributeEditorProps<
     event: NonCancelableCustomEvent<AttributeEditorProps.RemoveButtonClickDetail>,
     remove: UseFieldArrayRemove,
   ) => void;
-  onAddButtonClick?: (
-    event: NonCancelableCustomEvent<object>,
-    append: UseFieldArrayAppend<T, TName>,
-  ) => void;
+  onAddButtonClick?: (event: NonCancelableCustomEvent<object>, append: UseFieldArrayAppend<T, TName>) => void;
 }
 
 const CAttributeEditor = <
@@ -73,7 +73,8 @@ const CAttributeEditor = <
         ...def,
         errorText: (item: FieldArray<TFieldValues, TName>, index: number) => {
           const fieldName = def.errorName?.(item, index) ?? (key ? `${name}.${index}.${key}` : undefined);
-          const legacyLabelPath = fieldName ?? (def.label ? `${name}.${index}.${def.label.toLowerCase()}` : undefined);
+          const legacyLabelPath =
+            fieldName ?? (def.label ? `${name}.${index}.${def.label.toLowerCase()}` : undefined);
           return legacyLabelPath
             ? (get(errors, `${legacyLabelPath}.message`) as string | undefined)
             : undefined;

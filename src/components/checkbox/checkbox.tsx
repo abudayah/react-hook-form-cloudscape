@@ -10,7 +10,10 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CCheckboxProps<T extends FieldValues, TName extends FieldPathByValue<T, boolean | undefined> = FieldPathByValue<T, boolean | undefined>> extends Omit<CheckboxProps, "checked"> {
+export interface CCheckboxProps<
+  T extends FieldValues,
+  TName extends FieldPathByValue<T, boolean | undefined> = FieldPathByValue<T, boolean | undefined>,
+> extends Omit<CheckboxProps, "checked"> {
   name: TName;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, TName>;
@@ -18,7 +21,13 @@ export interface CCheckboxProps<T extends FieldValues, TName extends FieldPathBy
   shouldUnregister?: boolean;
 }
 
-const CCheckbox = <TFieldValues extends FieldValues, TName extends FieldPathByValue<TFieldValues, boolean | undefined> = FieldPathByValue<TFieldValues, boolean | undefined>>({
+const CCheckbox = <
+  TFieldValues extends FieldValues,
+  TName extends FieldPathByValue<TFieldValues, boolean | undefined> = FieldPathByValue<
+    TFieldValues,
+    boolean | undefined
+  >,
+>({
   name,
   control,
   defaultValue,

@@ -1,2 +1,2 @@
-export { default } from "./select";
-export type { CSelectProps } from "./select";
+export { default } from "./select.js";
+export type { CSelectProps } from "./select.js";

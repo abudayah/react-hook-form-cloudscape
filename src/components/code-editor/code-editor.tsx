@@ -9,7 +9,8 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CCodeEditorProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>> extends Omit<CodeEditorProps, "value"> {
+export interface CCodeEditorProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
+  extends Omit<CodeEditorProps, "value"> {
   name: TName;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, TName>;
@@ -17,7 +18,10 @@ export interface CCodeEditorProps<T extends FieldValues, TName extends FieldPath
   shouldUnregister?: boolean;
 }
 
-const CCodeEditor = <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>({
+const CCodeEditor = <
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>({
   name,
   control,
   onChange,

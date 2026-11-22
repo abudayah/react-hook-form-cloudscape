@@ -1,2 +1,2 @@
-export { default } from "./time-input";
-export type { CTimeInputProps } from "./time-input";
+export { default } from "./time-input.js";
+export type { CTimeInputProps } from "./time-input.js";

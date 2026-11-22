@@ -1,2 +1,2 @@
-export { default } from "./tag-editor";
-export type { CTagEditorProps } from "./tag-editor";
+export { default } from "./tag-editor.js";
+export type { CTagEditorProps } from "./tag-editor.js";

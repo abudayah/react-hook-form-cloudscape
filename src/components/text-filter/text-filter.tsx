@@ -9,7 +9,8 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CTextFilterProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>> extends Omit<TextFilterProps, "filteringText"> {
+export interface CTextFilterProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
+  extends Omit<TextFilterProps, "filteringText"> {
   name: TName;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, TName>;
@@ -17,7 +18,10 @@ export interface CTextFilterProps<T extends FieldValues, TName extends FieldPath
   shouldUnregister?: boolean;
 }
 
-const CTextFilter = <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>({
+const CTextFilter = <
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>({
   name,
   control,
   defaultValue,

@@ -9,9 +9,10 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
-import { mapSelectedOptionsWithOptions, transformMultiselectOptionsToArray } from "./utils";
+import { mapSelectedOptionsWithOptions, transformMultiselectOptionsToArray } from "./utils.js";
 
-export interface CMultiselectProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>> extends Omit<MultiselectProps, "selectedOptions"> {
+export interface CMultiselectProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
+  extends Omit<MultiselectProps, "selectedOptions"> {
   name: TName;
   control?: Control<T>;
   options?: MultiselectProps.Options;
@@ -20,7 +21,10 @@ export interface CMultiselectProps<T extends FieldValues, TName extends FieldPat
   shouldUnregister?: boolean;
 }
 
-const CMultiselect = <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>({
+const CMultiselect = <
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>({
   name,
   control,
   options,

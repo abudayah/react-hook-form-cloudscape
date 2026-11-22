@@ -9,7 +9,8 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CAutosuggestProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>> extends Omit<AutosuggestProps, "value"> {
+export interface CAutosuggestProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
+  extends Omit<AutosuggestProps, "value"> {
   name: TName;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, TName>;

@@ -9,7 +9,8 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CTextareaProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>> extends Omit<TextareaProps, "value"> {
+export interface CTextareaProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
+  extends Omit<TextareaProps, "value"> {
   name: TName;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, TName>;
@@ -17,7 +18,10 @@ export interface CTextareaProps<T extends FieldValues, TName extends FieldPath<T
   shouldUnregister?: boolean;
 }
 
-const CTextarea = <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>({
+const CTextarea = <
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>({
   name,
   control,
   defaultValue,

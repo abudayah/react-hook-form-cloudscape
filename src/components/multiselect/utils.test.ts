@@ -72,7 +72,9 @@ describe("MultiSelectUtils", () => {
         { label: "Option 2", value: "2" },
       ];
       const selectedOptions = ["1"];
-      expect(mapSelectedOptionsWithOptions(options, selectedOptions)).toEqual([{ label: "Option 1", value: "1" }]);
+      expect(mapSelectedOptionsWithOptions(options, selectedOptions)).toEqual([
+        { label: "Option 1", value: "1" },
+      ]);
     });
 
     it("should return an array of selected options when grouped options are provided", () => {
@@ -81,7 +83,9 @@ describe("MultiSelectUtils", () => {
         { label: "Option 2", value: "2" },
       ];
       const selectedOptions = ["1"];
-      expect(mapSelectedOptionsWithOptions(options, selectedOptions)).toEqual([{ label: "Option 1", value: "1" }]);
+      expect(mapSelectedOptionsWithOptions(options, selectedOptions)).toEqual([
+        { label: "Option 1", value: "1" },
+      ]);
     });
 
     it("should handle nested grouped options", () => {

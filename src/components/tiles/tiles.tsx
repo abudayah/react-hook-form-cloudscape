@@ -9,7 +9,8 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CTilesProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>> extends Omit<TilesProps, "value"> {
+export interface CTilesProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
+  extends Omit<TilesProps, "value"> {
   name: TName;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, TName>;
@@ -17,7 +18,10 @@ export interface CTilesProps<T extends FieldValues, TName extends FieldPath<T> =
   shouldUnregister?: boolean;
 }
 
-const CTiles = <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>({
+const CTiles = <
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>({
   name,
   control,
   onChange,
