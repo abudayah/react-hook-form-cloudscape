@@ -4,6 +4,8 @@ import {
   S3ResourceSelectorProps,
 } from "@cloudscape-design/components";
 import { useCallback } from "react";
+
+import { FocusBoundary } from "../../utils/focus-boundary";
 import {
   Control,
   Controller,
@@ -48,15 +50,14 @@ export const CS3ResourceSelector = <TFieldValues extends FieldValues>({
       defaultValue={defaultValue}
       name={name}
       render={({ field: { ref, onChange, onBlur, value } }) => (
-        <S3ResourceSelector
+        <FocusBoundary onBlur={onBlur}>
+          <S3ResourceSelector
           ref={ref}
           resource={value ?? { uri: "" }}
-          onChange={(e) => {
-            handleOnChange(onChange, e);
-            onBlur();
-          }}
+          onChange={(e) => handleOnChange(onChange, e)}
           {...props}
-        />
+          />
+        </FocusBoundary>
       )}
       rules={rules}
       shouldUnregister={shouldUnregister}

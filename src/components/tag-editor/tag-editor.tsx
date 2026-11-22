@@ -1,5 +1,7 @@
 import { NonCancelableCustomEvent, TagEditor, TagEditorProps } from "@cloudscape-design/components";
 import { useCallback } from "react";
+
+import { FocusBoundary } from "../../utils/focus-boundary";
 import {
   Control,
   Controller,
@@ -44,15 +46,14 @@ const CTagEditor = <TFieldValues extends FieldValues>({
       defaultValue={defaultValue}
       name={name}
       render={({ field: { ref, onChange, onBlur, value } }) => (
-        <TagEditor
+        <FocusBoundary onBlur={onBlur}>
+          <TagEditor
           ref={ref}
           tags={(value as TagEditorProps.Tag[]) || []}
-          onChange={(e) => {
-            handleOnChange(onChange, e);
-            onBlur();
-          }}
+          onChange={(e) => handleOnChange(onChange, e)}
           {...props}
-        />
+          />
+        </FocusBoundary>
       )}
       rules={rules}
       shouldUnregister={shouldUnregister}

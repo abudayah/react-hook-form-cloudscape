@@ -1,5 +1,7 @@
 import { NonCancelableCustomEvent, Slider, SliderProps } from "@cloudscape-design/components";
 import { useCallback } from "react";
+
+import { FocusBoundary } from "../../utils/focus-boundary";
 import {
   Control,
   Controller,
@@ -40,15 +42,16 @@ const CSlider = <TFieldValues extends FieldValues>({
       defaultValue={defaultValue}
       name={name}
       render={({ field: { onChange: formOnChange, onBlur: formOnBlur, value } }) => (
-        <Slider
+        <FocusBoundary onBlur={formOnBlur}>
+          <Slider
           value={value}
           onChange={(e) => {
             formOnChange(e.detail.value);
             handleOnChange(e);
-            formOnBlur();
           }}
           {...props}
-        />
+          />
+        </FocusBoundary>
       )}
       rules={rules}
       shouldUnregister={shouldUnregister}

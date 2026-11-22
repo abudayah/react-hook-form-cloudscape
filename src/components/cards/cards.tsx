@@ -1,5 +1,7 @@
 import { Cards, CardsProps, NonCancelableCustomEvent } from "@cloudscape-design/components";
 import { useCallback } from "react";
+
+import { FocusBoundary } from "../../utils/focus-boundary";
 import {
   Control,
   Controller,
@@ -13,7 +15,7 @@ import {
 export interface CCardsProps<T extends FieldValues>
   extends Omit<
     Required<Pick<CardsProps, "trackBy">> & Required<Pick<CardsProps, "selectionType">> & CardsProps,
-    "value"
+    "value" | "selectedItems"
   > {
   name: Path<T>;
   control?: Control<T>;
@@ -48,14 +50,13 @@ export const CCards = <TFieldValues extends FieldValues>({
       defaultValue={defaultValue}
       name={name}
       render={({ field: { onChange, onBlur, value } }) => (
-        <Cards
-          selectedItems={value}
-          onSelectionChange={(e) => {
-            handleOnChange(onChange, e);
-            onBlur();
-          }}
-          {...props}
-        />
+        <FocusBoundary onBlur={onBlur}>
+          <Cards
+            {...props}
+            selectedItems={value ?? []}
+            onSelectionChange={(e) => handleOnChange(onChange, e)}
+          />
+        </FocusBoundary>
       )}
       rules={rules}
       shouldUnregister={shouldUnregister}

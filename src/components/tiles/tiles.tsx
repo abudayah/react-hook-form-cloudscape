@@ -1,5 +1,7 @@
 import { NonCancelableCustomEvent, Tiles, TilesProps } from "@cloudscape-design/components";
 import { useCallback } from "react";
+
+import { FocusBoundary } from "../../utils/focus-boundary";
 import {
   Control,
   Controller,
@@ -41,15 +43,14 @@ const CTiles = <TFieldValues extends FieldValues>({
       defaultValue={defaultValue}
       name={name}
       render={({ field: { ref, onChange, onBlur, value } }) => (
-        <Tiles
+        <FocusBoundary onBlur={onBlur}>
+          <Tiles
           ref={ref}
           value={value}
-          onChange={(e) => {
-            handleOnChange(onChange, e);
-            onBlur();
-          }}
+          onChange={(e) => handleOnChange(onChange, e)}
           {...props}
-        />
+          />
+        </FocusBoundary>
       )}
       rules={rules}
       shouldUnregister={shouldUnregister}
