@@ -45,7 +45,6 @@ describe("SelectUtils", () => {
         { label: "Option 1", value: "value1" },
         {
           label: "Group 1",
-          type: "header",
           options: [
             { label: "Option 2", value: "value2" },
             { label: "Option 3", value: "value3" },
@@ -58,15 +57,14 @@ describe("SelectUtils", () => {
     });
 
     it("should handle multiple nested option groups", () => {
-      const options: SelectProps.Options = [
+      // Cloudscape types only allow one level of grouping; nested groups are exercised at runtime.
+      const options = [
         {
           label: "Group 1",
-          type: "header",
           options: [
             { label: "Option 1", value: "value1" },
             {
               label: "Group 2",
-              type: "header",
               options: [
                 { label: "Option 2", value: "value2" },
                 { label: "Option 3", value: "value3" },
@@ -74,7 +72,7 @@ describe("SelectUtils", () => {
             },
           ],
         },
-      ];
+      ] as unknown as SelectProps.Options;
       const selectedOption = "value3";
       const result = SelectUtils.mapSelectedOptionWithOptions(options, selectedOption);
       expect(result).toEqual({ label: "Option 3", value: "value3" });

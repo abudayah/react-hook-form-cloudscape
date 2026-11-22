@@ -1,2 +1,2 @@
-export { default } from "./tiles";
-export type { CTilesProps } from "./tiles";
+export { default } from "./tiles.js";
+export type { CTilesProps } from "./tiles.js";

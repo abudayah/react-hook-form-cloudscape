@@ -10,10 +10,11 @@ import {
 } from "react-hook-form";
 
 export interface CPropertyFilterProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
-  extends Omit<PropertyFilterProps, "query"> {
+  extends Omit<PropertyFilterProps, "query" | "onChange"> {
   name: TName;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, TName>;
+  onChange?: (event: NonCancelableCustomEvent<PropertyFilterProps.Query>) => void;
   rules?: Omit<RegisterOptions<T, TName>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
 }
