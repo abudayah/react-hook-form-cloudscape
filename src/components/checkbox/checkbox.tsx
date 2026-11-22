@@ -42,12 +42,11 @@ const CCheckbox = <TFieldValues extends FieldValues, TName extends FieldPathByVa
       control={control}
       defaultValue={defaultValue}
       name={name}
-      disabled={disabled}
-      render={({ field: { ref, onChange, onBlur: formOnBlur, value, disabled: fieldDisabled } }) => (
+      render={({ field: { ref, onChange, onBlur: formOnBlur, value = false, disabled: fieldDisabled } }) => (
         <Checkbox
           ref={ref}
           checked={value}
-          disabled={fieldDisabled}
+          disabled={disabled || fieldDisabled}
           onBlur={(e) => {
             formOnBlur();
             onBlur?.(e);
