@@ -1,2 +1,2 @@
-export { default } from "./date-picker";
-export type { CDatePickerProps } from "./date-picker";
+export { default } from "./date-picker.js";
+export type { CDatePickerProps } from "./date-picker.js";

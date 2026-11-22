@@ -19,6 +19,17 @@ describe("MultiSelectUtils", () => {
       expect(transformMultiselectOptionsToArray(options)).toEqual(["1", "2"]);
     });
 
+    it("ignores options without a value rather than inserting undefined", () => {
+      const options: MultiselectProps.Options = [{ label: "Value-less option" }];
+      expect(transformMultiselectOptionsToArray(options)).toEqual([]);
+    });
+
+    it("preserves empty-string option values", () => {
+      const options: MultiselectProps.Options = [{ label: "None", value: "" }];
+      expect(transformMultiselectOptionsToArray(options)).toEqual([""]);
+      expect(mapSelectedOptionsWithOptions(options, [""])).toEqual(options);
+    });
+
     it("should return an array of strings when grouped options are provided", () => {
       const options: MultiselectProps.Options = [
         { label: "Group 1", options: [{ label: "Option 1", value: "1" }] },

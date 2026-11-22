@@ -11,6 +11,10 @@ A React library that simplifies the integration of [`react-hook-form`](https://g
 npm install react-hook-form @cloudscape-design/components react-hook-form-cloudscape
 ```
 
+## Module format
+
+This package is published as an ES module. Use ESM imports in your application or a bundler that supports package `exports`. A CommonJS build is not published. The declared Node.js engine floor is 22.12.0.
+
 ## How to use it
 
 ```

@@ -9,15 +9,19 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CInputProps<T extends FieldValues> extends Omit<InputProps, "value"> {
-  name: FieldPath<T>;
+export interface CInputProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
+  extends Omit<InputProps, "value"> {
+  name: TName;
   control?: Control<T>;
-  defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
+  defaultValue?: FieldPathValue<T, TName>;
+  rules?: Omit<RegisterOptions<T, TName>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
 }
 
-const CInput = <TFieldValues extends FieldValues>({
+const CInput = <
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>({
   name,
   control,
   defaultValue,
@@ -26,7 +30,7 @@ const CInput = <TFieldValues extends FieldValues>({
   onBlur,
   onChange,
   ...props
-}: CInputProps<TFieldValues>) => {
+}: CInputProps<TFieldValues, TName>) => {
   const handleOnBlur = useCallback(
     (event: NonCancelableCustomEvent<null>) => {
       onBlur?.(event);
