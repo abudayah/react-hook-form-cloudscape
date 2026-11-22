@@ -4,21 +4,21 @@ import {
   Control,
   Controller,
   FieldPath,
+  FieldPathByValue,
   FieldPathValue,
   FieldValues,
-  Path,
   RegisterOptions,
 } from "react-hook-form";
 
-export interface CToggleProps<T extends FieldValues> extends Omit<ToggleProps, "checked"> {
-  name: Path<T>;
+export interface CToggleProps<T extends FieldValues, TName extends FieldPathByValue<T, boolean | undefined> = FieldPathByValue<T, boolean | undefined>> extends Omit<ToggleProps, "checked"> {
+  name: TName;
   control?: Control<T>;
-  defaultValue?: FieldPathValue<T, FieldPath<T>>;
-  rules?: Omit<RegisterOptions<T, FieldPath<T>>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
+  defaultValue?: FieldPathValue<T, TName>;
+  rules?: Omit<RegisterOptions<T, TName>, "valueAsNumber" | "valueAsDate" | "setValueAs" | "disabled">;
   shouldUnregister?: boolean;
 }
 
-const CToggle = <TFieldValues extends FieldValues>({
+const CToggle = <TFieldValues extends FieldValues, TName extends FieldPathByValue<TFieldValues, boolean | undefined> = FieldPathByValue<TFieldValues, boolean | undefined>>({
   name,
   control,
   defaultValue,
@@ -28,7 +28,7 @@ const CToggle = <TFieldValues extends FieldValues>({
   onBlur,
   disabled,
   ...props
-}: CToggleProps<TFieldValues>) => {
+}: CToggleProps<TFieldValues, TName>) => {
   const handleOnChange = useCallback(
     (formOnChange: (value: boolean) => void, e: NonCancelableCustomEvent<ToggleProps.ChangeDetail>) => {
       formOnChange(e.detail.checked);
