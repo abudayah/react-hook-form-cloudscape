@@ -1,2 +1,2 @@
-export { default } from "./radio-group";
-export type { CRadioGroupProps } from "./radio-group";
+export { default } from "./radio-group.js";
+export type { CRadioGroupProps } from "./radio-group.js";

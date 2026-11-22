@@ -9,7 +9,7 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
-import SelectUtils from "./utils";
+import SelectUtils from "./utils.js";
 
 export interface CSelectProps<T extends FieldValues> extends Omit<SelectProps, "selectedOption"> {
   name: FieldPath<T>;

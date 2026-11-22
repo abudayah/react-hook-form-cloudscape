@@ -9,7 +9,7 @@ import {
   RegisterOptions,
 } from "react-hook-form";
 
-import { mapSelectedOptionsWithOptions, transformMultiselectOptionsToArray } from "./utils";
+import { mapSelectedOptionsWithOptions, transformMultiselectOptionsToArray } from "./utils.js";
 
 export interface CMultiselectProps<T extends FieldValues> extends Omit<MultiselectProps, "selectedOptions"> {
   name: FieldPath<T>;

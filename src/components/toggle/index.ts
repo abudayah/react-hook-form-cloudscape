@@ -1,2 +1,2 @@
-export { default } from "./toggle";
-export type { CToggleProps } from "./toggle";
+export { default } from "./toggle.js";
+export type { CToggleProps } from "./toggle.js";

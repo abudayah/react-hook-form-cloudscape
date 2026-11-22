@@ -1,2 +1,2 @@
-export { default } from "./textarea";
-export type { CTextareaProps } from "./textarea";
+export { default } from "./textarea.js";
+export type { CTextareaProps } from "./textarea.js";
