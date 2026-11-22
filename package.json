@@ -43,7 +43,9 @@
     "prepare": "node scripts/prepare.mjs",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
-    "verify:exports": "node scripts/verify-package-exports.mjs"
+    "verify:exports": "node scripts/verify-package-exports.mjs",
+    "typecheck:tests": "tsc --project tsconfig.tests.json --noEmit",
+    "verify:package": "npm pack && npx --yes @arethetypeswrong/cli --pack . --profile esm-only && npx --yes publint"
   },
   "lint-staged": {
     "*.{ts,tsx,js,cjs}": [
@@ -79,6 +81,7 @@
     "eslint-plugin-package-json": "^0.33.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
+    "glob": "^10.5.0",
     "globals": "^16.1.0",
     "husky": "^9.1.7",
     "jsdom": "^26.1.0",
@@ -92,8 +95,7 @@
     "typescript-eslint": "^8.32.1",
     "vite": "^6.3.3",
     "vite-plugin-dts": "^4.5.3",
-    "vitest": "^3.1.2",
-    "glob": "^10.5.0"
+    "vitest": "^3.1.2"
   },
   "peerDependencies": {
     "@cloudscape-design/components": ">=3.0.0",

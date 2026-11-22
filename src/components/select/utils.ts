@@ -2,7 +2,7 @@ import { SelectProps } from "@cloudscape-design/components";
 
 const mapSelectedOptionWithOptions = (
   options: SelectProps.Options = [],
-  selectedOption: string,
+  selectedOption: string | undefined,
 ): SelectProps.Option | null => {
   let singleSelectedOption = null;
   if (options && selectedOption) {
