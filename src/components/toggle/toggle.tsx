@@ -52,6 +52,7 @@ const CToggle = <
       name={name}
       render={({ field: { ref, onChange, onBlur: formOnBlur, value = false, disabled: fieldDisabled } }) => (
         <Toggle
+          {...props}
           ref={ref}
           checked={value}
           disabled={disabled || fieldDisabled}
@@ -61,7 +62,6 @@ const CToggle = <
             onBlur?.(e);
           }}
           onChange={handleOnChange.bind(null, onChange)}
-          {...props}
         />
       )}
       rules={rules}

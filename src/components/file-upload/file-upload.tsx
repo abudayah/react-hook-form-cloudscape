@@ -52,10 +52,10 @@ export const CFileUpload = <
       render={({ field: { ref, onChange, onBlur, value } }) => (
         <FocusBoundary onBlur={onBlur}>
           <FileUpload
+            {...props}
             ref={ref}
             value={generateFilesArray(value)}
             onChange={(e) => handleOnChange(onChange, e)}
-            {...props}
           />
         </FocusBoundary>
       )}

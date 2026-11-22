@@ -73,11 +73,16 @@ const CAttributeEditor = <
         ...def,
         errorText: (item: FieldArray<TFieldValues, TName>, index: number) => {
           const fieldName = def.errorName?.(item, index) ?? (key ? `${name}.${index}.${key}` : undefined);
-          const legacyLabelPath =
-            fieldName ?? (def.label ? `${name}.${index}.${def.label.toLowerCase()}` : undefined);
-          return legacyLabelPath
-            ? (get(errors, `${legacyLabelPath}.message`) as string | undefined)
-            : undefined;
+          if (
+            (globalThis as { process?: { env?: { NODE_ENV?: string } } }).process?.env?.NODE_ENV !==
+              "production" &&
+            !fieldName
+          ) {
+            console.warn(
+              `CAttributeEditor "${name}" needs a "key" or "errorName" on every definition to display validation errors.`,
+            );
+          }
+          return fieldName ? (get(errors, `${fieldName}.message`) as string | undefined) : undefined;
         },
       })),
     [definition, errors, name],
@@ -85,6 +90,7 @@ const CAttributeEditor = <
 
   return (
     <AttributeEditor
+      {...props}
       definition={definitionWithError}
       items={fields as unknown as FieldArray<TFieldValues, TName>[]}
       onAddButtonClick={(event) => {
@@ -105,7 +111,6 @@ const CAttributeEditor = <
         }
         onRemoveButtonClick?.(event, remove);
       }}
-      {...props}
     />
   );
 };

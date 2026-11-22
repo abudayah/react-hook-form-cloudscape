@@ -54,12 +54,12 @@ export const CAutosuggest = <T extends FieldValues, TName extends FieldPath<T> =
       name={name}
       render={({ field: { ref, onBlur, onChange, value } }) => (
         <Autosuggest
+          {...props}
           ref={ref}
           name={name}
           value={(value as string) || ""}
           onBlur={handleOnBlur.bind(null, onBlur)}
           onChange={handleOnChange.bind(null, onChange)}
-          {...props}
         />
       )}
       rules={rules}

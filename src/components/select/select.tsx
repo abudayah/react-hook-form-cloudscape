@@ -56,11 +56,11 @@ const CSelect = <
       name={name}
       render={({ field: { ref, onChange, onBlur, value } }) => (
         <Select
+          {...props}
           ref={ref}
           selectedOption={SelectUtils.mapSelectedOptionWithOptions(props.options, value)}
           onBlur={handleOnBlur.bind(null, onBlur)}
           onChange={handleOnChange.bind(null, onChange)}
-          {...props}
         />
       )}
       rules={rules}

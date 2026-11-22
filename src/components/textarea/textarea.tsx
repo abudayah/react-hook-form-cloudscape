@@ -54,12 +54,12 @@ const CTextarea = <
       name={name}
       render={({ field: { onChange, onBlur, value, ref } }) => (
         <Textarea
+          {...props}
           ref={ref}
           name={name}
           value={value}
           onBlur={handleOnBlur.bind(null, onBlur)}
           onChange={handleOnChange.bind(null, onChange)}
-          {...props}
         />
       )}
       rules={rules}

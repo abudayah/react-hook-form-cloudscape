@@ -47,7 +47,7 @@ const CRadioGroup = <
       name={name}
       render={({ field: { ref, onChange, onBlur, value } }) => (
         <FocusBoundary onBlur={onBlur}>
-          <RadioGroup ref={ref} value={value} onChange={(e) => handleOnChange(onChange, e)} {...props} />
+          <RadioGroup {...props} ref={ref} value={value} onChange={(e) => handleOnChange(onChange, e)} />
         </FocusBoundary>
       )}
       rules={rules}

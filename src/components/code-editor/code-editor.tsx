@@ -52,10 +52,10 @@ const CCodeEditor = <
           }}
         >
           <CodeEditor
+            {...props}
             ref={ref}
             value={value || ""}
             onChange={(e) => handleOnChange(onChange, e)}
-            {...props}
           />
         </div>
       )}

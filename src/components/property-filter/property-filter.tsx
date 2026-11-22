@@ -56,10 +56,10 @@ export const CPropertyFilter = <
           }}
         >
           <PropertyFilter
+            {...props}
             ref={ref}
             query={value ?? { tokens: [], operation: "and" }}
             onChange={handleOnChange.bind(null, onChange)}
-            {...props}
           />
         </div>
       )}

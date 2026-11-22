@@ -53,12 +53,12 @@ const CTimeInput = <
       name={name}
       render={({ field: { ref, onChange, onBlur, value } }) => (
         <TimeInput
+          {...props}
           ref={ref}
           name={name}
           value={value as string}
           onBlur={handleOnBlur.bind(null, onBlur)}
           onChange={handleOnChange.bind(null, onChange)}
-          {...props}
         />
       )}
       rules={rules}

@@ -47,7 +47,7 @@ const CTiles = <
       name={name}
       render={({ field: { ref, onChange, onBlur, value } }) => (
         <FocusBoundary onBlur={onBlur}>
-          <Tiles ref={ref} value={value} onChange={(e) => handleOnChange(onChange, e)} {...props} />
+          <Tiles {...props} ref={ref} value={value} onChange={(e) => handleOnChange(onChange, e)} />
         </FocusBoundary>
       )}
       rules={rules}
