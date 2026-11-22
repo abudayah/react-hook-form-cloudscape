@@ -13,6 +13,9 @@ import * as tseslint from "typescript-eslint";
 const IGNORE_PATTERNS = [
   // Build artifacts and generated files
   "dist/**",
+  "coverage/**",
+  "playwright-report/**",
+  "test-results/**",
 
   // Configuration and metadata
   "*.config.ts",
