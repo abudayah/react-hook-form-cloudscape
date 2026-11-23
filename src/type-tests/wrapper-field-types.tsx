@@ -1,9 +1,7 @@
-import { useForm } from "react-hook-form";
-
-import { CCheckbox, CCards, CInput, CToggle } from "../index";
 import CDateInput from "../components/date-input";
 import COptionList from "../components/option-list";
 import CSegmentedControl from "../components/segmented-control";
+import { CCheckbox, CCards, CInput, CToggle } from "../index";
 
 type FormValues = {
   age: number;
