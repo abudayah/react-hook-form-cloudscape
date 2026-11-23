@@ -1,12 +1,18 @@
 import { useForm } from "react-hook-form";
 
 import { CCheckbox, CCards, CInput, CToggle } from "../index";
+import CDateInput from "../components/date-input";
+import COptionList from "../components/option-list";
+import CSegmentedControl from "../components/segmented-control";
 
 type FormValues = {
   age: number;
   email: string;
   enabled?: boolean;
   active: boolean;
+  date: string;
+  segment: string;
+  choices: { label: string; value: string }[];
 };
 
 export const WrapperFieldTypeChecks = () => {
@@ -28,6 +34,26 @@ export const WrapperFieldTypeChecks = () => {
       <CToggle control={control} name="active" defaultValue={false} />
       {/* @ts-expect-error Toggle fields must resolve to booleans. */}
       <CToggle control={control} name="email" />
+      <CDateInput control={control} name="date" defaultValue="2026/11/22" />
+      {/* @ts-expect-error Date input fields must resolve to strings. */}
+      <CDateInput control={control} name="date" defaultValue={42} />
+      <CSegmentedControl
+        control={control}
+        name="segment"
+        defaultValue="one"
+        label="View"
+        options={[{ text: "One", id: "one" }]}
+      />
+      {/* @ts-expect-error Segmented control fields must resolve to strings. */}
+      <CSegmentedControl control={control} name="segment" defaultValue={42} label="View" options={[]} />
+      <COptionList
+        control={control}
+        name="choices"
+        defaultValue={[]}
+        options={[{ label: "One", value: "one" }]}
+        selectionType="multi"
+        i18nStrings={{ selectedAriaLabel: "Selected" }}
+      />
     </>
   );
 };
