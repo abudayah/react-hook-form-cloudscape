@@ -83,7 +83,7 @@
     "@vitest/browser": "5.1.1",
     "@vitest/browser-playwright": "5.1.1",
     "@vitest/coverage-v8": "^5.1.1",
-    "@vitest/eslint-plugin": "1.2.5",
+    "@vitest/eslint-plugin": "1.6.28",
     "ajv": "^8.20.0",
     "eslint": "^9.27.0",
     "eslint-config-prettier": "^10.1.5",
