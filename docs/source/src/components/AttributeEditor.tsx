@@ -83,6 +83,7 @@ const AttributeEditor: React.FC<Props> = ({ onSubmit }) => {
                   definition={[
                     {
                       label: "Key",
+                      key: "key",
                       control: (_field, fieldIndex) => (
                         <CInput
                           key={fieldIndex}
@@ -94,6 +95,7 @@ const AttributeEditor: React.FC<Props> = ({ onSubmit }) => {
                     },
                     {
                       label: "Value",
+                      key: "value",
                       control: (_field, fieldIndex) => (
                         <CInput
                           key={fieldIndex}

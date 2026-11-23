@@ -31,7 +31,26 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run build and tests
+      - name: Verify lockfile integrity
+        run: npm run verify:lockfile
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type-check tests
+        run: npm run typecheck:tests
+
+      - name: Run unit tests, coverage, and build
+        run: npm run build
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run browser tests
+        run: npm run test:browser
+
+      - name: Build documentation
+        working-directory: docs/source
         run: npm run build
 
       - name: Validate the packed npm package

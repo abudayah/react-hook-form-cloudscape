@@ -43,7 +43,15 @@ const CSelect = <
 
   const handleOnChange = useCallback(
     (formOnChange: (value?: string) => void, e: NonCancelableCustomEvent<SelectProps.ChangeDetail>) => {
-      formOnChange(e.detail.selectedOption.value ?? undefined);
+      const { label, value } = e.detail.selectedOption;
+      // Cloudscape permits options without values. Do not let selecting one
+      // silently erase a valid React Hook Form value.
+      if (typeof value === "string") {
+        formOnChange(value);
+      } else if (!label) {
+        // An empty selected option represents clearing the selection.
+        formOnChange(undefined);
+      }
       onChange?.(e);
     },
     [onChange],
