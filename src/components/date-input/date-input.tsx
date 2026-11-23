@@ -1,4 +1,4 @@
-import { DateInput, DateInputProps, NonCancelableCustomEvent } from "@cloudscape-design/components";
+import { DateInput, DateInputProps, InputProps, NonCancelableCustomEvent } from "@cloudscape-design/components";
 import { useCallback } from "react";
 import {
   Control,
@@ -33,7 +33,7 @@ const CDateInput = <
   ...props
 }: CDateInputProps<TFieldValues, TName>) => {
   const handleOnChange = useCallback(
-    (formOnChange: (value: string) => void, event: NonCancelableCustomEvent<DateInputProps.ChangeDetail>) => {
+    (formOnChange: (value: string) => void, event: NonCancelableCustomEvent<InputProps.ChangeDetail>) => {
       formOnChange(event.detail.value);
       onChange?.(event);
     },
