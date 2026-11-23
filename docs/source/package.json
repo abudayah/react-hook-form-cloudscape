@@ -12,7 +12,7 @@
     "@cloudscape-design/code-view": "^3.0.52",
     "@cloudscape-design/components": "^3.0.1353",
     "@cloudscape-design/global-styles": "^1.0.42",
-    "@hookform/resolvers": "^3.10.0",
+    "@hookform/resolvers": "^7.0.7",
     "ace-builds": "^1.40.1",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
