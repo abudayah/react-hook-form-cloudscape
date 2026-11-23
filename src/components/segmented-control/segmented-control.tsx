@@ -50,11 +50,10 @@ const CSegmentedControl = <
       control={control}
       defaultValue={defaultValue}
       name={name}
-      render={({ field: { ref, onChange: formOnChange, onBlur, value } }) => (
+      render={({ field: { onChange: formOnChange, onBlur, value } }) => (
         <FocusBoundary onBlur={onBlur}>
           <SegmentedControl
             {...props}
-            ref={ref}
             selectedId={value}
             onChange={(event) => handleOnChange(formOnChange, event)}
           />
