@@ -1,3 +1,27 @@
+# [2.3.0](https://github.com/abudayah/react-hook-form-cloudscape/compare/v2.2.0...v2.3.0) (2026-11-23)
+
+
+### Bug Fixes
+
+* **forms:** align new wrappers with Cloudscape types ([2e42154](https://github.com/abudayah/react-hook-form-cloudscape/commit/2e4215486cebd451851fbf1fd715665e00430f02))
+* **forms:** align new wrappers with Cloudscape types ([7c1212b](https://github.com/abudayah/react-hook-form-cloudscape/commit/7c1212b1fa12dff46124eda3461faccb9a35ba54))
+* **forms:** align new wrappers with Cloudscape types ([65d08e3](https://github.com/abudayah/react-hook-form-cloudscape/commit/65d08e3767093af3d2d18fed1302d636d0130c9f))
+* restore useForm import in field type checks ([a5a0723](https://github.com/abudayah/react-hook-form-cloudscape/commit/a5a07235ab0dfe9e381a14d41118baa38e84e7f2))
+
+
+### Features
+
+* **forms:** add Cloudscape control wrappers ([7b636fe](https://github.com/abudayah/react-hook-form-cloudscape/commit/7b636fe0dd3c75d5bb589bb15eef9955f96de557))
+* **forms:** add Cloudscape control wrappers ([174c74d](https://github.com/abudayah/react-hook-form-cloudscape/commit/174c74db3854aa47c36cfa36a6738dcec09ee478))
+* **forms:** add Cloudscape control wrappers ([48a5011](https://github.com/abudayah/react-hook-form-cloudscape/commit/48a501126de5277854d9de34055d3590ef567b64))
+* **forms:** add Cloudscape control wrappers ([e1e6019](https://github.com/abudayah/react-hook-form-cloudscape/commit/e1e601965585ecd2f9094ce144078aa12f25d8c7))
+* **forms:** add Cloudscape control wrappers ([6b103d2](https://github.com/abudayah/react-hook-form-cloudscape/commit/6b103d24772e2702098c1fb91a15c62ed29de08e))
+* **forms:** add Cloudscape control wrappers ([6ac3f9f](https://github.com/abudayah/react-hook-form-cloudscape/commit/6ac3f9f74d9b87a2a8caf06be4852333b6f7504d))
+* **forms:** add Cloudscape control wrappers ([d6f290f](https://github.com/abudayah/react-hook-form-cloudscape/commit/d6f290ff083b70d9f3beaa8ffbf61014d46ebfe3))
+* **forms:** add Cloudscape control wrappers ([a2941c7](https://github.com/abudayah/react-hook-form-cloudscape/commit/a2941c7f15b170d981aea13713b70e5929537585))
+* **forms:** add Cloudscape control wrappers ([f7eab3d](https://github.com/abudayah/react-hook-form-cloudscape/commit/f7eab3de67fb6d4ef57a4739e10afd430163e08c))
+* **forms:** add Cloudscape control wrappers ([6e29308](https://github.com/abudayah/react-hook-form-cloudscape/commit/6e293081487e80ae773d132d2fbc022b2a22b29a))
+
 # [2.2.0](https://github.com/abudayah/react-hook-form-cloudscape/compare/v2.1.2...v2.2.0) (2026-11-23)
 
 
