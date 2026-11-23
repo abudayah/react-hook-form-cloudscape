@@ -1,0 +1,35 @@
+name: Cloudscape compatibility
+
+on:
+  schedule:
+    - cron: "17 8 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  latest-cloudscape:
+    name: Latest Cloudscape
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Install latest Cloudscape without changing the lockfile
+        run: npm install --no-save --package-lock=false @cloudscape-design/components@latest
+
+      - name: Type-check tests
+        run: npm run typecheck:tests
+
+      - name: Build and test
+        run: npm run build
