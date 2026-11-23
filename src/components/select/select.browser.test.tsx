@@ -26,3 +26,31 @@ test("renders an option whose value is the empty string", async () => {
 
   await expect.element(screen.getByText("None")).toBeVisible();
 });
+
+test("selects an option and writes it into form state", async () => {
+  const Form = () => {
+    const { control, watch } = useForm<{ choice: string }>({
+      defaultValues: { choice: "1" },
+    });
+
+    return (
+      <>
+        <CSelect
+          control={control}
+          name="choice"
+          options={[
+            { label: "One", value: "1" },
+            { label: "Two", value: "2" },
+          ]}
+        />
+        <output>{watch("choice")}</output>
+      </>
+    );
+  };
+
+  const screen = await render(<Form />);
+
+  await screen.getByRole("button", { name: "One" }).click();
+  await screen.getByRole("option", { name: "Two" }).click();
+  await expect.element(screen.getByText("2")).toBeVisible();
+});

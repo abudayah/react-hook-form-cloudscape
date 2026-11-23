@@ -75,6 +75,14 @@ const { control, handleSubmit, formState: { errors } } = useForm<FormValues>();
 
 The wrappers forward React Hook Form's field ref to Cloudscape controls that expose a focusable ref, so `setFocus()` and focus-on-error work as expected. `CSlider`, `CCards`, and `CAttributeEditor` do not expose a focusable Cloudscape ref and cannot be focused programmatically. The wrappers also keep their internal ref, so consumer `ref` props are not forwarded; use React Hook Form's `setFocus()` instead.
 
+## Touched and blur behavior
+
+Fields become touched only when focus leaves the control, never on a change or selection event. Wrappers whose Cloudscape control exposes a native blur callback forward it and compose any consumer `onBlur`. Controls without a native blur callback use a focus boundary, so moving focus between the control's own elements does not mark the field touched. This applies consistently to radio groups, tiles, sliders, tag editors, text filters, file uploads, S3 resource selectors, cards, the property filter, and the code editor.
+
+## Compatibility
+
+The current release is tested with React 19, React Hook Form 7.9x, and Cloudscape Design System 3.x. The declared peer floors are the minimum APIs used by the published build: React `>=16.14`, React Hook Form `>=7.26`, and Cloudscape `>=3.0.622`. `@types/react >=17` is an optional peer. CI runs on Node 22 and 24.
+
 ## AttributeEditor error paths
 
 Each `definition` entry must provide a `key` (the row property name) or a custom `errorName` callback. The key is used to resolve per-row validation messages. Definitions without either cannot display row-level errors.
