@@ -1,3 +1,15 @@
+# [2.2.0](https://github.com/abudayah/react-hook-form-cloudscape/compare/v2.1.2...v2.2.0) (2026-11-23)
+
+
+### Features
+
+* **forms:** close remaining audit gaps ([73f03ca](https://github.com/abudayah/react-hook-form-cloudscape/commit/73f03caa6f780873ced4cd8f88224bc09c58c7bf))
+
+
+### Reverts
+
+* restore semantic-release 25 ([74230e7](https://github.com/abudayah/react-hook-form-cloudscape/commit/74230e7e624fdbacf7a40fa9349b9b3dfdeca01c))
+
 ## [2.1.2](https://github.com/abudayah/react-hook-form-cloudscape/compare/v2.1.1...v2.1.2) (2026-11-22)
 
 
