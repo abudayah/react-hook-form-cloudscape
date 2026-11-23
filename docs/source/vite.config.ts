@@ -7,7 +7,7 @@ export default defineConfig({
   base: "/react-hook-form-cloudscape/",
   build: {
     assetsDir: "./assets/",
-    outDir: "../",
+    outDir: "../dist",
     emptyOutDir: false,
   },
 });
