@@ -9,11 +9,7 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
-
-  - package-ecosystem: "npm"
-    directory: "/docs/source"
-    schedule:
-      interval: "weekly"
+    # docs/source is an npm workspace and shares the root lockfile.
 
   - package-ecosystem: "github-actions"
     directory: "/"
