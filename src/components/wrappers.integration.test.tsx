@@ -6,14 +6,17 @@ import CAttributeEditor from "./attribute-editor";
 import CAutosuggest from "./autosuggest";
 import CCards from "./cards";
 import CCheckbox from "./checkbox";
+import CDateInput from "./date-input";
 import CDatePicker from "./date-picker";
 import CDateRangePicker from "./date-range-picker";
 import CFileUpload from "./file-upload";
 import CFormField from "./form-field";
 import CInput from "./input";
 import CMultiselect from "./multiselect";
+import COptionList from "./option-list";
 import CRadioGroup from "./radio-group";
 import CS3ResourceSelector from "./s3-resource-selector";
+import CSegmentedControl from "./segmented-control";
 import CSelect from "./select";
 import CSlider from "./slider";
 import CTagEditor from "./tag-editor";
@@ -44,6 +47,14 @@ describe("wrapper mounts against real Cloudscape components", () => {
           Value
         </CCheckbox>
       );
+    };
+    expectMounts(Form);
+  });
+
+  it("CDateInput", () => {
+    const Form = () => {
+      const { control } = useForm<{ value: string }>({ defaultValues: { value: "" } });
+      return <CDateInput control={control} name="value" placeholder="YYYY/MM/DD" />;
     };
     expectMounts(Form);
   });
@@ -107,10 +118,41 @@ describe("wrapper mounts against real Cloudscape components", () => {
     expectMounts(Form);
   });
 
+  it("COptionList", () => {
+    const Form = () => {
+      const { control } = useForm<{ value: { label: string; value: string }[] }>({ defaultValues: { value: [] } });
+      return (
+        <COptionList
+          control={control}
+          name="value"
+          options={[{ label: "One", value: "1" }]}
+          selectionType="multi"
+          i18nStrings={{ selectedAriaLabel: "Selected" }}
+        />
+      );
+    };
+    expectMounts(Form);
+  });
+
   it("CSelect", () => {
     const Form = () => {
       const { control } = useForm<{ value: string }>({ defaultValues: { value: "" } });
       return <CSelect control={control} name="value" options={[{ label: "One", value: "1" }]} />;
+    };
+    expectMounts(Form);
+  });
+
+  it("CSegmentedControl", () => {
+    const Form = () => {
+      const { control } = useForm<{ value: string }>({ defaultValues: { value: "one" } });
+      return (
+        <CSegmentedControl
+          control={control}
+          name="value"
+          label="View"
+          options={[{ text: "One", id: "one" }, { text: "Two", id: "two" }]}
+        />
+      );
     };
     expectMounts(Form);
   });

@@ -55,6 +55,24 @@ export function ExampleForm() {
 
 `CFormField` subscribes to the named field's React Hook Form error and passes its message to Cloudscape's `FormField.errorText`. It also accepts an explicit `errorText` override. When using `FormProvider`, pass the form control to each input as usual and omit the `control` prop from `CFormField`.
 
+## Additional Cloudscape controls
+
+Three additional wrappers are available through component subpath imports:
+
+- `CDateInput` binds the free-form date input value (a string).
+- `COptionList` binds the selected option objects (an array, for single or multiple selection).
+- `CSegmentedControl` binds the selected segment ID (a string).
+
+These controls are exposed as subpath imports so applications using older Cloudscape 3.x releases can continue importing the original package entry point without resolving newer Cloudscape components. Use a Cloudscape release that includes the corresponding component before importing its wrapper.
+
+```tsx
+import CDateInput from "react-hook-form-cloudscape/components/date-input";
+import COptionList from "react-hook-form-cloudscape/components/option-list";
+import CSegmentedControl from "react-hook-form-cloudscape/components/segmented-control";
+```
+
+Each wrapper supports the same `control`, `name`, `defaultValue`, `rules`, and `shouldUnregister` props as the existing wrappers. Consumer `onChange` callbacks receive the original Cloudscape event after the React Hook Form value is updated.
+
 ## Validation without CFormField
 
 The input wrappers bind values and events; they do not automatically render validation messages. You can also wire the errors yourself:
@@ -81,7 +99,7 @@ Fields become touched only when focus leaves the control, never on a change or s
 
 ## Compatibility
 
-The current release is tested with React 19, React Hook Form 7.9x, and Cloudscape Design System 3.x. The declared peer floors are the minimum APIs used by the published build: React `>=16.14`, React Hook Form `>=7.26`, and Cloudscape `>=3.0.622`. `@types/react >=17` is an optional peer. CI runs on Node 22 and 24.
+The current release is tested with React 19, React Hook Form 7.9x, and Cloudscape Design System 3.x. The declared peer floors are the minimum APIs used by the published build: React `>=16.14`, React Hook Form `>=7.26`, and Cloudscape `>=3.0.622`. `@types/react >=17` is an optional peer. CI runs on Node 22 and 24. A scheduled workflow also checks the wrappers against the latest Cloudscape release.
 
 ## AttributeEditor error paths
 
