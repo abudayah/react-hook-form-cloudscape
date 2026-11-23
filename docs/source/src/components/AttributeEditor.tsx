@@ -1,5 +1,5 @@
 import React from "react";
-import { useForm, get, FieldValues, Control } from "react-hook-form";
+import { useForm, get } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
@@ -33,13 +33,17 @@ interface Props {
   onSubmit: (data: any) => void;
 }
 
+interface AttributeEditorForm {
+  fieldName: { key: string; value: string }[];
+}
+
 const AttributeEditor: React.FC<Props> = ({ onSubmit }) => {
   const {
     control,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm({
+  } = useForm<AttributeEditorForm>({
     mode: "onBlur",
     resolver: yupResolver(schema),
     defaultValues: {
@@ -75,13 +79,13 @@ const AttributeEditor: React.FC<Props> = ({ onSubmit }) => {
               <FormField label="Input" errorText={get(errors, `fieldName.message`)}>
                 <CAttributeEditor
                   name="fieldName"
-                  control={control as unknown as Control<FieldValues>}
+                  control={control}
                   definition={[
                     {
                       label: "Key",
-                      control: (field: FieldValues, fieldIndex) => (
+                      control: (_field, fieldIndex) => (
                         <CInput
-                          key={field.id}
+                          key={fieldIndex}
                           control={control}
                           name={`fieldName.${fieldIndex}.key`}
                           placeholder="Enter key"
@@ -90,9 +94,9 @@ const AttributeEditor: React.FC<Props> = ({ onSubmit }) => {
                     },
                     {
                       label: "Value",
-                      control: (field: FieldValues, fieldIndex) => (
+                      control: (_field, fieldIndex) => (
                         <CInput
-                          key={field.id}
+                          key={fieldIndex}
                           control={control}
                           name={`fieldName.${fieldIndex}.value`}
                           placeholder="Enter value"
@@ -100,7 +104,7 @@ const AttributeEditor: React.FC<Props> = ({ onSubmit }) => {
                       ),
                     },
                   ]}
-                  defaultValue={[{ key: "", value: "" }]} // Default values are required for the component to work.
+                  defaultValue={{ key: "", value: "" }} // Default values are required for the component to work.
                   addButtonText="Add new item"
                   removeButtonText="Remove"
                   empty="No items associated with the resource."

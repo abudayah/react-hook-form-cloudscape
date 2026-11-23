@@ -15,3 +15,8 @@ dist/
 
 # Others
 dry-run-output.txt
+
+# docs build output
+docs/assets/
+docs/dist/
+docs/index.html

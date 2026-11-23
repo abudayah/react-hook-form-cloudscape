@@ -4,34 +4,34 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "rm -rf ../assets/ && tsc -b && vite build",
+    "build": "rm -rf ../dist && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
     "@cloudscape-design/code-view": "^3.0.52",
-    "@cloudscape-design/components": "^3.0.952",
+    "@cloudscape-design/components": "^3.0.1353",
     "@cloudscape-design/global-styles": "^1.0.42",
     "@hookform/resolvers": "^3.10.0",
     "ace-builds": "^1.40.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "react-hook-form": "^7.56.1",
-    "react-hook-form-cloudscape": "^1.7.10",
+    "react-hook-form-cloudscape": "file:../..",
     "react-router-dom": "^7.18.2",
     "yup": "^1.6.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.1",
-    "@types/react": "^18.3.20",
-    "@types/react-dom": "^18.3.6",
-    "@vitejs/plugin-react": "^4.4.1",
+    "@types/react": "^19.1.4",
+    "@types/react-dom": "^19.1.5",
+    "@vitejs/plugin-react": "^6.3.0",
     "eslint": "^9.25.1",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^15.15.0",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.31.1",
-    "vite": "^6.4.5"
+    "vite": "^8.3.8"
   }
 }

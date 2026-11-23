@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 
 const lock = JSON.parse(readFileSync(new URL("../package-lock.json", import.meta.url), "utf8"));
 const entries = Object.entries(lock.packages ?? {});
-const resolved = entries.filter(([path, entry]) => path && entry?.resolved);
+const resolved = entries.filter(([path, entry]) => path && entry?.resolved && !entry.link);
 const missing = resolved.filter(([, entry]) => !entry.integrity).map(([path]) => path);
 
 if (missing.length > 0) {
