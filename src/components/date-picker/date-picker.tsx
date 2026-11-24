@@ -1,4 +1,5 @@
-import { DatePicker, DatePickerProps, NonCancelableCustomEvent } from "@cloudscape-design/components";
+import DatePicker, { DatePickerProps } from "@cloudscape-design/components/date-picker";
+import { NonCancelableCustomEvent } from "@cloudscape-design/components/interfaces";
 import { useCallback } from "react";
 import {
   Control,
@@ -57,7 +58,7 @@ const CDatePicker = <
           {...props}
           ref={ref}
           name={name}
-          value={value}
+          value={value ?? ""}
           onBlur={(e) => {
             formOnBlur();
             handleOnBlur(e);

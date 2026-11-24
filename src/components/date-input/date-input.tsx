@@ -1,4 +1,6 @@
-import { DateInput, DateInputProps, InputProps, NonCancelableCustomEvent } from "@cloudscape-design/components";
+import DateInput, { DateInputProps } from "@cloudscape-design/components/date-input";
+import { InputProps } from "@cloudscape-design/components/input";
+import { NonCancelableCustomEvent } from "@cloudscape-design/components/interfaces";
 import { useCallback } from "react";
 import {
   Control,
@@ -51,7 +53,7 @@ const CDateInput = <
             {...props}
             ref={ref}
             name={name}
-            value={value}
+            value={value ?? ""}
             onChange={(event) => handleOnChange(formOnChange, event)}
           />
         </FocusBoundary>

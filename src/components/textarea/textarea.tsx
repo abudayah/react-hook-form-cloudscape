@@ -1,4 +1,5 @@
-import { NonCancelableCustomEvent, Textarea, TextareaProps } from "@cloudscape-design/components";
+import { NonCancelableCustomEvent } from "@cloudscape-design/components/interfaces";
+import Textarea, { TextareaProps } from "@cloudscape-design/components/textarea";
 import { useCallback } from "react";
 import {
   Control,
@@ -57,7 +58,7 @@ const CTextarea = <
           {...props}
           ref={ref}
           name={name}
-          value={value}
+          value={value ?? ""}
           onBlur={handleOnBlur.bind(null, onBlur)}
           onChange={handleOnChange.bind(null, onChange)}
         />
