@@ -14,14 +14,18 @@ import * as Autosuggest from "./components/Autosuggest?raw";
 import * as Cards from "./components/Cards?raw";
 import * as Checkbox from "./components/Checkbox?raw";
 import * as CodeEditor from "./components/CodeEditor?raw";
+import * as DateInput from "./components/DateInput?raw";
 import * as DatePicker from "./components/DatePicker?raw";
 import * as DateRangePicker from "./components/DateRangePicker?raw";
 import * as FileUpload from "./components/FileUpload?raw";
+import * as FormField from "./components/FormField?raw";
 import * as Input from "./components/Input?raw";
 import * as Multiselect from "./components/Multiselect?raw";
-// import * as PropertyFilter from './components/PropertyFilter?raw';
+import * as OptionList from "./components/OptionList?raw";
+import * as PropertyFilter from "./components/PropertyFilter?raw";
 import * as RadioGroup from "./components/RadioGroup?raw";
-// import * as S3ResourceSelector from './components/S3ResourceSelector?raw';
+import * as S3ResourceSelector from "./components/S3ResourceSelector?raw";
+import * as SegmentedControl from "./components/SegmentedControl?raw";
 import * as Select from "./components/Select?raw";
 import * as Slider from "./components/Slider?raw";
 import * as TagEditor from "./components/TagEditor?raw";
@@ -52,22 +56,30 @@ const SourceCodeView: React.FC = () => {
         return Checkbox.default;
       case "/CodeEditor":
         return CodeEditor.default;
+      case "/DateInput":
+        return DateInput.default;
       case "/DatePicker":
         return DatePicker.default;
       case "/DateRangePicker":
         return DateRangePicker.default;
       case "/FileUpload":
         return FileUpload.default;
+      case "/FormField":
+        return FormField.default;
       case "/Input":
         return Input.default;
       case "/Multiselect":
         return Multiselect.default;
-      // case '/PropertyFilter':
-      //   return PropertyFilter.default;
+      case "/OptionList":
+        return OptionList.default;
+      case "/PropertyFilter":
+        return PropertyFilter.default;
       case "/RadioGroup":
         return RadioGroup.default;
-      // case '/S3ResourceSelector':
-      //   return S3ResourceSelector.default;
+      case "/S3ResourceSelector":
+        return S3ResourceSelector.default;
+      case "/SegmentedControl":
+        return SegmentedControl.default;
       case "/Select":
         return Select.default;
       case "/Slider":
