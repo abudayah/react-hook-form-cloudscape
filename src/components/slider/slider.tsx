@@ -1,4 +1,5 @@
-import { NonCancelableCustomEvent, Slider, SliderProps } from "@cloudscape-design/components";
+import { NonCancelableCustomEvent } from "@cloudscape-design/components/interfaces";
+import Slider, { SliderProps } from "@cloudscape-design/components/slider";
 import { useCallback } from "react";
 import {
   Control,

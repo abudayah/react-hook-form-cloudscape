@@ -1,4 +1,5 @@
-import { NonCancelableCustomEvent, OptionList, OptionListProps } from "@cloudscape-design/components";
+import { NonCancelableCustomEvent } from "@cloudscape-design/components/interfaces";
+import OptionList, { OptionListProps } from "@cloudscape-design/components/option-list";
 import { useCallback } from "react";
 import {
   Control,

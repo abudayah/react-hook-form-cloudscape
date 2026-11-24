@@ -1,4 +1,5 @@
-import { NonCancelableCustomEvent, SegmentedControl, SegmentedControlProps } from "@cloudscape-design/components";
+import { NonCancelableCustomEvent } from "@cloudscape-design/components/interfaces";
+import SegmentedControl, { SegmentedControlProps } from "@cloudscape-design/components/segmented-control";
 import { useCallback } from "react";
 import {
   Control,
@@ -11,10 +12,8 @@ import {
 
 import { FocusBoundary } from "../../utils/focus-boundary";
 
-export interface CSegmentedControlProps<
-  T extends FieldValues,
-  TName extends FieldPath<T> = FieldPath<T>,
-> extends Omit<SegmentedControlProps, "selectedId"> {
+export interface CSegmentedControlProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
+  extends Omit<SegmentedControlProps, "selectedId"> {
   name: TName;
   control?: Control<T>;
   defaultValue?: FieldPathValue<T, TName>;

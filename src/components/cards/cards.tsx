@@ -1,4 +1,5 @@
-import { Cards, CardsProps, NonCancelableCustomEvent } from "@cloudscape-design/components";
+import Cards, { CardsProps } from "@cloudscape-design/components/cards";
+import { NonCancelableCustomEvent } from "@cloudscape-design/components/interfaces";
 import { useCallback } from "react";
 import {
   Control,

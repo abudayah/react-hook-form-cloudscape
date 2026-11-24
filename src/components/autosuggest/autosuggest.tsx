@@ -1,4 +1,5 @@
-import { Autosuggest, AutosuggestProps, NonCancelableCustomEvent } from "@cloudscape-design/components";
+import Autosuggest, { AutosuggestProps } from "@cloudscape-design/components/autosuggest";
+import { NonCancelableCustomEvent } from "@cloudscape-design/components/interfaces";
 import { useCallback } from "react";
 import {
   Control,

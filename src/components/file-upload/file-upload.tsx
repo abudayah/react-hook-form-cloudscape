@@ -1,4 +1,5 @@
-import { FileUpload, FileUploadProps, NonCancelableCustomEvent } from "@cloudscape-design/components";
+import FileUpload, { FileUploadProps } from "@cloudscape-design/components/file-upload";
+import { NonCancelableCustomEvent } from "@cloudscape-design/components/interfaces";
 import { useCallback } from "react";
 import {
   Control,

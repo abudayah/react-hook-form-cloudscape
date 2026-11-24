@@ -1,4 +1,5 @@
-import { NonCancelableCustomEvent, RadioGroup, RadioGroupProps } from "@cloudscape-design/components";
+import { NonCancelableCustomEvent } from "@cloudscape-design/components/interfaces";
+import RadioGroup, { RadioGroupProps } from "@cloudscape-design/components/radio-group";
 import { useCallback } from "react";
 import {
   Control,

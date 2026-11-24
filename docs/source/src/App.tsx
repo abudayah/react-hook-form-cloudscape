@@ -27,14 +27,18 @@ import Autosuggest from "./components/Autosuggest";
 import Cards from "./components/Cards";
 import Checkbox from "./components/Checkbox";
 import CodeEditor from "./components/CodeEditor";
+import DateInput from "./components/DateInput";
 import DatePicker from "./components/DatePicker";
 import DateRangePicker from "./components/DateRangePicker";
 import FileUpload from "./components/FileUpload";
+import FormField from "./components/FormField";
 import Input from "./components/Input";
 import Multiselect from "./components/Multiselect";
-// import PropertyFilter from './components/PropertyFilter';
+import OptionList from "./components/OptionList";
+import PropertyFilter from "./components/PropertyFilter";
 import RadioGroup from "./components/RadioGroup";
-// import S3ResourceSelector from './components/S3ResourceSelector';
+import S3ResourceSelector from "./components/S3ResourceSelector";
+import SegmentedControl from "./components/SegmentedControl";
 import Select from "./components/Select";
 import Slider from "./components/Slider";
 import TagEditor from "./components/TagEditor";
@@ -149,6 +153,11 @@ function App() {
                   },
                   {
                     type: "link",
+                    text: "Date Input",
+                    href: "#/DateInput",
+                  },
+                  {
+                    type: "link",
                     text: "Date Picker",
                     href: "#/DatePicker",
                   },
@@ -164,6 +173,11 @@ function App() {
                   },
                   {
                     type: "link",
+                    text: "Form Field",
+                    href: "#/FormField",
+                  },
+                  {
+                    type: "link",
                     text: "Input",
                     href: "#/Input",
                   },
@@ -172,21 +186,31 @@ function App() {
                     text: "Multiselect",
                     href: "#/Multiselect",
                   },
-                  // {
-                  //   type: "link",
-                  //   text: "Property Filter",
-                  //   href: "#/PropertyFilter"
-                  // },
+                  {
+                    type: "link",
+                    text: "Option List",
+                    href: "#/OptionList",
+                  },
+                  {
+                    type: "link",
+                    text: "Property Filter",
+                    href: "#/PropertyFilter",
+                  },
                   {
                     type: "link",
                     text: "Radio Group",
                     href: "#/RadioGroup",
                   },
-                  // {
-                  //   type: "link",
-                  //   text: "S3 Resource Selector",
-                  //   href: "#/S3ResourceSelector"
-                  // },
+                  {
+                    type: "link",
+                    text: "S3 Resource Selector",
+                    href: "#/S3ResourceSelector",
+                  },
+                  {
+                    type: "link",
+                    text: "Segmented Control",
+                    href: "#/SegmentedControl",
+                  },
                   {
                     type: "link",
                     text: "Select",
@@ -264,14 +288,18 @@ function App() {
             <Route path="/Cards" element={<Cards onSubmit={handleFormSubmit} />} />
             <Route path="/Checkbox" element={<Checkbox onSubmit={handleFormSubmit} />} />
             <Route path="/CodeEditor" element={<CodeEditor onSubmit={handleFormSubmit} />} />
+            <Route path="/DateInput" element={<DateInput onSubmit={handleFormSubmit} />} />
             <Route path="/DatePicker" element={<DatePicker onSubmit={handleFormSubmit} />} />
             <Route path="/DateRangePicker" element={<DateRangePicker onSubmit={handleFormSubmit} />} />
             <Route path="/FileUpload" element={<FileUpload onSubmit={handleFormSubmit} />} />
+            <Route path="/FormField" element={<FormField onSubmit={handleFormSubmit} />} />
             <Route path="/Input" element={<Input onSubmit={handleFormSubmit} />} />
             <Route path="/Multiselect" element={<Multiselect onSubmit={handleFormSubmit} />} />
-            {/* <Route path="/PropertyFilter" element={<PropertyFilter onSubmit={handleFormSubmit} />} /> */}
+            <Route path="/OptionList" element={<OptionList onSubmit={handleFormSubmit} />} />
+            <Route path="/PropertyFilter" element={<PropertyFilter onSubmit={handleFormSubmit} />} />
             <Route path="/RadioGroup" element={<RadioGroup onSubmit={handleFormSubmit} />} />
-            {/* <Route path="/S3ResourceSelector" element={<S3ResourceSelector onSubmit={handleFormSubmit} />} /> */}
+            <Route path="/S3ResourceSelector" element={<S3ResourceSelector onSubmit={handleFormSubmit} />} />
+            <Route path="/SegmentedControl" element={<SegmentedControl onSubmit={handleFormSubmit} />} />
             <Route path="/Select" element={<Select onSubmit={handleFormSubmit} />} />
             <Route path="/Slider" element={<Slider onSubmit={handleFormSubmit} />} />
             <Route path="/TagEditor" element={<TagEditor onSubmit={handleFormSubmit} />} />

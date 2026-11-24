@@ -1,6 +1,14 @@
-import { FormField, FormFieldProps } from "@cloudscape-design/components";
+import FormField, { FormFieldProps } from "@cloudscape-design/components/form-field";
 import type { ReactNode } from "react";
-import { Control, FieldError, FieldPath, FieldValues, get, useFormContext, useFormState } from "react-hook-form";
+import {
+  Control,
+  FieldError,
+  FieldPath,
+  FieldValues,
+  get,
+  useFormContext,
+  useFormState,
+} from "react-hook-form";
 
 export interface CFormFieldProps<T extends FieldValues, TName extends FieldPath<T> = FieldPath<T>>
   extends Omit<FormFieldProps, "children" | "errorText"> {

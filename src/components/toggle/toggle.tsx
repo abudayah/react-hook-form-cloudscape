@@ -1,4 +1,5 @@
-import { NonCancelableCustomEvent, Toggle, ToggleProps } from "@cloudscape-design/components";
+import { NonCancelableCustomEvent } from "@cloudscape-design/components/interfaces";
+import Toggle, { ToggleProps } from "@cloudscape-design/components/toggle";
 import { useCallback } from "react";
 import {
   Control,

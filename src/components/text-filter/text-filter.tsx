@@ -1,4 +1,5 @@
-import { NonCancelableCustomEvent, TextFilter, TextFilterProps } from "@cloudscape-design/components";
+import { NonCancelableCustomEvent } from "@cloudscape-design/components/interfaces";
+import TextFilter, { TextFilterProps } from "@cloudscape-design/components/text-filter";
 import { useCallback } from "react";
 import {
   Control,
@@ -50,7 +51,7 @@ const CTextFilter = <
           <TextFilter
             {...props}
             ref={ref}
-            filteringText={value as string}
+            filteringText={(value as string) ?? ""}
             onChange={(e) => handleOnChange(onChange, e)}
           />
         </FocusBoundary>

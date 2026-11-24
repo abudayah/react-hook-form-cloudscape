@@ -1,4 +1,5 @@
-import { NonCancelableCustomEvent, TimeInput, TimeInputProps } from "@cloudscape-design/components";
+import { NonCancelableCustomEvent } from "@cloudscape-design/components/interfaces";
+import TimeInput, { TimeInputProps } from "@cloudscape-design/components/time-input";
 import { useCallback } from "react";
 import {
   Control,
@@ -56,7 +57,7 @@ const CTimeInput = <
           {...props}
           ref={ref}
           name={name}
-          value={value as string}
+          value={(value as string) ?? ""}
           onBlur={handleOnBlur.bind(null, onBlur)}
           onChange={handleOnChange.bind(null, onChange)}
         />

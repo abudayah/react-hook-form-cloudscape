@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { existsSync, readdirSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 const distRoot = resolve(process.cwd(), "dist");
@@ -25,6 +25,23 @@ for (const componentName of componentDirs) {
     assert.ok(
       existsSync(resolve(distRoot, relativePath)),
       `Missing component export: dist/${relativePath}`,
+    );
+  }
+  const componentEntryJs = readFileSync(resolve(distRoot, `components/${componentName}/index.js`), "utf8");
+  assert.ok(
+    componentEntryJs.startsWith('"use client";'),
+    `Missing "use client" directive in dist/components/${componentName}/index.js`,
+  );
+  const componentImplPath = resolve(distRoot, `components/${componentName}/${componentName}.js`);
+  if (existsSync(componentImplPath)) {
+    const implJs = readFileSync(componentImplPath, "utf8");
+    assert.ok(
+      implJs.startsWith('"use client";'),
+      `Missing "use client" directive in dist/components/${componentName}/${componentName}.js`,
+    );
+    assert.ok(
+      !/from\s+["']@cloudscape-design\/components["']/.test(implJs),
+      `Barrel import from "@cloudscape-design/components" found in dist/components/${componentName}/${componentName}.js; use subpath imports instead.`,
     );
   }
 }

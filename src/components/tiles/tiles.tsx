@@ -1,4 +1,5 @@
-import { NonCancelableCustomEvent, Tiles, TilesProps } from "@cloudscape-design/components";
+import { NonCancelableCustomEvent } from "@cloudscape-design/components/interfaces";
+import Tiles, { TilesProps } from "@cloudscape-design/components/tiles";
 import { useCallback } from "react";
 import {
   Control,

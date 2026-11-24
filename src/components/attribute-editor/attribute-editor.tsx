@@ -1,8 +1,5 @@
-import {
-  AttributeEditor,
-  AttributeEditorProps,
-  NonCancelableCustomEvent,
-} from "@cloudscape-design/components";
+import AttributeEditor, { AttributeEditorProps } from "@cloudscape-design/components/attribute-editor";
+import { NonCancelableCustomEvent } from "@cloudscape-design/components/interfaces";
 import { useMemo } from "react";
 import {
   Control,

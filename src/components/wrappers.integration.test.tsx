@@ -120,7 +120,9 @@ describe("wrapper mounts against real Cloudscape components", () => {
 
   it("COptionList", () => {
     const Form = () => {
-      const { control } = useForm<{ value: { label: string; value: string }[] }>({ defaultValues: { value: [] } });
+      const { control } = useForm<{ value: { label: string; value: string }[] }>({
+        defaultValues: { value: [] },
+      });
       return (
         <COptionList
           control={control}
@@ -150,7 +152,10 @@ describe("wrapper mounts against real Cloudscape components", () => {
           control={control}
           name="value"
           label="View"
-          options={[{ text: "One", id: "one" }, { text: "Two", id: "two" }]}
+          options={[
+            { text: "One", id: "one" },
+            { text: "Two", id: "two" },
+          ]}
         />
       );
     };
@@ -274,5 +279,37 @@ describe("wrapper mounts against real Cloudscape components", () => {
       return <CTiles control={control} name="value" items={[{ label: "A", value: "a" }]} />;
     };
     expectMounts(Form);
+  });
+
+  it("handles undefined initial values on string-valued inputs without crashing", () => {
+    const Form = () => {
+      const { control } = useForm<{
+        input?: string;
+        textarea?: string;
+        datePicker?: string;
+        dateInput?: string;
+        timeInput?: string;
+        textFilter?: string;
+      }>();
+
+      return (
+        <>
+          <CInput control={control} name="input" ariaLabel="Unseeded input" />
+          <CTextarea control={control} name="textarea" ariaLabel="Unseeded textarea" />
+          <CDatePicker control={control} name="datePicker" ariaLabel="Unseeded date picker" />
+          <CDateInput control={control} name="dateInput" ariaLabel="Unseeded date input" />
+          <CTimeInput control={control} name="timeInput" format="hh:mm" ariaLabel="Unseeded time input" />
+          <CTextFilter control={control} name="textFilter" filteringAriaLabel="Unseeded text filter" />
+        </>
+      );
+    };
+
+    const { getByLabelText } = render(<Form />);
+    expect((getByLabelText("Unseeded input") as HTMLInputElement).value).toBe("");
+    expect((getByLabelText("Unseeded textarea") as HTMLTextAreaElement).value).toBe("");
+    expect((getByLabelText("Unseeded date picker") as HTMLInputElement).value).toBe("");
+    expect((getByLabelText("Unseeded date input") as HTMLInputElement).value).toBe("");
+    expect((getByLabelText("Unseeded time input") as HTMLInputElement).value).toBe("");
+    expect((getByLabelText("Unseeded text filter") as HTMLInputElement).value).toBe("");
   });
 });

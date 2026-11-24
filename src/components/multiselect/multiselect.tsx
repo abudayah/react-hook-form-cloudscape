@@ -1,4 +1,5 @@
-import { Multiselect, MultiselectProps, NonCancelableCustomEvent } from "@cloudscape-design/components";
+import { NonCancelableCustomEvent } from "@cloudscape-design/components/interfaces";
+import Multiselect, { MultiselectProps } from "@cloudscape-design/components/multiselect";
 import { useCallback } from "react";
 import {
   Control,

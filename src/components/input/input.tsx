@@ -1,4 +1,5 @@
-import { Input, InputProps, NonCancelableCustomEvent } from "@cloudscape-design/components";
+import Input, { InputProps } from "@cloudscape-design/components/input";
+import { NonCancelableCustomEvent } from "@cloudscape-design/components/interfaces";
 import { useCallback } from "react";
 import {
   Control,
@@ -55,7 +56,7 @@ const CInput = <
           {...props}
           ref={ref}
           name={name}
-          value={value}
+          value={value ?? ""}
           onBlur={(e) => {
             formOnBlur();
             handleOnBlur(e);
