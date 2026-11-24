@@ -1,4 +1,5 @@
-import { NonCancelableCustomEvent, TagEditor, TagEditorProps } from "@cloudscape-design/components";
+import { NonCancelableCustomEvent } from "@cloudscape-design/components/interfaces";
+import TagEditor, { TagEditorProps } from "@cloudscape-design/components/tag-editor";
 import { useCallback } from "react";
 import {
   Control,

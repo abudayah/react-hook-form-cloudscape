@@ -1,4 +1,4 @@
-import { SelectProps } from "@cloudscape-design/components";
+import { SelectProps } from "@cloudscape-design/components/select";
 import { describe, expect, it } from "vitest";
 
 import SelectUtils from "./utils";

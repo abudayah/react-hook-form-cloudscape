@@ -1,4 +1,4 @@
-import { SelectProps } from "@cloudscape-design/components";
+import { SelectProps } from "@cloudscape-design/components/select";
 
 const mapSelectedOptionWithOptions = (
   options: SelectProps.Options = [],

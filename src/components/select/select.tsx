@@ -1,4 +1,5 @@
-import { NonCancelableCustomEvent, Select, SelectProps } from "@cloudscape-design/components";
+import { NonCancelableCustomEvent } from "@cloudscape-design/components/interfaces";
+import Select, { SelectProps } from "@cloudscape-design/components/select";
 import { useCallback } from "react";
 import {
   Control,

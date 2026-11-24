@@ -1,4 +1,4 @@
-import { MultiselectProps } from "@cloudscape-design/components";
+import { MultiselectProps } from "@cloudscape-design/components/multiselect";
 
 export const transformMultiselectOptionsToArray = (
   selectedOptions: MultiselectProps.Options = [],

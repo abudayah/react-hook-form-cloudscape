@@ -1,4 +1,5 @@
-import { NonCancelableCustomEvent, PropertyFilter, PropertyFilterProps } from "@cloudscape-design/components";
+import { NonCancelableCustomEvent } from "@cloudscape-design/components/interfaces";
+import PropertyFilter, { PropertyFilterProps } from "@cloudscape-design/components/property-filter";
 import { useCallback } from "react";
 import {
   Control,

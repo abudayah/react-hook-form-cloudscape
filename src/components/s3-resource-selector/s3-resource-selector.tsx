@@ -1,8 +1,7 @@
-import {
-  NonCancelableCustomEvent,
-  S3ResourceSelector,
+import { NonCancelableCustomEvent } from "@cloudscape-design/components/interfaces";
+import S3ResourceSelector, {
   S3ResourceSelectorProps,
-} from "@cloudscape-design/components";
+} from "@cloudscape-design/components/s3-resource-selector";
 import { useCallback } from "react";
 import {
   Control,

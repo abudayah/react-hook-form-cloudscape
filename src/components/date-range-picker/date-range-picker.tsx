@@ -1,8 +1,5 @@
-import {
-  DateRangePicker,
-  DateRangePickerProps,
-  NonCancelableCustomEvent,
-} from "@cloudscape-design/components";
+import DateRangePicker, { DateRangePickerProps } from "@cloudscape-design/components/date-range-picker";
+import { NonCancelableCustomEvent } from "@cloudscape-design/components/interfaces";
 import { useCallback } from "react";
 import {
   Control,

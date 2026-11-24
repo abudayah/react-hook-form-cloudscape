@@ -1,4 +1,5 @@
-import { CodeEditor, CodeEditorProps, NonCancelableCustomEvent } from "@cloudscape-design/components";
+import CodeEditor, { CodeEditorProps } from "@cloudscape-design/components/code-editor";
+import { NonCancelableCustomEvent } from "@cloudscape-design/components/interfaces";
 import { useCallback } from "react";
 import {
   Control,
