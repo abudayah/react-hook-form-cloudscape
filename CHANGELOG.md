@@ -1,3 +1,20 @@
+# [2.4.0](https://github.com/abudayah/react-hook-form-cloudscape/compare/v2.3.0...v2.4.0) (2026-11-24)
+
+
+### Bug Fixes
+
+* emit use client directives and default undefined string inputs to empty string ([8d9dd82](https://github.com/abudayah/react-hook-form-cloudscape/commit/8d9dd82eba951674e4e8b10bbacc57dd49978f3b))
+
+
+### Features
+
+* export CDateInput, COptionList, and CSegmentedControl from package root ([38fe7a6](https://github.com/abudayah/react-hook-form-cloudscape/commit/38fe7a67b5affa766d01b0d714bebffd6858dd08))
+
+
+### Performance Improvements
+
+* use Cloudscape subpath imports for faster builds and smaller bundles ([6d40874](https://github.com/abudayah/react-hook-form-cloudscape/commit/6d4087423081359a7f6c977d812ae9b453283eb8))
+
 # [2.3.0](https://github.com/abudayah/react-hook-form-cloudscape/compare/v2.2.0...v2.3.0) (2026-11-23)
 
 

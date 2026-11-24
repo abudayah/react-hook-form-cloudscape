@@ -1,6 +1,6 @@
 {
   "name": "react-hook-form-cloudscape",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "A React Hook Form wrapper designed for effortless integration of validations into Cloudscape forms and inputs",
   "author": "abudayah <anas.abudayah@gmail.com>",
   "keywords": [
